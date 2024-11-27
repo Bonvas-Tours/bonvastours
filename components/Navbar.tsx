@@ -1,11 +1,12 @@
-import Link from 'next/link'
-import { navItems, socialIcons } from '@/content'
-import Logo from './Logo'
-import SocialLinks from './SocialLinks'
+import Link from 'next/link';
+import { navItems } from '@/content';
+import Logo from './Logo';
+import SocialLinks from './SocialLinks';
+import MobileMenu from './MobileMenu';
 
 function Navbar() {
     return (
-        <header className="bg-white text-neutral-500">
+        <header className=" text-neutral-500">
             <nav className="section_container !py-0">
                 <div className="flex-between h-16">
                     <div className="flex-shrink-0">
@@ -24,25 +25,17 @@ function Navbar() {
                             ))}
                         </div>
                     </div>
-                    <SocialLinks />
-                    <div className="md:hidden">
-                        <button className="text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                            <span className="sr-only">Open main menu</span>
-                            <svg
-                                className="h-6 w-6"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        </button>
+                    <div className="hidden md:block">
+                        <SocialLinks />
                     </div>
+
+                    {/* Client Component for Mobile Navbar */}
+                    <MobileMenu />
                 </div>
             </nav>
+
         </header>
-    )
+    );
 }
-export default Navbar
+
+export default Navbar;
