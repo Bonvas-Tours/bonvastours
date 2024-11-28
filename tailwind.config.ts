@@ -25,7 +25,7 @@ const config: Config = {
     			},
     			primary: {
     				'100': '#FFE8F0',
-    				 DEFAULT: "#D34A26",
+    				DEFAULT: '#D34A26',
     				foreground: 'hsl(var(--primary-foreground))'
     			},
     			secondary: {
@@ -88,6 +88,28 @@ const config: Config = {
     			'100': '2px 2px 0px 0px rgb(0, 0, 0)',
     			'200': '2px 2px 0px 2px rgb(0, 0, 0)',
     			'300': '2px 2px 0px 2px rgb(238, 43, 105)'
+    		},
+    		keyframes: {
+    			'accordion-down': {
+    				from: {
+    					height: '0'
+    				},
+    				to: {
+    					height: 'var(--radix-accordion-content-height)'
+    				}
+    			},
+    			'accordion-up': {
+    				from: {
+    					height: 'var(--radix-accordion-content-height)'
+    				},
+    				to: {
+    					height: '0'
+    				}
+    			}
+    		},
+    		animation: {
+    			'accordion-down': 'accordion-down 0.2s ease-out',
+    			'accordion-up': 'accordion-up 0.2s ease-out'
     		}
     	}
     },

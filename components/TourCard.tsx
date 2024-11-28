@@ -1,37 +1,62 @@
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Globe, Calendar, Clock } from 'lucide-react'
-import Image from "next/image"
 import Link from "next/link"
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination, Navigation, Autoplay, EffectFade } from 'swiper/modules'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import 'swiper/css/effect-fade'
 
 interface TourCardProps {
+    slug: string
     title: string
     location: string
     price: number
     date: string
     duration: string
-    imageUrl: string
-    href: string
+    imageUrls: string[]
 }
 
 export function TourCard({
+    slug,
     title,
     location,
     price,
     date,
     duration,
-    imageUrl,
-    href,
+    imageUrls, // Updated prop to receive an array of image URLs
 }: TourCardProps) {
     return (
         <Card className="overflow-hidden group p-4 !shadow-none">
-            <Link href={href}>
+            <Link href={`/tour-packages/${slug}`}>
                 <div className="relative h-64 overflow-hidden rounded-lg">
-                    <Image
-                        src={imageUrl}
-                        alt={title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
+                    <Swiper
+                        spaceBetween={10}
+                        slidesPerView={1}
+                        loop={true}
+                        pagination={{
+                            clickable: true, // Enable clickable pagination dots
+                            type: 'bullets', // Use bullets for pagination
+                        }}
+                        navigation={true} // Enable navigation arrows
+                        modules={[Pagination, Navigation, EffectFade]} // Import necessary modules
+                        className="w-full h-full"
+                    >
+                        {imageUrls.map((url, index) => (
+                            <SwiperSlide key={index}>
+                                <div className="relative w-full h-full">
+                                    <img
+                                        src={url}
+                                        alt={title}
+                                        className="object-cover w-full h-full"
+                                    />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </div>
                 <CardHeader>
                     <h3 className="text-2xl font-bold">{title}</h3>
@@ -64,4 +89,3 @@ export function TourCard({
         </Card>
     )
 }
-

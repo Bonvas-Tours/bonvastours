@@ -5,9 +5,10 @@ import { Services } from "@/components/Services";
 import TestimonialsSection from "@/components/Testimonial";
 import { TourCard } from "@/components/TourCard";
 import { UpcomingEvents } from "@/components/UpcomingEvent";
-import { tours } from "@/content";
+import { MOCK_TOURS } from "@/content/tours";
 
 export default function Home() {
+  const HomeTourPackages = MOCK_TOURS.slice(0, 3);
   return (
     <>
       <HeroSlider />
@@ -23,20 +24,24 @@ export default function Home() {
         <div className="space-y-4 mb-12">
           <h2 className="text-4xl font-bold">Upcoming Tour Packages</h2>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {tours.map((tour) => (
-            <TourCard
-              key={tour.title}
-              title={tour.title}
-              location={tour.location}
-              price={tour.price}
-              date={tour.date}
-              duration={tour.duration}
-              imageUrl={tour.imageUrl}
-              href={tour.href}
-            />
-          ))}
-        </div>
+        {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {HomeTourPackages.map((tour) => {
+            const imageUrls = tour.gallery.slice(0, 2); // Corrected the variable name from 'imgageUrls' to 'imageUrls'
+            return (
+              <TourCard
+                key={tour.id}
+                slug={tour.slug}
+                title={tour.title}
+                location={`${tour.location}, ${tour.region}`}
+                price={tour.price}
+                date={tour.startDate}
+                duration={tour.duration}
+                imageUrls={imageUrls}
+              />
+            );
+          })}
+        </div> */}
+
       </section>
 
       <section className="section_container">

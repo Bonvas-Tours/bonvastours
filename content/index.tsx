@@ -5,10 +5,10 @@ import { Plane, GraduationCap, Car, Map, Briefcase, Compass, Bus } from 'lucide-
 export const navItems = [
   { name: 'Home', href: '/' },
   { name: 'Tour packages', href: '/tour-packages' },
-  { name: 'IWASA', href: '/iwasa' },
-  { name: 'Swiftnano', href: '/swiftmano' },
+  { name: 'IWASA', href: 'https://iwasa.bonvastours.com/' },
+  { name: 'Swiftnano', href: 'https://www.rideswiftnano.com/' },
   { name: 'About', href: '/about' },
-  { name: 'Gallery', href: '/gallery' },
+  // { name: 'Gallery', href: '/gallery' },
   { name: 'Contact', href: '/contact' },
 ]
 
@@ -74,36 +74,6 @@ export const services = [
   }
 ]
 
-export const tours = [
-  {
-    title: "Orange December",
-    location: "Ghana, Takoradi",
-    price: 548,
-    date: "Tue, Jul 20",
-    duration: "2 days",
-    imageUrl: "/tour/1.jpg",
-    href: "/tours/orange-december",
-  },
-  {
-    title: "Zember Festival",
-    location: "Ghana, Takoradi",
-    price: 888,
-    date: "Tue, Jul 20",
-    duration: "2 days",
-    imageUrl: "/tour/2.jpg",
-    href: "/tours/zember-festival",
-  },
-  {
-    title: "Voti Adventure",
-    location: "Ghana, Takoradi",
-    price: 900,
-    date: "Tue, Jul 20",
-    duration: "2 days",
-    imageUrl: "/tour/3.jpg",
-    href: "/tours/voti-adventure",
-  },
-]
-
 export const events = [
   {
     image: "/tour/1.jpg",
@@ -130,26 +100,14 @@ export const events = [
   },
 ];
 
-
-
-export interface Testimonial {
-  id: number
-  name: string
-  role: string
-  region?: string
-  rating: number
-  image: string
-  review: string
-}
-
-export const testimonials: Testimonial[] = [
+export const testimonials = [
   {
     id: 1,
     name: "Priscy Frimps",
     region: "Central Region",
     role: "",
     rating: 4,
-    image: "/testimonial/1.jpg",
+    image: "/placeholder.svg",
     review: "had an amazing experience with Bonvas Tours! Their service was exceptional from start to finish. The team was professional, friendly, and attentive to every detail, ensuring a smooth and memorable trip."
   },
   {
@@ -157,7 +115,7 @@ export const testimonials: Testimonial[] = [
     name: "Mimi A.",
     role: "Administrator",
     rating: 5,
-    image: "/testimonial/2.jpg",
+    image: "/placeholder.svg",
     review: "The tour exceeded all my expectations. The guides were knowledgeable and the itinerary was perfectly planned."
   },
   {
@@ -165,7 +123,7 @@ export const testimonials: Testimonial[] = [
     name: "Naana A.A.A",
     role: "Administrator",
     rating: 5,
-    image: "/testimonial/3.jpg",
+    image: "/placeholder.svg",
     review: "Bonvas Tours provided an exceptional experience. Every detail was taken care of, making our trip truly memorable."
   },
   {
@@ -173,7 +131,7 @@ export const testimonials: Testimonial[] = [
     name: "NANA BONAH",
     role: "CEO of Bonvas Tours",
     rating: 5,
-    image: "/testimonial/4.jpg",
+    image: "/placeholder.svg",
     review: "We strive to provide the best service to our clients, and their satisfaction is our top priority."
   },
   {
@@ -181,7 +139,7 @@ export const testimonials: Testimonial[] = [
     name: "Lydia Amobil",
     role: "Head of IWASA",
     rating: 5,
-    image: "/testimonial/5.jpg",
+    image: "/placeholder.svg",
     review: "A wonderful experience from start to finish. The attention to detail was impressive."
   }
 ]
