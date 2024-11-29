@@ -48,3 +48,11 @@ export interface TourPackageDetailsProps extends TourPackageProps{
   }
   mapUrl: string
 }
+
+export interface GalleryItem {
+   id: string
+   title: string
+   slug: string
+    category: "tour" | "event"
+    gallery: string[]
+}

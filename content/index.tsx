@@ -8,7 +8,7 @@ export const navItems = [
   { name: 'IWASA', href: 'https://iwasa.bonvastours.com/' },
   { name: 'Swiftnano', href: 'https://www.rideswiftnano.com/' },
   { name: 'About', href: '/about' },
-  // { name: 'Gallery', href: '/gallery' },
+  { name: 'Gallery', href: '/gallery' },
   { name: 'Contact', href: '/contact' },
 ]
 
@@ -107,7 +107,7 @@ export const testimonials = [
     region: "Central Region",
     role: "",
     rating: 4,
-    image: "/placeholder.svg",
+    image: "/testimonial/1.jpg",
     review: "had an amazing experience with Bonvas Tours! Their service was exceptional from start to finish. The team was professional, friendly, and attentive to every detail, ensuring a smooth and memorable trip."
   },
   {
@@ -115,7 +115,7 @@ export const testimonials = [
     name: "Mimi A.",
     role: "Administrator",
     rating: 5,
-    image: "/placeholder.svg",
+    image: "/testimonial/2.jpg",
     review: "The tour exceeded all my expectations. The guides were knowledgeable and the itinerary was perfectly planned."
   },
   {
@@ -123,7 +123,7 @@ export const testimonials = [
     name: "Naana A.A.A",
     role: "Administrator",
     rating: 5,
-    image: "/placeholder.svg",
+    image: "/testimonial/3.jpg",
     review: "Bonvas Tours provided an exceptional experience. Every detail was taken care of, making our trip truly memorable."
   },
   {
@@ -131,7 +131,7 @@ export const testimonials = [
     name: "NANA BONAH",
     role: "CEO of Bonvas Tours",
     rating: 5,
-    image: "/placeholder.svg",
+    image: "/testimonial/4.jpg",
     review: "We strive to provide the best service to our clients, and their satisfaction is our top priority."
   },
   {
@@ -139,7 +139,7 @@ export const testimonials = [
     name: "Lydia Amobil",
     role: "Head of IWASA",
     rating: 5,
-    image: "/placeholder.svg",
+    image: "/testimonial/5.jpg",
     review: "A wonderful experience from start to finish. The attention to detail was impressive."
   }
 ]
