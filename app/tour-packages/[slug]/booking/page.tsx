@@ -35,14 +35,14 @@ export default function BookingPage({ params, searchParams }: BookingPageProps) 
         total,
     } = searchParams
 
-    console.log(title, startDate, endDate, adults, price, total)
+    console.log(title, startDate, endDate, adults, price, total, params.slug)
 
     return (
         <section className="section_container">
             <div className="max-w-4xl mx-auto">
                 <div className="flex items-center mb-8">
                     {/* Back Arrow */}
-                    <Link href={`/tour-packages/${params.slug}`} className="text-muted-foreground flex items-center gap-2 hover:text-black">
+                    <Link href={`/tour-packages/${params?.slug}`} className="text-muted-foreground flex items-center gap-2 hover:text-black">
                         <ChevronLeft className="h-6 w-6" />
                         <span className="font-medium">Back to Package Details</span>
                     </Link>
@@ -52,7 +52,7 @@ export default function BookingPage({ params, searchParams }: BookingPageProps) 
 
                 <div className="grid gap-16 md:grid-cols-2">
                     {/* Booking Form */}
-                    <BookingForm tourSlug={params.slug} />
+                    <BookingForm tourSlug={params?.slug} />
                     {/* Booking Summary Card */}
                     <Card className="shadow-lg">
                         <CardHeader>
