@@ -38,7 +38,7 @@ function NavbarClient() {
             {navToggle && (
                 <div className="fixed z-20">
                     <div
-                        className="w-full fixed inset-0 bg-neutral-800"
+                        className="w-full fixed inset-0 bg-neutral-800/70"
                         onClick={() => setNavToggle(false)}
                     ></div>
                     <div className="fixed top-0 bottom-0 left-0 w-[75%] md:w-[50%] bg-white z-30">

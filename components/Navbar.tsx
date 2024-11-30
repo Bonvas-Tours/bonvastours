@@ -6,7 +6,7 @@ import MobileMenu from './MobileMenu';
 
 function Navbar() {
     return (
-        <header className=" text-neutral-500">
+        <header className=" text-neutral-600">
             <nav className="section_container !py-0">
                 <div className="flex-between h-16">
                     <div className="flex-shrink-0">
