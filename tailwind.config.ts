@@ -77,7 +77,7 @@ const config: Config = {
     			}
     		},
     		fontFamily: {
-    			inter: ["var(--font-inter)"]
+    			inter: ['var(--font-inter)']
     		},
     		borderRadius: {
     			lg: 'var(--radius)',
