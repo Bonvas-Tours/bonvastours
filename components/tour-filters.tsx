@@ -20,7 +20,7 @@ export function TourFilters({ onFilterMonth, onFilterDestination }: TourFiltersP
     ]
 
     const destinations = [
-        "Ghana, Takoradi", "Japan", "China", "Germany", "Rwanda", "Nepal"
+        "Ghana, Takoradi", "Japan", "China", "Germany", "Rwanda"
     ]
 
     return (

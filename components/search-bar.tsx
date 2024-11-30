@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useRouter } from 'next/navigation'
 import { DateRange } from "react-day-picker"
 import { DateRangePicker } from "@/components/date-range-picker"
 import { DestinationSearch } from "@/components/destination-search"
@@ -11,23 +10,13 @@ import { Search } from 'lucide-react'
 export default function SearchBar() {
     const [destination, setDestination] = React.useState("")
     const [date, setDate] = React.useState<DateRange>()
-    const router = useRouter()
 
     const handleSearch = () => {
-        // Redirect to tour package page with search parameters as query params
-        const queryParams = new URLSearchParams()
-
-        if (destination) {
-            queryParams.set('destination', destination)
-        }
-
-        if (date) {
-            queryParams.set('startDate', date.from?.toISOString() || '')
-            queryParams.set('endDate', date.to?.toISOString() || '')
-        }
-
-        // Redirect to the tour package page with the query params
-        router.push(`/tour-packages?${queryParams.toString()}`)
+        // Handle search logic here
+        console.log({
+            destination,
+            dateRange: date,
+        })
     }
 
     return (
@@ -57,3 +46,4 @@ export default function SearchBar() {
         </div>
     )
 }
+

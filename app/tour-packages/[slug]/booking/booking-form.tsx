@@ -19,7 +19,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { submitBooking } from "./actions"
-import { toast } from "sooner"
+import { toast } from "sonner"
 
 const formSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
