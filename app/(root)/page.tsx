@@ -1,19 +1,22 @@
 
-import HeroSlider from "@/components/Hero";
-import OurStory from "@/components/our-story";
+import Hero from "@/components/Hero";
+import OurStory from "@/components/OurStory";
 import { Services } from "@/components/Services";
 import TestimonialsSection from "@/components/Testimonial";
+import TourPackages from "@/components/TourPackages";
+import tourPackages from '@/content/tourPackage.json'
 
 import { UpcomingEvents } from "@/components/UpcomingEvent";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
-import { MOCK_TOURS } from "@/content/tours";
+
+import { Suspense } from "react";
 
 export default function Home() {
-  const homeTourPackages = MOCK_TOURS.slice(0, 3);
-  console.log(homeTourPackages);
+  const homeTourPackages = tourPackages.slice(0, 3);
+
   return (
     <>
-      <HeroSlider />
+      <Hero />
       <div className="px-6 sm:px-8 lg:px-10 max-w-7xl mx-auto">
         <OurStory />
       </div>
@@ -22,11 +25,11 @@ export default function Home() {
         <Services />
       </div>
       {/* Upcoming Tour Packages Section */}
-      {/* <section className="section_container">
+      <section className="section_container">
         <Suspense fallback={<div>Loading tour packages...</div>}>
           <TourPackages tours={homeTourPackages} />
         </Suspense>
-      </section> */}
+      </section>
 
       <section className="section_container">
         <UpcomingEvents />
@@ -40,7 +43,7 @@ export default function Home() {
 
 
 
-      <section className="bg-gray-50 py-16 px-4 md:px-6 lg:px-8">
+      {/* <section className="bg-gray-50 py-16 px-4 md:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl font-bold mb-8 text-gray-800">Trusted Partners</h1>
           <div className="flex items-center">
@@ -61,7 +64,7 @@ export default function Home() {
             />
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

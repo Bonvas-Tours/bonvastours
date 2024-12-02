@@ -2,31 +2,34 @@
 
 import { useState } from "react"
 import { TourCard } from "@/components/TourCard"
-import { TourSearch } from "@/components/tour-search"
-import { TourFilters } from "@/components/tour-filters"
+import { TourSearch } from "@/components/TourSearch"
+import { TourFilters } from "@/components/TourFilters"
 import { Button } from "@/components/ui/button"
 import type { TourFiltersProps as TourFiltersType } from "@/type"
-import { MOCK_TOURS } from "@/content/tours"
+import { calculateDuration, formatDate, formatLocation } from "@/lib/utils"
 
-// Constants
 const TOURS_PER_PAGE = 6
 
+interface TourPackagesContentProps {
+    initialTours: any[] // Replace 'any' with your actual tour type
+}
 
-
-export function TourPackagesContent() {
+export function TourPackagesContent({ initialTours }: TourPackagesContentProps) {
     const [filters, setFilters] = useState<TourFiltersType>({})
     const [visibleTours, setVisibleTours] = useState(TOURS_PER_PAGE)
 
+    // console.log(initialTours);
     // Filter tours based on search and filters
-    const filteredTours = MOCK_TOURS.filter((tour) => {
+    const filteredTours = initialTours.filter((tour) => {
         if (filters.search && !tour.title.toLowerCase().includes(filters.search.toLowerCase())) {
             return false
         }
-        if (filters.destination && !tour.location.toLowerCase().includes(filters.destination.toLowerCase())) {
+        if (filters.destination && !formatLocation(tour.location)?.toLowerCase().includes(filters.destination.toLowerCase())) {
             return false
         }
         if (filters.month) {
             const tourMonth = new Date(tour.startDate).toLocaleString('default', { month: 'long' }).toLowerCase()
+            console.log(tourMonth)
             if (tourMonth !== filters.month.toLowerCase()) {
                 return false
             }
@@ -60,12 +63,11 @@ export function TourPackagesContent() {
                         key={tour.id}
                         slug={tour.slug}
                         title={tour.title}
-                        location={`${tour.location}, ${tour.region}`}
+                        location={`${formatLocation(tour.location)}, ${tour.location.region}`}
                         price={tour.price}
-                        date={tour.startDate}
-                        duration={tour.duration}
+                        date={formatDate(tour.startDate)}
+                        duration={calculateDuration(tour.startDate, tour.endDate)}
                         imageUrls={tour.gallery.slice(0, 4)}
-
                     />
                 ))}
             </div>
@@ -83,3 +85,4 @@ export function TourPackagesContent() {
         </div>
     )
 }
+

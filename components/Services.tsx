@@ -1,5 +1,5 @@
 
-import { services } from '@/content'
+import { SERVICES } from '@/content'
 import { ServiceCard } from './ServiceCard'
 import ServiceBannerSlider from './ServiceBannerSlider'
 
@@ -18,7 +18,7 @@ export function Services() {
                             Abroad Programs, and Year-Round Adventures
                         </p>
                     </div>
-                    {services.map((service) => (
+                    {SERVICES.map((service) => (
                         <ServiceCard
                             key={service.title}
                             title={service.title}

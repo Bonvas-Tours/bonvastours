@@ -16,8 +16,8 @@ export function TourGallery({ images, title }: TourGalleryProps) {
     const [showDialog, setShowDialog] = useState(false)
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-    const mainImage = images[0]
-    const thumbnails = images.slice(1)
+    const mainImage = images[1]
+    const thumbnails = images.slice(3)
 
     // Handle image navigation
     const handlePrevious = () => {
@@ -37,6 +37,7 @@ export function TourGallery({ images, title }: TourGalleryProps) {
                         src={mainImage}
                         alt={title}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover rounded-lg"
                     />
                     <Button
@@ -55,6 +56,7 @@ export function TourGallery({ images, title }: TourGalleryProps) {
                                 src={image}
                                 alt={`${title} ${index + 2}`}
                                 fill
+                                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
                                 className="object-cover rounded-lg"
                             />
                         </div>

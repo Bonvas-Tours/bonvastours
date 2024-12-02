@@ -1,3 +1,4 @@
+"use client"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Globe, Calendar, Clock } from 'lucide-react'
 import Link from "next/link"
@@ -16,7 +17,7 @@ interface TourCardProps {
     location: string
     price: number
     date: string
-    duration: string
+    duration: number
     imageUrls: string[]
 }
 
@@ -81,7 +82,7 @@ export function TourCard({
                         </div>
                         <div className="flex items-center gap-2 text-gray-600">
                             <Clock className="w-4 h-4" />
-                            <span>{duration}</span>
+                            <span>{`${duration} day${duration > 1 ? "s" : ""}`}</span>
                         </div>
                     </div>
                 </CardContent>

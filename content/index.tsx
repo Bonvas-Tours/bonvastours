@@ -1,8 +1,8 @@
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
-import { Plane, GraduationCap, Car, Map, Briefcase, Compass, Bus } from 'lucide-react'
+import { Plane, GraduationCap, Car, Map, Briefcase, Compass, Bus, UserCheck, Globe } from "lucide-react";
 
 
-export const navItems = [
+export const NAVITEMS = [
   { name: 'Home', href: '/' },
   { name: 'Tour packages', href: '/tour-packages' },
   { name: 'IWASA', href: 'https://iwasa.bonvastours.com/' },
@@ -12,48 +12,105 @@ export const navItems = [
   { name: 'Contact', href: '/contact' },
 ]
 
+type Slide = {
+  id: number;
+  image: string;
+  alt?: string;
+};
+
+export const SLIDES: Slide[] = [
+  {
+    id: 1,
+    image: '/slides/slide1.jpg',
+
+  },
+  {
+    id: 2,
+    image: '/slides/slide2.jpg',
+
+  },
+  {
+    id: 3,
+    image: '/slides/slide3.jpg',
+
+  },
+  {
+    id: 4,
+    image: '/slides/slide4.jpg',
+
+  },
+]
+
+
 export const socialIcons = [
   { Icon: FaFacebookF, href: 'https://facebook.com/bonvastours' },
   { Icon: FaInstagram, href: 'https://instagram.com/bonvastours' },
   { Icon: FaLinkedinIn, href: 'https://linkedin.com/company/bonvastours' },
 ]
 
-export const services = [
 
+
+export const DESTINATIONS = [
+  "Paris, France",
+  "London, UK",
+  "Rome, Italy",
+  "Tokyo, Japan",
+  "New York, USA",
+  "Sydney, Australia",
+  "Dubai, UAE",
+  "Cape Town, South Africa",
+  "Rio de Janeiro, Brazil",
+  "Bangkok, Thailand",
+  "Barcelona, Spain",
+  "Bali, Indonesia",
+  "Istanbul, Turkey",
+  "Santorini, Greece",
+  "Cairo, Egypt",
+  "Lima, Peru",
+  "Mexico City, Mexico",
+  "Beijing, China",
+  "Ghana"
+];
+
+export const MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+]
+
+export const SERVICES = [
   {
     id: 1,
-    title: 'Airline Reservation & Ticketing',
-    desc: "At Bonvas Tours, we know that planning a trip can be exciting but also overwhelming. That’s why we’re here to make your journey as smooth and stress-free as possible.",
+    title: 'Flight Ticketing & Hotel Reservations',
+    desc: "Global Reservations Made Simple. We provide seamless airline ticketing and hotel booking services, leveraging our partnerships with Amadeus and IATA. With competitive prices and various payment options, including flexible installment plans, you can book now and pay over time. Our team ensures you receive the best value with every booking, handling everything from emergency trips to long-awaited vacations.",
     image: '/airline-reservation.jpg',
     icon: Plane,
     variant: "dark" as const,
-
   },
   {
     id: 2,
-    title: 'Internship, Work and Study Abroad',
-    desc: "Unlock global opportunities with IWaS Abroad by Bonvas Tours. Whether you're an undergraduate, postgraduate, or recent graduate, our program is tailored to help you step onto the international stage and elevate your career.",
+    title: 'Internship, Work, and Study Abroad (IWASA)',
+    desc: "International Opportunities for Aspiring Professionals. Unlock global opportunities with IWaS Abroad by Bonvas Tours. Whether you're an undergraduate, postgraduate, or recent graduate, our program is tailored to help you step onto the international stage and elevate your career.",
     image: '/study_abroad.jpg',
     icon: GraduationCap,
   },
   {
     id: 3,
     title: 'Car Rental',
-    desc: "Need a car for city errands, intercity travels, or special events? Bonvas Car Rentals has you covered! Whether it’s a sleek sedan, a spacious SUV, or a versatile minivan, our fleet of well-maintained vehicles is ready to meet your transportation needs.",
+    desc: "Your Reliable Travel Companion on the Road. Bonvas Tours offers a fleet of well-maintained vehicles, including SUVs, sedans, minivans, and buses for self-drive or chauffeur-driven rentals. Whether for city tours, intercity travel, or event transportation, our flexible car rental options ensure convenience and reliability. Enjoy the freedom to explore at your own pace with Bonvas Tours Car Rentals.",
     image: '/car_rentals.jpg',
     icon: Car,
   },
   {
     id: 4,
-    title: 'All Year-Round Excursions and Tours',
-    desc: "At Bonvas Tours, every season is travel season! We create unforgettable experiences for groups, schools, corporate teams, associations, families, and solo adventurers with our diverse range of tour packages.",
+    title: 'All-Year-Round Excursions and Tour',
+    desc: "Explore Ghana and Beyond Throughout the Year. Our year-round excursion packages cater to groups, educational institutions, corporate bodies, families, and individuals. From serene eco-tours to exhilarating city explorations, we create unique experiences with customizable options. Packages include transportation, accommodations, meals, attractions, and tour guides to ensure a seamless and enjoyable experience.",
     image: '/all_year_round_excursion.jpg',
     icon: Map,
   },
   {
     id: 5,
     title: 'Ground Handling Services',
-    desc: 'Planning an event in Africa and need a dependable partner on the ground? Bonvas Tours is your trusted representative for seamless travel and event coordination.',
+    desc: 'Comprehensive Support for International Events. Planning an event in Africa and need a dependable partner on the ground? Bonvas Tours is your trusted representative for seamless travel and event coordination.',
     image: '/ground_handling.jpg',
     icon: Briefcase,
   },
@@ -63,16 +120,44 @@ export const services = [
     desc: 'Discover the heart of Ghana and beyond with Bonvas Tours’ expert tour guides by your side. Our team of highly-trained, professional guides is passionate about sharing the rich culture, history, and hidden gems of the region.',
     image: '/tour_guiding.jpg',
     icon: Compass,
-
   },
   {
     id: 7,
-    title: 'Swiftnano',
-    desc: "Introducing Swiftnano, the next generation of Bonvas Campus Transport Services. What began as a bus rental service for universities and students has evolved into a hassle-free online booking system.",
+    title: 'Swiftnano (Campus Transport Services)',
+    desc: "Swiftnano offers convenient and reliable transportation for students and educational institutions. Through our online booking system, users can easily check bus availability, choose their preferred seats, and confirm bookings from their devices. We aim to reduce the transportation hassles for students while ensuring affordable and accessible transport solutions.",
     image: '/swiftnano.jpg',
     icon: Bus,
-  }
+  },
+  {
+    id: 8,
+    title: 'Travel and Tour Consultations',
+    desc: "Expert Guidance for Your Next Adventure. Our travel consultants are here to help you plan every detail of your journey. From documentation, visa mock, and tailored itineraries to destination recommendations, our consultations ensure you make the most out of your travel experience. Whether you’re seeking to relocate, study, have a romantic honeymoon, a corporate retreat, or a cultural immersion, we’ll help you every step of the way.",
+    image: '/ground_handling.jpg',
+    icon: UserCheck,
+  },
+  {
+    id: 9,
+    title: 'Visa Assistance Services (VAS)',
+    desc: "Streamlined Visa Support for International Travel. Navigating the visa application process can be challenging. Bonvas Tours offers Visa Assistance Services (VAS) to simplify the process. Our experienced team helps clients gather the necessary documents, prepare applications, and navigate the requirements specific to each country, providing peace of mind as you embark on your journey.",
+    image: '/swiftnano.jpg',
+    icon: Globe,
+  },
+  {
+    id: 10,
+    title: 'Private and Public Trips',
+    desc: "Personalized Tours for Every Occasion. Whether you’re planning a family getaway, an institutional tour, or a solo adventure, Bonvas Tours offers private and public trip options tailored to your preferences. Our tours span across Ghana and select international destinations, providing enriching experiences designed to match diverse travel styles and budgets.",
+    image: '/tour_guiding.jpg',
+    icon: Map,
+  },
+  {
+    id: 11,
+    title: 'MICE',
+    desc: "Your Partner for Corporate and Incentive Travel. Bonvas Tours offers specialized travel arrangements for corporate meetings, incentive trips, conferences, and exhibitions. We handle all travel logistics, including transportation, accommodations, and event management, allowing companies to focus on their core goals. Our MICE services are crafted to ensure productivity, comfort, and a memorable experience for all attendees.",
+    image: '/all_year_round_excursion.jpg',
+    icon: Briefcase,
+  },
 ]
+
 
 export const events = [
   {

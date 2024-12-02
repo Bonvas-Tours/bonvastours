@@ -7,7 +7,14 @@ interface BookingData {
   address: string
 }
 
-export async function submitBooking(data: BookingData, tourSlug: string) {
+export async function submitBooking(
+    formValues: { name: string; email: string; phone: string; address: string },
+
+    title?: string,
+    parsedTourOption?: any,
+    total?: number
+) {
+  // console.log(formValues, title, parsedTourOption, total);
   // Simulate a delay
   await new Promise((resolve) => setTimeout(resolve, 1000))
 

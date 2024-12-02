@@ -30,9 +30,12 @@ const formSchema = z.object({
 
 interface BookingFormProps {
     tourSlug: string
+    title?: string
+    parsedTourOption?: any
+    total?: number
 }
 
-export function BookingForm({ tourSlug }: BookingFormProps) {
+export function BookingForm({ tourSlug, title, parsedTourOption, total }: BookingFormProps) {
     const router = useRouter()
     const [isPending, startTransition] = useTransition()
 
@@ -46,10 +49,11 @@ export function BookingForm({ tourSlug }: BookingFormProps) {
         },
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    async function onSubmit(values: z.infer<typeof formSchema>) {
         startTransition(async () => {
             try {
-                await submitBooking(values, tourSlug)
+                // Pass the form values, title, parsedTourOption, and total to submitBooking
+                await submitBooking(values, title, parsedTourOption, total)
                 toast.success("Booking submitted successfully!")
                 router.push(`/tour-packages/${tourSlug}/booking/success`)
             } catch (error) {

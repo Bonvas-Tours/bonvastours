@@ -7,17 +7,14 @@ import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
 
 interface BookingPageProps {
-    params: {
+    params: Promise<{
         slug: string
-    }
-    searchParams: {
+    }>
+    searchParams: Promise<{
         title?: string
-        startDate?: string
-        endDate?: string
-        adults?: string
-        price?: string
-        total?: string
-    }
+        tourOption?: string
+        total?: number
+    }>
 }
 
 export const metadata: Metadata = {
@@ -25,24 +22,28 @@ export const metadata: Metadata = {
     description: "Complete your tour booking with Bonvas Tours",
 }
 
-export default function BookingPage({ params, searchParams }: BookingPageProps) {
-    const {
-        title,
-        startDate,
-        endDate,
-        adults,
-        price,
-        total,
-    } = searchParams
+export default async function BookingPage({ params, searchParams }: BookingPageProps) {
+    const { title, tourOption, total } = await searchParams
+    const param = await params
 
-    console.log(title, startDate, endDate, adults, price, total)
+    // Parse the serialized tourOption object
+    const parsedTourOptionWithQuantity = tourOption ? JSON.parse(tourOption) : null
+
+    const startDate = parsedTourOptionWithQuantity?.startDate
+    const endDate = parsedTourOptionWithQuantity?.endDate
+    const quantities = parsedTourOptionWithQuantity?.quantities
+    const adultPrice = parsedTourOptionWithQuantity?.prices?.adult
+    const couplePrice = parsedTourOptionWithQuantity?.prices?.couple
+
+    // Calculate total price if not passed
+    const calculatedTotal = total ? total : (adultPrice * (quantities?.adult || 0)) + (couplePrice * (quantities?.couple || 0))
 
     return (
         <section className="section_container">
             <div className="max-w-4xl mx-auto">
                 <div className="flex items-center mb-8">
                     {/* Back Arrow */}
-                    <Link href={`/tour-packages/${params.slug}`} className="text-muted-foreground flex items-center gap-2 hover:text-black">
+                    <Link href={`/tour-packages/${param.slug}`} className="text-muted-foreground flex items-center gap-2 hover:text-black">
                         <ChevronLeft className="h-6 w-6" />
                         <span className="font-medium">Back to Package Details</span>
                     </Link>
@@ -51,21 +52,21 @@ export default function BookingPage({ params, searchParams }: BookingPageProps) 
                 <h1 className="text-3xl font-bold mb-16 text-center">Complete Your Booking</h1>
 
                 <div className="grid gap-16 md:grid-cols-2">
-                    {/* Booking Form */}
-                    <BookingForm tourSlug={params.slug} />
                     {/* Booking Summary Card */}
                     <Card className="shadow-lg">
                         <CardHeader>
                             <CardTitle className="text-2xl">Booking Summary</CardTitle>
+
                         </CardHeader>
                         <CardContent className="space-y-6">
+                            <h1 className="text-center text-2xl text-primary">{title} Tour Package</h1>
                             <div className="flex gap-4 justify-between bg-white-100 p-6 rounded-lg">
                                 <div className="flex items-center justify-between text-sm text-muted-foreground">
                                     <div className="flex items-center gap-2">
                                         <Calendar className="h-6 w-6" />
                                         <div>
                                             <span>Start Date</span>
-                                            <h2 className="font-bold">{startDate}</h2>
+                                            <h2 className="font-bold">{startDate ? new Date(startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'N/A'}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +75,7 @@ export default function BookingPage({ params, searchParams }: BookingPageProps) 
                                         <Calendar className="h-6 w-6" />
                                         <div>
                                             <span>End Date</span>
-                                            <h2 className="font-bold">{endDate}</h2>
+                                            <h2 className="font-bold">{endDate ? new Date(endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'N/A'}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -85,19 +86,26 @@ export default function BookingPage({ params, searchParams }: BookingPageProps) 
                             <div className="space-y-2">
                                 <div className="flex justify-between">
                                     <span className="text-muted-foreground">
-                                        Adults ({adults})
+                                        Adults ({quantities?.adult || 0})
                                     </span>
-                                    <span>${price} per person</span>
+                                    <span>${adultPrice}</span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <span className="text-muted-foreground">
+                                        Couples ({quantities?.couple || 0})
+                                    </span>
+                                    <span>${couplePrice}</span>
                                 </div>
                                 <Separator />
                                 <div className="flex justify-between font-semibold">
                                     <span>Total Amount</span>
-                                    <span>${total}</span>
+                                    <span>${calculatedTotal}</span>
                                 </div>
                             </div>
                         </CardContent>
                     </Card>
-
+                    {/* Booking Form */}
+                    <BookingForm tourSlug={param.slug} title={title} parsedTourOption={parsedTourOptionWithQuantity} total={total} />
                 </div>
             </div>
         </section>

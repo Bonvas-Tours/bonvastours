@@ -1,19 +1,22 @@
-
 import { Star } from 'lucide-react'
-
+import tourPackages from '@/content/tourPackage.json'
 import { TourPricing } from '@/components/TourPricing'
 import { TourItinerary } from '@/components/TourItinerary'
-import type { TourPackageDetailsProps } from '@/type'
-import { MOCK_TOURS } from '@/content/tours'
 import { TourGallery } from '@/components/TourGallery'
+import { formatLocation } from '@/lib/utils'
+import ReactMarkdown from 'react-markdown'
 
-// This would typically come from an API
-export default async function TourDetailsPage({ params }: { params: { slug: string } }) {
+export default async function TourDetailsPage({
+    params,
+}: {
+    params: Promise<{ slug: string }>
+}) {
 
-    // Use the slug from params to find the corresponding tour
-    const tour_package = MOCK_TOURS.find(tour => tour.slug === params.slug);
+    const param = await params
+    // Use the slug to find the corresponding tour package
+    const tour_package = tourPackages.find((tour) => tour.slug === param.slug);
 
-    // If no matching tour is found, return a message
+    // If no matching tour is found, return a "Tour not found" message
     if (!tour_package) {
         return <div>Tour not found</div>;
     }
@@ -31,8 +34,8 @@ export default async function TourDetailsPage({ params }: { params: { slug: stri
                                 ({tour_package.reviews} reviews)
                             </span>
                         </div>
-                        <div className="text-muted-foreground">
-                            {tour_package.location}, {tour_package.region}
+                        <div>
+                            {formatLocation(tour_package.location)}
                         </div>
                     </div>
                 </div>
@@ -40,41 +43,49 @@ export default async function TourDetailsPage({ params }: { params: { slug: stri
                 <div className="lg:grid lg:grid-cols-3 gap-8">
                     <div className="lg:col-span-2 space-y-8">
                         <TourGallery images={tour_package.gallery} title={tour_package.title} />
-
                         <div>
                             <h2 className="text-2xl font-semibold mb-4">Package Description</h2>
-                            <p className="text-muted-foreground">{tour_package.description}</p>
+                            <ReactMarkdown>{tour_package.description}</ReactMarkdown>
                         </div>
 
                         <div>
                             <h2 className="text-2xl font-semibold mb-4">Inclusions and Exclusions</h2>
                             <div className="grid sm:grid-cols-2 gap-8">
                                 <div>
-                                    <h3 className="font-medium mb-4">What's included:</h3>
+                                    <h3 className="font-bold mb-4 text-xl">What's included:</h3>
                                     <ul className="space-y-2">
-                                        {tour_package.inclusions.map((item, index) => (
-                                            <li key={index} className="flex items-center gap-2 text-muted-foreground">
-                                                <span className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center">
-                                                    ✓
-                                                </span>
-                                                {item}
+                                        {tour_package.inclusions.map((inclusion, index) => (
+                                            <li key={index}>
+                                                <h4 className="font-bold">{inclusion.category}</h4>
+                                                <ul className="ml-4">
+                                                    {inclusion.items.map((item, itemIndex) => (
+                                                        <li key={itemIndex} className="flex items-center gap-2 ">
+                                                            <span className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center">
+                                                                ✓
+                                                            </span>
+                                                            {item}
+                                                        </li>
+                                                    ))}
+                                                </ul>
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
-                                <div>
-                                    <h3 className="font-medium mb-4">What's not included:</h3>
-                                    <ul className="space-y-2">
-                                        {tour_package.exclusions.map((item, index) => (
-                                            <li key={index} className="flex items-center gap-2 text-muted-foreground">
-                                                <span className="w-4 h-4 rounded-full bg-destructive/20 flex items-center justify-center">
-                                                    ✗
-                                                </span>
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                                {tour_package.exclusions && tour_package.exclusions.length > 0 && (
+                                    <div>
+                                        <h3 className="font-medium mb-4">What's not included:</h3>
+                                        <ul className="space-y-2">
+                                            {tour_package.exclusions.map((item, index) => (
+                                                <li key={index} className="flex items-center gap-2">
+                                                    <span className="w-4 h-4 rounded-full bg-destructive/20 flex items-center justify-center">
+                                                        ✗
+                                                    </span>
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
                             </div>
                         </div>
 
@@ -101,14 +112,14 @@ export default async function TourDetailsPage({ params }: { params: { slug: stri
 
                     <div>
                         <TourPricing
-                            pricing={tour_package.pricing}
+                            tourOptions={tour_package.tourOptions}
                             startDate={tour_package.startDate}
                             endDate={tour_package.endDate}
-                            slug={params.slug}
+                            slug={tour_package.slug}
                         />
                     </div>
                 </div>
             </section>
         </main>
-    )
+    );
 }

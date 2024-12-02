@@ -1,0 +1,309 @@
+[
+    {
+  "id": "46heru348734dhvdv",
+  "slug": "zember-ghana",
+  "title": "Zember Ghana",
+  "location": {
+    "country": "Ghana",
+    "city": "",
+    "region": "West Africa"
+  },
+  "price": 4855.00,
+  "currency": "USD",
+  "rating": 4.9,
+  "reviews": 312,
+  "gallery": [
+  "/gallery/zember_ghana/0.jpg",
+  "/gallery/zember_ghana/1.jpg",
+  "/gallery/zember_ghana/2.jpg",
+  "/gallery/zember_ghana/3.jpg",
+  "/gallery/zember_ghana/4.jpg",
+  "/gallery/zember_ghana/5.jpg",
+  "/gallery/zember_ghana/6.jpg",
+  "/gallery/zember_ghana/7.jpg",
+  "/gallery/zember_ghana/8.jpg",
+  "/gallery/zember_ghana/9.jpg",
+  "/gallery/zember_ghana/10.jpg",
+  "gallery/zember_ghana/11.jpg",
+  "/gallery/zember_ghana/12.jpg",
+  "/gallery/zember_ghana/13.jpg",
+  "/gallery/zember_ghana/14.jpg",
+  "/gallery/zember_ghana/15.jpg",
+  "/gallery/zember_ghana/16.jpg",
+  "gallery/zember_ghana/17.jpg",
+  "/gallery/zember_ghana/18.jpg",
+  "/gallery/zember_ghana/19.jpg",
+  "/gallery/zember_ghana/20.jpg",
+  "/gallery/zember_ghana/21.jpg",
+  "/gallery/zember_ghana/22.jpg",
+  "/gallery/zember_ghana/23.jpg",
+  "/gallery/zember_ghana/24.jpg",
+  "/gallery/zember_ghana/25.jpg",
+  "/gallery/zember_ghana/26.jpg",
+  "/gallery/zember_ghana/27.jpg",
+  "/gallery/zember_ghana/28.jpg",
+  "/gallery/zember_ghana/29.jpg",
+  "/gallery/zember_ghana/30.jpg"
+]
+,
+  "startDate": "2024-12-19",
+  "endDate": "2025-01-02",
+  "description": " **Celebrate the Festive Season with Zember Ghana** \n\nCelebrate the festive season in vibrant Ghana, a land of rich culture, colorful traditions, and captivating landscapes. With **Zember Ghana**, immerse yourself in the joyous spirit of Christmas and New Year, discovering the perfect blend of heritage, festivity, and adventure. Dance to the rhythms of masquerades, uncover ancestral echoes, and party under starry skies during this unforgettable holiday escape.\n\n### **Why Choose Zember Ghana?**\n\n - **Flexible Packages:** Choose from 14-day, 10-day, or 7-day options, tailored to suit your schedule.\n - **Festive Experience:** Celebrate Christmas and New Year in Ghana, complete with gala dinners, masquerades, and vibrant nightlife.\n - **Cultural Exploration:** Tour historical landmarks, royal palaces, and local markets.\n- **Luxurious Comfort:** Enjoy premium accommodations, seamless transfers, and expert-guided tours.\n- **Personalized Options:** Customize your itinerary to include exclusive activities and upgraded services.",
+  "inclusions": [
+    {
+      "category": "Visa Assistance",
+      "items": ["Hassle-free visa-on-arrival support"]
+    },
+    {
+      "category": "Accommodation",
+      "items": [" Stay at top-rated hotels like La Palm Royal Beach (Accra), Lancaster Kumasi, and Elmina Beach Resort (Cape Coast)"]
+    },
+    {
+      "category": "Transportation",
+      "items": ["Domestic flights", "airport transfers", "airport transfers"]
+    },
+    {
+      "category": "Attractions & Activities",
+      "items": ["Entry fees and guided tours at all listed sites"]
+    },
+    {
+      "category": "Meals",
+      "items": ["Daily breakfast and optional festive meals."]
+    },
+    {
+      "category": "Festive Surprises",
+      "items": [": Celebrate Christmas Eve or New Year’s Eve with an optional gala dinner"]
+    },
+    {
+      "category": "Souvenir",
+      "items": ["Receive a special gift from Bonvas Tours as a token of your memorable journey"]
+    }
+  ],
+  "exclusions": [],
+  "itinerary": [
+    {
+      "id": 1,
+      "day": "Day 1",
+      "title": "Akwaaba – A Warm Welcome",
+      "description": "Arrive in Accra and receive a heartfelt Ghanaian welcome. Check into your luxury hotel and enjoy a festive welcome dinner with live music and traditional performances"
+    },
+    {
+      "id": 2,
+      "day": "Day 2",
+      "title": "Discover Accra’s Heritage",
+      "description": "Explore Accra’s landmarks, including the Kwame Nkrumah Memorial Park, the National Museum, and the W.E.B. DuBois Centre. Drive through historic Jamestown and enjoy twilight moments at Labadi Beach."
+    },
+    {
+      "id": 3,
+      "day": "Day 3-4",
+      "title": " Discover the Ashanti Kingdom",
+      "description": "Fly to Kumasi, the historic capital of the Ashanti Empire. Tour the Manhyia Palace Museum, Center for Cultural Studies, Kumasi Fort (Military Mesuem), Opoku Ware II Museum, and Prempeh II Jubilee Museum."
+    },
+    {
+      "id": 4,
+      "day": "Day 5",
+      "title": "Craft Villages & Departure to Takoradi",
+      "description": "Explore the craft villages of Ahwaa, Ntonso, and Bonwire, renowned for wood carving,adinkra cloth, and kente weaving. Witness artisans at work and shop for exquisite handmade souvenirs.Depart to Takoradi for an evening of relaxation."
+    },
+    {
+      "id": 5,
+      "day": "Day 6-8",
+      "title": "Explore the Western Region ",
+      "description": "For those extending their stay, venture to Ghana’s Western Region. Discover the stilt village of Nzulezu, explore forts, and witness colorful masquerade celebrations. Depart to Accra"
+    },
+    {
+      "id": 6,
+      "day": "Day 9",
+      "title": "Leisure",
+      "description": ""
+    },
+    {
+      "id": 7,
+      "day": "Day 10",
+      "title": "Cape Coast & Elmina Castles",
+      "description": "Embark on an optional tour of the Central Region. Visit Cape Coast and Elmina Castles, where history comes alive through engaging storytelling. End the day with a serene boat cruise."
+    },
+    {
+      "id": 8,
+      "day": "Day 11-12",
+      "title": "Accra Festive Highlights",
+      "description": "Celebrate Christmas or New Year with live music, beach parties, and vibrant nightlife.Attend concerts featuring Ghanaian artists, enjoy a pub crawl, and relax with a bonfire under the stars."
+    },
+    {
+      "id": 9,
+      "day": "Day 13",
+      "title": "Leisure & Shopping",
+      "description": "Enjoy free days for personal exploration. Go shopping for souvenirs, join a cooking class to learn traditional Ghanaian recipes, or indulge in water sports at nearby beaches"
+    },
+    {
+      "id": 10,
+      "day": "Day 14",
+      "title": "Farewell & Departure",
+      "description": "Prepare for departure, taking time to reflect on your incredible journey. Enjoy a farewell meal in Accra before your airport transfer."
+    }
+  ],
+ "tourOptions": [
+    {
+      "startDate": "2024-12-19",
+      "endDate": "2025-01-02",
+      "prices": {
+        "adult": 3755,
+        "couple": 7200
+      }
+    },
+    {
+      "duration": "10-Day Package",
+      "startDate": "2024-12-19",
+      "endDate": "2024-12-29",
+      "prices": {
+        "adult": 3150,
+        "couple": 6000
+      }
+    },
+    {
+      "duration": "7-Day Package",
+      "startDate": "2024-12-19",
+      "endDate": "2024-12-26",
+      "prices": {
+        "adult": 2335,
+        "couple": 4500
+      }
+    }
+  ],
+  "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.0445987576704!2d-0.20869362501480795!3d5.560408494420052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf90a183da9e7f%3A0xfa4a9a480ceea783!2sNational%20Museum%20of%20Ghana!5e0!3m2!1sen!2sgh!4v1733047321016!5m2!1sen!2sgh",
+  "status": "active"
+},
+
+{
+  "id": "56juyt2394039jhfg",
+  "slug": "panafest-journey-through-ghana",
+  "title": "Panafest: A Journey Through the Heart of Ghana",
+  "location": {
+    "country": "Ghana",
+    "city": "",
+    "region": "West Africa"
+  },
+  "price": 3755.00,
+  "currency": "USD",
+  "rating": 5.0,
+  "reviews": 158,
+  "gallery": [
+  "/gallery/panafest/1.jpg",
+  "/gallery/panafest/2.jpg",
+  "/gallery/panafest/3.jpg",
+  "/gallery/panafest/4.jpg",
+  "/gallery/panafest/5.jpg",
+  "/gallery/panafest/6.jpg",
+  "/gallery/panafest/7.jpg",
+  "/gallery/panafest/8.jpg",
+  "/gallery/panafest/9.jpg",
+  "/gallery/panafest/10.jpg",
+  "/gallery/panafest/11.jpg",
+  "/gallery/panafest/12.jpg" 
+],
+  "startDate": "2025-07-26",
+  "endDate": "2025-08-06",
+ "description": "## **Experience Ghana like Never Before: Panafest 2025** \n\nPanafest 2025 invites you on an extraordinary journey through the cultural and historical heart of Ghana. Immerse yourself in Pan-African unity, engage in vibrant celebrations, and explore Ghana's iconic regions. This curated expedition offers unparalleled opportunities for cultural enrichment, historical discovery, and personal transformation.\n\n### **Why Choose Panafest 2025?**\n\n- **Flexible Itineraries:** Choose a 12-day, 10-day, or 7-day experience to fit your schedule.\n- **Cultural Enrichment:** Participate in Panafest events celebrating Pan-African unity and resilience.\n- **Expert Guidance:** Travel with knowledgeable guides ensuring seamless and enriching experiences.\n- **Unmatched Convenience:** Enjoy premium accommodations, visa assistance, and smooth transfers.",
+  "inclusions": [
+    {
+      "category": "Visa Assistance",
+      "items": ["Hassle-free visa-on-arrival support"]
+    },
+    {
+      "category": "Accommodation",
+      "items": ["Stay at top-rated hotels like La Palm Royal Beach (Accra), Lancaster Kumasi, and Elmina Beach Hotel (Cape Coast)"]
+    },
+    {
+      "category": "Transportation",
+      "items": ["Domestic flights", "airport transfers", "all in-country travel"]
+    },
+    {
+      "category": "Attractions & Activities",
+      "items": ["Entry fees and guided tours at all listed sites"]
+    },
+    {
+      "category": "Meals",
+      "items": ["Daily breakfast included, with additional dining options"]
+    },
+    {
+      "category": "Souvenir",
+      "items": ["Receive a special gift from Bonvas Tours"]
+    },
+    {
+      "category": "Tour Guide",
+      "items": ["Professional and knowledgeable guides for an enriching experience"]
+    }
+  ],
+  "exclusions": [],
+  "itinerary": [
+    {
+      "id": 1,
+      "day": "Day 1",
+      "title": "Akwaaba - Arrival in Accra",
+      "description": "Arrive in Accra and receive a warm Ghanaian welcome. Enjoy a traditional welcome dinner and an introduction to Panafest."
+    },
+    {
+      "id": 2,
+      "day": "Day 2-3",
+      "title": "Explore Accra & Panafest Opening",
+      "description": "Visit historical landmarks like the Kwame Nkrumah Memorial Park and attend the grand opening of Panafest 2025."
+    },
+    {
+      "id": 3,
+      "day": "Day 4-5",
+      "title": "Ashanti Kingdom & Kumasi Highlights",
+      "description": "Travel to Kumasi to explore the Manhyia Palace, cultural centers, and the vibrant Kejetia Market."
+    },
+    {
+      "id": 4,
+      "day": "Day 6",
+      "title": "Cape Coast & Spiritual Experiences",
+      "description": "Visit Cape Coast Castle, partake in a traditional naming ceremony, and experience a spiritual cleansing bath."
+    },
+    {
+      "id": 5,
+      "day": "Day 7-8",
+      "title": "Elmina Castle & Cultural Activities",
+      "description": "Tour Elmina Castle, engage in Panafest workshops, and enjoy a cultural performance."
+    },
+    {
+      "id": 6,
+      "day": "Day 9-12",
+      "title": "Panafest Closing & Leisure",
+      "description": "Celebrate the conclusion of Panafest with music, dance, and a farewell dinner. Enjoy leisure time for personal exploration and shopping."
+    }
+  ],
+  "tourOptions": [
+    {
+      "prices": {
+        "adult": 3755,
+        "couple": 7200
+      },
+      "startDate": "2025-07-01",
+      "endDate": "2025-07-12"
+    },
+    
+    {
+      "duration": "10-Day Package",
+      "prices": {
+        "adult": 3150,
+        "couple": 6000
+      },
+      "startDate": "2025-07-01",
+      "endDate": "2025-07-10"
+    },
+    {
+      "duration": "7-Day Package",
+      "prices": {
+        "adult": 2335,
+        "couple": 4500
+      },
+      "startDate": "2025-07-01",
+      "endDate": "2025-07-07"
+    }
+  ],
+  "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.0445987576704!2d-0.20869362501480795!3d5.560408494420052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf90a183da9e7f%3A0xfa4a9a480ceea783!2sNational%20Museum%20of%20Ghana!5e0!3m2!1sen!2sgh!4v1733047321016!5m2!1sen!2sgh",
+  "status": "active"
+}
+
+]

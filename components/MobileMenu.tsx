@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { IoClose } from 'react-icons/io5';
-import { navItems } from '@/content';
+
 import SocialLinks from './SocialLinks';
+import { NAVITEMS } from '@/content';
 
 function NavbarClient() {
     const [navToggle, setNavToggle] = useState(false);
@@ -48,7 +49,7 @@ function NavbarClient() {
                         />
                         <nav className="mt-14">
                             <ul className="flex flex-col">
-                                {navItems.map((item) => (
+                                {NAVITEMS.map((item) => (
                                     <li
                                         key={item.name}
                                         className="text-neutral-500 hover:text-primary transition-all duration-300 text-sm font-medium border-b-[1px]"

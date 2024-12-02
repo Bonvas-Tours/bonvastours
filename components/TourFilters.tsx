@@ -7,6 +7,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { DESTINATIONS, MONTHS } from "@/content"
 
 interface TourFiltersProps {
     onFilterMonth: (month: string) => void
@@ -14,14 +15,6 @@ interface TourFiltersProps {
 }
 
 export function TourFilters({ onFilterMonth, onFilterDestination }: TourFiltersProps) {
-    const months = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ]
-
-    const destinations = [
-        "Ghana, Takoradi", "Japan", "China", "Germany", "Rwanda"
-    ]
 
     return (
         <div className="flex gap-4">
@@ -30,7 +23,7 @@ export function TourFilters({ onFilterMonth, onFilterDestination }: TourFiltersP
                     <SelectValue placeholder="Filter by Month" />
                 </SelectTrigger>
                 <SelectContent>
-                    {months.map((month) => (
+                    {MONTHS.map((month) => (
                         <SelectItem key={month} value={month.toLowerCase()}>
                             {month}
                         </SelectItem>
@@ -43,7 +36,7 @@ export function TourFilters({ onFilterMonth, onFilterDestination }: TourFiltersP
                     <SelectValue placeholder="Filter by Destination" />
                 </SelectTrigger>
                 <SelectContent>
-                    {destinations.map((destination) => (
+                    {DESTINATIONS.map((destination) => (
                         <SelectItem key={destination} value={destination.toLowerCase()}>
                             {destination}
                         </SelectItem>

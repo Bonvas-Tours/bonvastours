@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 export default function AboutPage() {
     return (
         <main className="min-h-screen">
-            {/* Hero Section */}
+
             <section className="section_container md:py-24 grid lg:grid-cols-2 gap-16 items-center">
                 <div className="space-y-6">
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">About Us</h1>

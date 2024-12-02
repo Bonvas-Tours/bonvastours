@@ -17,15 +17,7 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
-
-// This would typically come from your API
-const destinations = [
-    { id: 1, name: "Paris, France" },
-    { id: 2, name: "London, UK" },
-    { id: 3, name: "Rome, Italy" },
-    { id: 4, name: "Tokyo, Japan" },
-    { id: 5, name: "New York, USA" },
-]
+import { DESTINATIONS } from "@/content"
 
 interface DestinationSearchProps extends React.HTMLAttributes<HTMLDivElement> {
     destination: string
@@ -40,14 +32,17 @@ export function DestinationSearch({
     const [open, setOpen] = React.useState(false)
 
     return (
-        <div className={cn("grid gap-2", className)}>
+        <div className={cn("grid gap-2 text-neutral-400", className)}>
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
                     <Button
                         variant="outline"
                         role="combobox"
                         aria-expanded={open}
-                        className="w-full justify-start text-left font-normal"
+                        className={cn(
+                            "w-full justify-start text-left font-normal h-12",
+                            destination ? "text-neutral-800" : "text-neutral-400"
+                        )}
                     >
                         <MapPin className="h-4 w-4" />
                         {destination || "Where is your next destination?"}
@@ -59,17 +54,17 @@ export function DestinationSearch({
                         <CommandList>
                             <CommandEmpty>No destination found.</CommandEmpty>
                             <CommandGroup>
-                                {destinations.map((dest) => (
+                                {DESTINATIONS.map((destination) => (
                                     <CommandItem
-                                        key={dest.id}
-                                        value={dest.name}
+                                        key={destination}
+                                        value={destination}
                                         onSelect={(value) => {
                                             onDestinationChange(value)
                                             setOpen(false)
                                         }}
                                     >
                                         <MapPin className="mr-2 h-4 w-4" />
-                                        {dest.name}
+                                        {destination}
                                     </CommandItem>
                                 ))}
                             </CommandGroup>
@@ -80,4 +75,3 @@ export function DestinationSearch({
         </div>
     )
 }
-

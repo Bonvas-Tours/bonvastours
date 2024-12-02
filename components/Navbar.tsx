@@ -1,8 +1,10 @@
 import Link from 'next/link';
-import { navItems } from '@/content';
+
 import Logo from './Logo';
 import SocialLinks from './SocialLinks';
 import MobileMenu from './MobileMenu';
+import { NAVITEMS } from '@/content';
+
 
 function Navbar() {
     return (
@@ -14,7 +16,7 @@ function Navbar() {
                     </div>
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
-                            {navItems.map((item) => (
+                            {NAVITEMS.map((item) => (
                                 <Link
                                     key={item.name}
                                     href={item.href}

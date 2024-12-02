@@ -22,23 +22,19 @@ export function ServiceCard({
     return (
         <Card
             className={`h-full !shadow-none transition-transform duration-300 hover:rotate-2 hover:-translate-y-2 bg-white text-gray-800 hover:bg-gray-900 hover:text-white
-                } ${isFirstCard
-                    ? "rotate-0 translate-y-0 hover:rotate-0 hover:translate-y-0"
-                    : ""
-                }`}
+                ${isFirstCard ? "rotate-0 translate-y-0 hover:rotate-0 hover:translate-y-0" : ""}
+            `}
         >
             <CardContent className="pt-6 space-y-4">
                 <div className="flex items-center space-x-4">
                     <Icon className="w-8 h-8" />
                     <h3 className="text-xl font-semibold">{title}</h3>
                 </div>
-                <p
-
-                >
+                <p className="line-clamp-5">
                     {description}
                 </p>
             </CardContent>
-            <CardFooter>
+            {/* <CardFooter>
                 <Link
                     href={href}
                     className={`text-sm font-medium ${variant === "dark"
@@ -48,7 +44,7 @@ export function ServiceCard({
                 >
                     Read More
                 </Link>
-            </CardFooter>
+            </CardFooter> */}
         </Card>
     );
 }
