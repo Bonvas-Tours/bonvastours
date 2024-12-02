@@ -11,7 +11,7 @@ import { calculateDuration, formatDate, formatLocation } from "@/lib/utils"
 const TOURS_PER_PAGE = 6
 
 interface TourPackagesContentProps {
-    initialTours: any[] // Replace 'any' with your actual tour type
+    initialTours: any[]
 }
 
 export function TourPackagesContent({ initialTours }: TourPackagesContentProps) {

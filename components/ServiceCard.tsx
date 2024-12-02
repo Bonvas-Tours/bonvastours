@@ -15,7 +15,6 @@ export function ServiceCard({
     title,
     description,
     icon: Icon,
-    href,
     variant = "default",
     isFirstCard = false,
 }: ServiceCardProps) {

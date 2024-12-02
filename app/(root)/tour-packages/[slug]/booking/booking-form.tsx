@@ -58,7 +58,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
                 toast.success("Booking submitted successfully!")
                 router.push(`/tour-packages/${tourSlug}/booking/success`)
             } catch (error) {
-                toast.error("Failed to submit booking. Please try again.")
+                toast.error(`Failed to submit booking. Please try again. ${error}`)
             }
         })
     }

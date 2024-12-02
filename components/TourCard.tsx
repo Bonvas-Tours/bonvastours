@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Globe, Calendar, Clock } from 'lucide-react'
 import Link from "next/link"
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, Navigation, Autoplay, EffectFade } from 'swiper/modules'
+import { Pagination, Navigation, EffectFade } from 'swiper/modules'
 
 // Import Swiper styles
 import 'swiper/css'
