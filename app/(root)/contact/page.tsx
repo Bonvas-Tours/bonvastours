@@ -17,9 +17,9 @@ export default function GetInTouch() {
         setIsSubmitting(true)
         try {
             const response = await submitContactForm(formData)
-            setMessage('Thank you for your message. We will get back to you soon!')
+            setMessage(`Thank you for your message. We will get back to you soon! ${response}`)
         } catch (error) {
-            setMessage('Something went wrong. Please try again later.')
+            setMessage(`Something went wrong. Please try again later. ${error}`)
         } finally {
             setIsSubmitting(false)
         }
