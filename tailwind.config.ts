@@ -75,7 +75,10 @@ const config: Config = {
     				'4': 'hsl(var(--chart-4))',
     				'5': 'hsl(var(--chart-5))'
     			}
-    		},
+			},
+			background: {
+				footerPattern: 'url("/slide1.jpg")',
+			},
     		fontFamily: {
     			inter: ['var(--font-inter)']
     		},

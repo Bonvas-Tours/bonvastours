@@ -3,8 +3,15 @@ import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react'
 
 export function Footer() {
     return (
-        <footer className="bg-black bg-cover bg-center text-white py-12">
-            <div className="container mx-auto px-4">
+        <footer
+            className="relative bg-cover bg-center text-white py-12"
+            style={{ backgroundImage: "url('/slide1.jpg')", backgroundPosition: "bottom" }}
+        >
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/95"></div>
+
+            {/* Content */}
+            <div className="relative container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Explore Column */}
                     <div>
@@ -80,4 +87,3 @@ export function Footer() {
         </footer>
     )
 }
-
