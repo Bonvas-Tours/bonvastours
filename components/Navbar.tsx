@@ -8,7 +8,7 @@ import { NAVITEMS } from '@/content';
 
 function Navbar() {
     return (
-        <header className=" text-neutral-600">
+        <header className=" text-neutral-600 fixed z-20 bg-white inset-x-0">
             <nav className="section_container !py-0">
                 <div className="flex-between h-16">
                     <div className="flex-shrink-0">

@@ -1,5 +1,6 @@
 "use client"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
+
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Globe, Calendar, Clock } from 'lucide-react'
 import Link from "next/link"
 import { Swiper, SwiperSlide } from 'swiper/react'

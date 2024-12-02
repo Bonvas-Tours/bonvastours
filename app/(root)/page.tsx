@@ -6,14 +6,12 @@ import TestimonialsSection from "@/components/Testimonial";
 import TourPackages from "@/components/TourPackages";
 import tourPackages from '@/content/tourPackage.json'
 
-import { UpcomingEvents } from "@/components/UpcomingEvent";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
 
 import { Suspense } from "react";
 
 export default function Home() {
   const homeTourPackages = tourPackages.slice(0, 3);
-
   return (
     <>
       <Hero />
@@ -27,13 +25,14 @@ export default function Home() {
       {/* Upcoming Tour Packages Section */}
       <section className="section_container">
         <Suspense fallback={<div>Loading tour packages...</div>}>
-          <TourPackages tours={homeTourPackages} />
+          <TourPackages tours={homeTourPackages} /> {/* Pass tours as a prop */}
         </Suspense>
       </section>
 
-      <section className="section_container">
+
+      {/* <section className="section_container">
         <UpcomingEvents />
-      </section>
+      </section> */}
 
       <TestimonialsSection />
 

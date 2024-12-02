@@ -34,9 +34,9 @@ export function ServiceCard({
                     {description}
                 </p>
             </CardContent>
-            {/* <CardFooter>
+            <CardFooter>
                 <Link
-                    href={href}
+                    href=""
                     className={`text-sm font-medium ${variant === "dark"
                         ? "text-orange-400 hover:text-orange-300"
                         : "text-orange-600 hover:text-orange-500"
@@ -44,7 +44,7 @@ export function ServiceCard({
                 >
                     Read More
                 </Link>
-            </CardFooter> */}
+            </CardFooter>
         </Card>
     );
 }

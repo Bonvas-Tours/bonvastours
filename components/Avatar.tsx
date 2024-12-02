@@ -20,6 +20,8 @@ const Avatar: React.FC<AvatarProps> = ({ src, alt, size = 80, className }) => {
                 width={size}
                 height={size}
                 className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+
             />
         </div>
     );

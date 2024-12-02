@@ -8,7 +8,7 @@ export function Footer() {
             style={{ backgroundImage: "url('/slide1.jpg')", backgroundPosition: "bottom" }}
         >
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black/95"></div>
+            <div className="absolute inset-0 bg-black/90"></div>
 
             {/* Content */}
             <div className="relative container mx-auto px-4">

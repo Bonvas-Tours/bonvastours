@@ -1,4 +1,5 @@
 'use client'
+
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Navigation, Autoplay, EffectFade } from 'swiper/modules'
 import Image from 'next/image'

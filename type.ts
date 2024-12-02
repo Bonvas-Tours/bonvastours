@@ -44,10 +44,10 @@ export interface TourPackageDetailsProps extends TourPackageProps {
   }>;
   gallery: string[];
   pricing: {
-    adult: number;
-    couple: number;
-    childWithBed: number;
-    childWithoutBed: number;
+    adult?: number;
+    couple?: number;
+    childWithBed?: number;
+    childWithoutBed?: number;
   };
   mapUrl: string;
 }

@@ -24,11 +24,11 @@ export const SLIDES: Slide[] = [
     image: '/slides/slide1.jpg',
 
   },
-  {
-    id: 2,
-    image: '/slides/slide2.jpg',
+  // {
+  //   id: 2,
+  //   image: '/slides/slide2.jpg',
 
-  },
+  // },
   {
     id: 3,
     image: '/slides/slide3.jpg',
@@ -37,6 +37,11 @@ export const SLIDES: Slide[] = [
   {
     id: 4,
     image: '/slides/slide4.jpg',
+
+  },
+  {
+    id: 5,
+    image: '/slides/slide5.jpg',
 
   },
 ]
@@ -51,6 +56,7 @@ export const socialIcons = [
 
 
 export const DESTINATIONS = [
+  "Ghana",
   "Paris, France",
   "London, UK",
   "Rome, Italy",
@@ -68,8 +74,7 @@ export const DESTINATIONS = [
   "Cairo, Egypt",
   "Lima, Peru",
   "Mexico City, Mexico",
-  "Beijing, China",
-  "Ghana"
+  "Beijing, China"
 ];
 
 export const MONTHS = [
@@ -188,33 +193,33 @@ export const events = [
 export const testimonials = [
   {
     id: 1,
-    name: "Priscy Frimps",
+    name: "Elliot Lassey",
     region: "Central Region",
-    role: "",
+    role: "CEO of Nexura",
     rating: 4,
     image: "/testimonial/1.jpg",
     review: "had an amazing experience with Bonvas Tours! Their service was exceptional from start to finish. The team was professional, friendly, and attentive to every detail, ensuring a smooth and memorable trip."
   },
   {
     id: 2,
-    name: "Mimi A.",
-    role: "Administrator",
+    name: "Jonathan Banner",
+    role: "Administrator at EcoBank",
     rating: 5,
     image: "/testimonial/2.jpg",
     review: "The tour exceeded all my expectations. The guides were knowledgeable and the itinerary was perfectly planned."
   },
   {
     id: 3,
-    name: "Naana A.A.A",
-    role: "Administrator",
+    name: "Esther Mensah",
+    role: "Lecture at KNUST",
     rating: 5,
     image: "/testimonial/3.jpg",
     review: "Bonvas Tours provided an exceptional experience. Every detail was taken care of, making our trip truly memorable."
   },
   {
     id: 4,
-    name: "NANA BONAH",
-    role: "CEO of Bonvas Tours",
+    name: "Divine Alexander",
+    role: "Lecturer at UCC",
     rating: 5,
     image: "/testimonial/4.jpg",
     review: "We strive to provide the best service to our clients, and their satisfaction is our top priority."
