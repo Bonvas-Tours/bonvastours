@@ -1,6 +1,5 @@
 import { TourCard } from "@/components/TourCard";
 import { calculateDuration, formatDate, formatLocation } from "@/lib/utils";
-import { TourPackageDetailsProps } from "@/type";
 
 interface TourPackagesProps {
     tours: Array<{
