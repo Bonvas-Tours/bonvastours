@@ -105,7 +105,11 @@ export default async function BookingPage({ params, searchParams }: BookingPageP
                         </CardContent>
                     </Card>
                     {/* Booking Form */}
-                    <BookingForm tourSlug={param.slug} title={title} parsedTourOption={parsedTourOptionWithQuantity} total={total} />
+                    <BookingForm
+                        tourSlug={param.slug}
+                        title={title}
+                        parsedTourOption={parsedTourOptionWithQuantity}
+                        total={total} />
                 </div>
             </div>
         </section>

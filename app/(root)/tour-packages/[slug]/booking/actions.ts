@@ -1,20 +1,18 @@
 'use server'
 
-interface BookingData {
-  name: string
-  email: string
-  phone: string
-  address: string
-}
+import { TourOptionWithQuantityProp } from "@/type";
+
+
+
 
 export async function submitBooking(
     formValues: { name: string; email: string; phone: string; address: string },
 
     title?: string,
-    parsedTourOption?: any,
+    parsedTourOption?: TourOptionWithQuantityProp,
     total?: number
 ) {
-  // console.log(formValues, title, parsedTourOption, total);
+  console.log(formValues, title, parsedTourOption, total);
   // Simulate a delay
   await new Promise((resolve) => setTimeout(resolve, 1000))
 

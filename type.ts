@@ -52,6 +52,18 @@ export interface TourPackageDetailsProps extends TourPackageProps {
   mapUrl: string;
 }
 
+export interface TourOptionWithQuantityProp {
+  startDate: string; 
+  endDate: string;   
+  prices: {
+    adult: number;  
+    couple: number;
+  };
+  quantities: {
+    adult: number;   
+    couple: number;  
+  };
+}
 
 export interface GalleryItem {
    id: string

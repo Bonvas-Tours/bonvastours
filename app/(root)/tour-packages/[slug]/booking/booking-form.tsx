@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { submitBooking } from "./actions"
 import { toast } from "sonner"
+import { TourOptionWithQuantityProp } from "@/type"
 
 const formSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
@@ -31,7 +32,7 @@ const formSchema = z.object({
 interface BookingFormProps {
     tourSlug: string
     title?: string
-    parsedTourOption?: any
+    parsedTourOption?: TourOptionWithQuantityProp
     total?: number
 }
 

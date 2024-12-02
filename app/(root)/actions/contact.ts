@@ -18,7 +18,7 @@ export async function submitContactForm(formData: FormData) {
   // For now, we'll just return a success response
   return {
     success: true,
-    message: 'Form submitted successfully'
+    message: `Form submitted successfully ${formData}`
   }
 }
 
