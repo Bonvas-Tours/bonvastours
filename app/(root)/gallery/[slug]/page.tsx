@@ -25,12 +25,13 @@ export default async function GalleryDetailPage({ params }: { params: Promise<{ 
     }
     return (
         <div className="container mx-auto px-4 py-12">
-            <Button asChild variant="ghost" className="mb-8">
-                <Link href="/gallery" className="flex items-center gap-2">
-                    <ChevronLeft className="w-4 h-4" />
-                    Back to Gallery
-                </Link>
-            </Button>
+
+
+            {/* Back Arrow */}
+            <Link href="/gallery" className="text-muted-foreground flex items-center gap-2 hover:text-black mb-8">
+                <ChevronLeft className="h-6 w-6" />
+                <span className="font-medium">Back to Gallery</span>
+            </Link>
 
             <div className="grid gap-8">
                 <div className="space-y-4">

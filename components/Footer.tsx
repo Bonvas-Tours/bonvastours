@@ -1,5 +1,7 @@
+import { socialIcons } from '@/content'
 import Link from 'next/link'
-import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react'
+
+
 
 export function Footer() {
     return (
@@ -45,29 +47,16 @@ export function Footer() {
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Connect with Us</h3>
                         <ul className="space-y-2">
-                            <li>
-                                <Link href="https://facebook.com" className="flex items-center hover:underline">
-                                    <Facebook className="w-5 h-5 mr-2" /> Facebook
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="https://instagram.com" className="flex items-center hover:underline">
-                                    <Instagram className="w-5 h-5 mr-2" /> Instagram
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="https://twitter.com" className="flex items-center hover:underline">
-                                    <Twitter className="w-5 h-5 mr-2" /> Twitter
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="https://linkedin.com" className="flex items-center hover:underline">
-                                    <Linkedin className="w-5 h-5 mr-2" /> LinkedIn
-                                </Link>
-                            </li>
+                            {socialIcons.map(({ Icon, href, name }) => (
+                                <li key={name}>
+                                    <Link href={href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:underline">
+                                        <Icon className="w-5 h-5" />
+                                        {name}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
-
                     {/* Get in Touch Column */}
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Get in Touch</h3>

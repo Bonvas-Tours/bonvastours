@@ -1,6 +1,6 @@
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok } from 'react-icons/fa';
 import { Plane, GraduationCap, Car, Map, Briefcase, Compass, Bus, UserCheck, Globe } from "lucide-react";
-
+import { IconType } from 'react-icons';
 
 export const NAVITEMS = [
   { name: 'Home', href: '/' },
@@ -46,11 +46,17 @@ export const SLIDES: Slide[] = [
   },
 ]
 
+type SocialIcon = {
+  Icon: IconType;
+  href: string;
+  name: string;
+};
 
-export const socialIcons = [
-  { Icon: FaFacebookF, href: 'https://facebook.com/bonvastours' },
-  { Icon: FaInstagram, href: 'https://instagram.com/bonvastours' },
-  { Icon: FaLinkedinIn, href: 'https://linkedin.com/company/bonvastours' },
+export const socialIcons: SocialIcon[] = [
+  { Icon: FaFacebookF, href: 'https://facebook.com/bonvastours', name: 'Facebook' },
+  { Icon: FaInstagram, href: 'https://instagram.com/bonvastours', name: 'Instagram' },
+  { Icon: FaLinkedinIn, href: 'https://linkedin.com/company/bonvastours', name: 'LinkedIn' },
+  { Icon: FaTiktok, href: 'https://www.tiktok.com/@bonvas.tours', name: 'TikTok' },
 ]
 
 
