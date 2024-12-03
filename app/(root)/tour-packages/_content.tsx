@@ -6,7 +6,7 @@ import { TourSearch } from "@/components/TourSearch"
 import { TourFilters } from "@/components/TourFilters"
 import { Button } from "@/components/ui/button"
 import type { TourFiltersProps as TourFiltersType, TourPackageDetailsProps } from "@/type"
-import { calculateDuration, formatDate, formatLocation } from "@/lib/utils"
+import { formatLocation } from "@/lib/utils"
 
 const TOURS_PER_PAGE = 6
 

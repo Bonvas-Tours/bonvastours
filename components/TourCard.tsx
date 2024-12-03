@@ -12,7 +12,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import 'swiper/css/effect-fade'
 import { TourPackageProps } from "@/type"
-import { calculateDuration, formatLocation, interpretCurrency } from "@/lib/utils"
+import { calculateDuration, formatLocation } from "@/lib/utils"
 
 
 export function TourCard({

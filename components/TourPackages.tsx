@@ -11,7 +11,7 @@ export default function TourPackages({ tours }: TourCardProps) {
                 <h2 className="text-4xl font-bold">Upcoming Tour Packages</h2>
             </div>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {tours.map((tour: any) => {
+                {tours.map((tour: TourPackageDetailsProps) => {
                     console.log(tour)
                     return (
                         <TourCard
