@@ -5,13 +5,13 @@ import { TourCard } from "@/components/TourCard"
 import { TourSearch } from "@/components/TourSearch"
 import { TourFilters } from "@/components/TourFilters"
 import { Button } from "@/components/ui/button"
-import type { TourFiltersProps as TourFiltersType } from "@/type"
+import type { TourFiltersProps as TourFiltersType, TourPackageDetailsProps } from "@/type"
 import { calculateDuration, formatDate, formatLocation } from "@/lib/utils"
 
 const TOURS_PER_PAGE = 6
 
 interface TourPackagesContentProps {
-    initialTours: any[]
+    initialTours: TourPackageDetailsProps[]
 }
 
 export function TourPackagesContent({ initialTours }: TourPackagesContentProps) {
@@ -63,10 +63,9 @@ export function TourPackagesContent({ initialTours }: TourPackagesContentProps) 
                         key={tour.id}
                         slug={tour.slug}
                         title={tour.title}
-                        location={`${formatLocation(tour.location)}, ${tour.location.region}`}
-                        price={tour.price}
-                        date={formatDate(tour.startDate)}
-                        duration={calculateDuration(tour.startDate, tour.endDate)}
+                        location={tour.location}
+                        startDate={tour.startDate}
+                        endDate={tour.endDate}
                         imageUrls={tour.gallery.slice(0, 4)}
                     />
                 ))}

@@ -15,41 +15,47 @@ export interface TourFiltersProps {
 }
 
 export interface TourPackageProps {
-  id: string;
   slug: string;
   title: string;
-  location: string;
-  region: string;
-  price: number;
+  location: {
+    country: string;
+    city?: string; // Optional since it can be empty
+    region: string;
+  };
   startDate: string;
-  duration: string;
+  endDate: string;
   imageUrls: string[];
 }
 
 export interface TourPackageDetailsProps extends TourPackageProps {
+  id: string;
+  price: number;
+  currency: string;
   rating: number;
   reviews: number;
   description: string;
-  startDate: string;
-  endDate: string;
   inclusions: Array<{
     category: string;
     items: string[];
   }>;
   exclusions: string[];
   itinerary: Array<{
-    day: number;
+    id: number | string;
+    day: string | number; 
     title: string;
     description: string;
   }>;
   gallery: string[];
-  pricing: {
-    adult?: number;
-    couple?: number;
-    childWithBed?: number;
-    childWithoutBed?: number;
-  };
-  mapUrl: string;
+  tourOptions: Array<{
+    startDate?: string;
+    endDate?: string;
+    prices: {
+      adult: number;
+      couple: number;
+    };
+  }>;
+  mapUrl: string; 
+  status: string;
 }
 
 export interface TourOptionWithQuantityProp {

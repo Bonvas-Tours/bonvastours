@@ -1,27 +1,10 @@
 import { TourCard } from "@/components/TourCard";
-import { calculateDuration, formatDate, formatLocation } from "@/lib/utils";
+import { TourPackageDetailsProps } from "@/type";
 
-interface TourPackagesProps {
-    tours: Array<{
-        id: string;
-        slug: string;
-        title: string;
-        location: {
-            country: string;
-            city: string;
-            region: string;
-        };
-        price: number;
-        currency: string;
-        rating: number;
-        reviews: number;
-        gallery: string[];
-        startDate: string;
-        endDate: string;
-        status: string;
-    }>;
+interface TourCardProps {
+    tours: TourPackageDetailsProps[];
 }
-export default function TourPackages({ tours }: TourPackagesProps) {
+export default function TourPackages({ tours }: TourCardProps) {
     return (
         <>
             <div className="space-y-4 mb-12">
@@ -29,16 +12,17 @@ export default function TourPackages({ tours }: TourPackagesProps) {
             </div>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {tours.map((tour: any) => {
+                    console.log(tour)
                     return (
                         <TourCard
                             key={tour.id}
                             slug={tour.slug}
                             title={tour.title}
-                            location={`${formatLocation(tour.location)}, ${tour.location.region}`}
-                            price={tour.price}
-                            date={formatDate(tour.startDate)}
-                            duration={calculateDuration(tour.startDate, tour.endDate)}
+                            location={tour.location}
+                            startDate={tour.startDate}
+                            endDate={tour.endDate}
                             imageUrls={tour.gallery.slice(0, 4)}
+
                         />
                     );
                 })}

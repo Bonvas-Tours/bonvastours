@@ -11,7 +11,8 @@ import YouTubeEmbed from "@/components/YouTubeEmbed";
 import { Suspense } from "react";
 
 export default function Home() {
-  const homeTourPackages = tourPackages.slice(0, 3);
+  const homeTourPackages = tourPackages?.slice(0, 3);
+  console.log(homeTourPackages)
   return (
     <>
       <Hero />
@@ -25,7 +26,7 @@ export default function Home() {
       {/* Upcoming Tour Packages Section */}
       <section className="section_container">
         <Suspense fallback={<div>Loading tour packages...</div>}>
-          <TourPackages tours={homeTourPackages} /> {/* Pass tours as a prop */}
+          <TourPackages tours={homeTourPackages} />
         </Suspense>
       </section>
 

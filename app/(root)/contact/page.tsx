@@ -40,7 +40,7 @@ export default function GetInTouch() {
                             <div>
                                 <h3 className="font-semibold mb-1">Address</h3>
                                 <p className="text-muted-foreground">KNUST Ayigya</p>
-                                <p className="text-muted-foreground">Ecoscent Street</p>
+                                <p className="text-muted-foreground">Ecocent Street</p>
                             </div>
                         </div>
 

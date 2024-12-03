@@ -14,10 +14,17 @@ export const capitalizeTitle = (slug: string) => {
     .join(' ');                   // Join the words back with a space
 }
 
-export function formatLocation(location: { country: string; city: string; region: string }) {
-    const { country, city } = location;
+export function formatLocation(location: { country: string; city?: string; region: string }) {
+  const { country, city, region } = location;
+  
+    // Check if region is not empty or undefined
+    if (region.trim()) {
+        return city ? `${country}, ${city}, ${region}` : `${country}, ${region}`;
+    }
+    // Fallback if region is empty
     return city ? `${country}, ${city}` : country;
 }
+
 
 export function calculateDuration(startDate: string, endDate: string): number {
     const start = new Date(startDate);
@@ -37,3 +44,29 @@ export function formatDate(dateString: string): string {
         year: "numeric",
     });
 }
+
+
+export function interpretCurrency(currencyCode: string): string {
+  const currencySymbols: Record<string, string> = {
+    USD: '$',  // United States Dollar
+    EUR: '€',  // Euro
+    GBP: '£',  // British Pound
+    JPY: '¥',  // Japanese Yen
+    INR: '₹',  // Indian Rupee
+    CNY: '¥',  // Chinese Yuan
+    CAD: 'C$', // Canadian Dollar
+    AUD: 'A$', // Australian Dollar
+    ZAR: 'R',  // South African Rand
+    GHS: '₵',  // Ghanaian Cedi
+    NGN: '₦',  // Nigerian Naira
+    BRL: 'R$', // Brazilian Real
+    RUB: '₽',  // Russian Ruble
+    KRW: '₩',  // South Korean Won
+    MXN: 'Mex$', // Mexican Peso
+    CHF: 'CHF', // Swiss Franc
+  };
+
+  return currencySymbols[currencyCode?.toUpperCase()] || currencyCode;
+}
+
+

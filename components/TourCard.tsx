@@ -11,26 +11,18 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import 'swiper/css/effect-fade'
+import { TourPackageProps } from "@/type"
+import { calculateDuration, formatLocation, interpretCurrency } from "@/lib/utils"
 
-interface TourCardProps {
-    slug: string
-    title: string
-    location: string
-    price: number
-    date: string
-    duration: number
-    imageUrls: string[]
-}
 
 export function TourCard({
     slug,
     title,
     location,
-    price,
-    date,
-    duration,
-    imageUrls, // Updated prop to receive an array of image URLs
-}: TourCardProps) {
+    startDate,
+    endDate,
+    imageUrls,
+}: TourPackageProps) {
     return (
         <Card className="overflow-hidden group p-4 !shadow-none">
             <Link href={`/tour-packages/${slug}`}>
@@ -67,23 +59,19 @@ export function TourCard({
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2 text-gray-600">
                             <Globe className="w-4 h-4" />
-                            <span>{location}</span>
+                            <span>{formatLocation(location)}</span>
                         </div>
-                        <div>
-                            <span className="text-2xl font-bold text-orange-600">
-                                ${price}
-                            </span>
-                        </div>
+
                     </div>
                     <hr />
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2 text-gray-600">
                             <Calendar className="w-4 h-4" />
-                            <span>{date}</span>
+                            <span>{startDate}</span>
                         </div>
                         <div className="flex items-center gap-2 text-gray-600">
                             <Clock className="w-4 h-4" />
-                            <span>{`${duration} day${duration > 1 ? "s" : ""}`}</span>
+                            <span>{`${calculateDuration(startDate, endDate)} day${calculateDuration(startDate, endDate) > 1 ? "s" : ""}`}</span>
                         </div>
                     </div>
                 </CardContent>
