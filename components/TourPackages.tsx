@@ -17,11 +17,11 @@ export default function TourPackages({ tours }: TourCardProps) {
                         <TourCard
                             key={tour.id}
                             slug={tour.slug}
-                            title={tour.title}
-                            location={tour.location}
-                            startDate={tour.startDate}
-                            endDate={tour.endDate}
-                            imageUrls={tour.gallery.slice(0, 4)}
+                            title={tour?.title}
+                            location={tour?.location}
+                            startDate={tour?.startDate}
+                            endDate={tour?.endDate}
+                            imageUrls={tour?.gallery.slice(0, 4)}
 
                         />
                     );

@@ -18,7 +18,7 @@ export default async function GalleryDetailPage({ params }: { params: Promise<{ 
     // Find the images corresponding to the gallery (filter by gallery ID)
     const galleryImages = (galleryItems.filter(item => item.slug === slug))[0]?.gallery
 
-    // console.log(galleryImages)
+
     // If no matching tour is found, return a message
     if (!galleryImages) {
         return <div>Image not found</div>;
