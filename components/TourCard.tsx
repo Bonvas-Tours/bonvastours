@@ -13,6 +13,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/effect-fade'
 import { TourPackageProps } from "@/type"
 import { calculateDuration, formatLocation } from "@/lib/utils"
+import Image from "next/image"
 
 
 export function TourCard({
@@ -42,11 +43,14 @@ export function TourCard({
                         {imageUrls.map((url, index) => (
                             <SwiperSlide key={index}>
                                 <div className="relative w-full h-full">
-                                    <img
+                                    <Image
                                         src={url}
                                         alt={title}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         className="object-cover w-full h-full"
                                     />
+
                                 </div>
                             </SwiperSlide>
                         ))}
