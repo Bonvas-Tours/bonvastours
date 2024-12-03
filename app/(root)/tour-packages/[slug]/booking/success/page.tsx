@@ -18,12 +18,15 @@ export default function BookingSuccessPage() {
                 </CardHeader>
                 <CardContent>
                     <p className="text-muted-foreground">
-                        Thank you for booking with Bonvas Tours. We have sent a confirmation
-                        email with your booking details.
+                        Thank you for booking with Bonvas Tours. A travel coordinator will reach out to you shortly to facilitate your booking.
                     </p>
                 </CardContent>
                 <CardFooter className="flex justify-center">
-                    <Button asChild>
+                    <Button
+                        asChild
+                        size="lg"
+                        className="bg-[#D84A1B] hover:bg-[#D84A1B]/90 text-white"
+                    >
                         <Link href="/tour-packages">Browse More Tours</Link>
                     </Button>
                 </CardFooter>
