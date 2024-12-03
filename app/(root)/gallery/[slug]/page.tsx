@@ -10,9 +10,10 @@ export const metadata = {
 }
 
 
-export default async function GalleryDetailPage({ params }: { params: { slug: string } }) {
-    const slug = params?.slug
+export default async function GalleryDetailPage({ params }: { params: Promise<{ slug: string }> }) {
 
+    const resolvedParams = await params; // Await the Promise to access the actual `slug`
+    const { slug } = resolvedParams;
 
     // Find the images corresponding to the gallery (filter by gallery ID)
     const galleryImages = (galleryItems.filter(item => item.slug === slug))[0]?.gallery
