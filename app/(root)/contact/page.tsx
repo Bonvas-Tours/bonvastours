@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { MapPin, Phone, Mail, Facebook, Instagram, Linkedin } from 'lucide-react'
 import { submitContactForm } from '../actions/contact'
+import { socialIcons } from '@/content'
 
 
 export default function GetInTouch() {
@@ -63,30 +64,22 @@ export default function GetInTouch() {
 
                         <div className="space-y-2">
                             <h3 className="font-semibold">Social Media</h3>
-                            <div className="flex space-x-4">
-                                <a
-                                    href="#"
-                                    className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
-                                    aria-label="Facebook"
-                                >
-                                    <Facebook className="w-5 h-5 text-secondary" />
-                                </a>
-                                <a
-                                    href="#"
-                                    className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
-                                    aria-label="Instagram"
-                                >
-                                    <Instagram className="w-5 h-5 text-secondary" />
-                                </a>
-                                <a
-                                    href="#"
-                                    className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
-                                    aria-label="LinkedIn"
-                                >
-                                    <Linkedin className="w-5 h-5 text-secondary" />
-                                </a>
+                            <div className="flex space-x-1">
+                                {socialIcons.map(({ Icon, href, name }) => (
+                                    <a
+                                        key={name}
+                                        href={href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
+                                        aria-label={name}
+                                    >
+                                        <Icon className="w-4 h-4 text-secondary" />
+                                    </a>
+                                ))}
                             </div>
                         </div>
+
                     </div>
 
                     {/* Contact Form */}
