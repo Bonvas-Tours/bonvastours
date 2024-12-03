@@ -3,15 +3,15 @@ import { TourPackagesContent } from './_content'
 import { formatLocation } from '@/lib/utils'
 
 export default async function TourPackagesPage({
-    searchParams,
+    params,
 }: {
-    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+    params: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-    // Await searchParams to ensure it's accessible properly
-    const params = await searchParams
-    const destination = params?.destination as string | undefined
-    const startDate = params?.startDate ? new Date(params?.startDate as string) : undefined
-    const endDate = params?.endDate ? new Date(params?.endDate as string) : undefined
+
+    const searchParams = await params
+    const destination = searchParams?.destination as string | undefined
+    const startDate = searchParams?.startDate ? new Date(searchParams?.startDate as string) : undefined
+    const endDate = searchParams?.endDate ? new Date(searchParams?.endDate as string) : undefined
 
     const filteredTours = tourPackages.filter((tour) => {
         // Filter by destination
