@@ -26,7 +26,10 @@ const formSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
     email: z.string().email("Invalid email address"),
     phone: z.string().min(10, "Phone number must be at least 10 characters"),
-    address: z.string().min(4, "Address must be at least 10 characters"),
+    address: z.string().min(4, "Address must be at least 4 characters"),
+    country: z.string().min(2, "Country must be at least 2 characters"),
+    city: z.string().min(2, "City must be at least 2 characters"),
+    additionalInfo: z.string().optional(),
 })
 
 interface BookingFormProps {
@@ -47,6 +50,9 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
             email: "",
             phone: "",
             address: "",
+            country: "",
+            city: "",
+            additionalInfo: "",
         },
     })
 
@@ -123,6 +129,48 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
                                 </FormItem>
                             )}
                         />
+                        <FormField
+                            control={form.control}
+                            name="country"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Country</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Country of residence" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="city"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>City</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="City of residence" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="additionalInfo"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Additional Information</FormLabel>
+                                    <FormControl>
+                                        <Textarea
+                                            placeholder="Please provide additional details to help us prepare for your visit. This could include dietary preferences, allergies, or any specific requirements."
+                                            style={{ height: '150px' }}
+                                            {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
                         <Button type="submit" className="w-full" disabled={isPending}>
                             {isPending ? "Submitting..." : "Complete Booking"}
                         </Button>
@@ -132,4 +180,3 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
         </Card>
     )
 }
-

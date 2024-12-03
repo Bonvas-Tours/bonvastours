@@ -5,6 +5,7 @@ import { BookingForm } from "./booking-form"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
+import { calculateDuration } from "@/lib/utils"
 
 interface BookingPageProps {
     params: Promise<{
@@ -35,12 +36,15 @@ export default async function BookingPage({ params, searchParams }: BookingPageP
     const adultPrice = parsedTourOptionWithQuantity?.prices?.adult
     const couplePrice = parsedTourOptionWithQuantity?.prices?.couple
 
+    // Calculate the duration using the calculateDuration function
+    const duration = startDate && endDate ? calculateDuration(startDate, endDate) : null
+
     // Calculate total price if not passed
     const calculatedTotal = total ? total : (adultPrice * (quantities?.adult || 0)) + (couplePrice * (quantities?.couple || 0))
 
     return (
         <section className="section_container">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-6xl mx-auto">
                 <div className="flex items-center mb-8">
                     {/* Back Arrow */}
                     <Link href={`/tour-packages/${param.slug}`} className="text-muted-foreground flex items-center gap-2 hover:text-black">
@@ -51,15 +55,15 @@ export default async function BookingPage({ params, searchParams }: BookingPageP
 
                 <h1 className="text-3xl font-bold mb-16 text-center">Complete Your Booking</h1>
 
-                <div className="grid gap-16 md:grid-cols-2">
+                <div className="flex gap-16 flex-col md:flex-row">
                     {/* Booking Summary Card */}
-                    <Card className="shadow-lg">
+                    <Card className="shadow-lg flex-1 h-fit">
                         <CardHeader>
                             <CardTitle className="text-2xl">Booking Summary</CardTitle>
-
                         </CardHeader>
                         <CardContent className="space-y-6">
-                            <h1 className="text-center text-2xl text-primary">{title} Tour Package</h1>
+                            <h1 className="text-center text-xl text-primary font-bold">{title} Tour Package</h1>
+
                             <div className="flex gap-4 justify-between bg-white-100 p-6 rounded-lg">
                                 <div className="flex items-center justify-between text-sm text-muted-foreground">
                                     <div className="flex items-center gap-2">
@@ -80,6 +84,13 @@ export default async function BookingPage({ params, searchParams }: BookingPageP
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Include Tour Duration */}
+                            {duration && (
+                                <div className="text-center font-semibold text-lg">
+                                    {duration}-Day Package
+                                </div>
+                            )}
 
                             <Separator />
 
@@ -105,11 +116,13 @@ export default async function BookingPage({ params, searchParams }: BookingPageP
                         </CardContent>
                     </Card>
                     {/* Booking Form */}
-                    <BookingForm
-                        tourSlug={param.slug}
-                        title={title}
-                        parsedTourOption={parsedTourOptionWithQuantity}
-                        total={total} />
+                    <div className="flex-1">
+                        <BookingForm
+                            tourSlug={param.slug}
+                            title={title}
+                            parsedTourOption={parsedTourOptionWithQuantity}
+                            total={total} />
+                    </div>
                 </div>
             </div>
         </section>

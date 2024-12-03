@@ -34,7 +34,7 @@ const formatDate = (dateString: string) => {
 export function TourPricing({ tourOptions, slug }: TourPricingProps) {
     const [selectedOption, setSelectedOption] = useState<TourOption>(tourOptions[0])
     const [quantities, setQuantities] = useState({
-        adult: 1,
+        adult: 0,
         couple: 0,
     })
 
@@ -50,6 +50,7 @@ export function TourPricing({ tourOptions, slug }: TourPricingProps) {
 
     const totalPrice = selectedOption.prices.adult * quantities.adult +
         selectedOption.prices.couple * quantities.couple
+
 
     // Serialize the selected tourOption and quantities into JSON string
     const serializedOption = JSON.stringify({
@@ -141,20 +142,31 @@ export function TourPricing({ tourOptions, slug }: TourPricingProps) {
                     <span className="text-lg font-medium">Total</span>
                     <span className="text-lg font-bold">${totalPrice}</span>
                 </div>
-                <Button className="w-full" size="lg" asChild>
-                    <Link
-                        href={{
-                            pathname: `/tour-packages/${slug}/booking`,
-                            query: {
-                                title: capitalizeTitle(slug),
-                                tourOption: serializedOption,  // Pass the serialized tourOption object here
-                                total: totalPrice.toString(),
-                            },
-                        }}
-                    >
-                        Book now
-                    </Link>
+                <Button
+                    className={`w-full ${totalPrice === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    size="lg"
+                    asChild
+                    disabled={totalPrice === 0} // Visually disable the button
+                >
+                    {totalPrice === 0 ? (
+                        <span>Book now</span> // Render a non-clickable span for visual consistency
+                    ) : (
+                        <Link
+                            href={{
+                                pathname: `/tour-packages/${slug}/booking`,
+                                query: {
+                                    title: capitalizeTitle(slug),
+                                    tourOption: serializedOption,
+                                    total: totalPrice.toString(),
+                                },
+                            }}
+                        >
+                            Book now
+                        </Link>
+                    )}
                 </Button>
+
+
             </div>
         </div>
     )
