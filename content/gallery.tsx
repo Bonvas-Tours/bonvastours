@@ -61,7 +61,7 @@ export const galleryItems: GalleryItem[] = [
     {
         id: "3",
         title: "Zember Ghana",
-        category: "event",
+        category: "tour",
         gallery: [
             "zember_ghana/1.jpg",
             "zember_ghana/2.jpg",

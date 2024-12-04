@@ -12,7 +12,7 @@ import { Suspense } from "react";
 
 export default function Home() {
   const homeTourPackages = tourPackages?.slice(0, 3);
-  console.log(homeTourPackages)
+  // console.log(homeTourPackages)
   return (
     <>
       <Hero />

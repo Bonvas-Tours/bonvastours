@@ -42,7 +42,7 @@ export default async function TourPackagesPage({
         <main className="min-h-screen bg-background">
             <div className="relative h-[300px] w-full overflow-hidden">
                 <div
-                    className="absolute inset-0 bg-cover bg-center"
+                    className="absolute inset-0 bg-cover bg-center "
                     style={{
                         backgroundImage: "url('/slides/slide2.jpg')",
                     }}
