@@ -1,10 +1,14 @@
-
+"use client"
+import { useState } from 'react';
 import { SERVICES } from '@/content'
 import { ServiceCard } from './ServiceCard'
 import ServiceBannerSlider from './ServiceBannerSlider'
+import { Button } from './ui/button';
 
 
 export function Services() {
+    const [showAll, setShowAll] = useState(false);
+    const visibleServices = showAll ? SERVICES : SERVICES.slice(0, 5);
 
     return (
         <>
@@ -18,7 +22,7 @@ export function Services() {
                             Abroad Programs, and Year-Round Adventures
                         </p>
                     </div>
-                    {SERVICES.map((service) => (
+                    {visibleServices.map((service) => (
                         <ServiceCard
                             key={service.title}
                             title={service.title}
@@ -29,6 +33,16 @@ export function Services() {
                         />
                     ))}
                 </div>
+                {!showAll && (
+                    <div className="mt-8 text-center">
+                        <Button
+                            className="px-6 py-3 text-white bg-orange-600 hover:bg-orange-700 rounded-lg shadow-md"
+                            onClick={() => setShowAll(true)}
+                        >
+                            Show More
+                        </Button>
+                    </div>
+                )}
             </section>
         </>
     )

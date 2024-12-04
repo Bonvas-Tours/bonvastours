@@ -7,10 +7,10 @@ export function Footer() {
     return (
         <footer
             className="relative bg-cover bg-center text-white py-12"
-            style={{ backgroundImage: "url('/slide1.jpg')", backgroundPosition: "bottom" }}
+            style={{ backgroundImage: "url('/footer.jpg')", backgroundPosition: "bottom" }}
         >
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black/90"></div>
+            <div className="absolute inset-0 bg-black/60"></div>
 
             {/* Content */}
             <div className="relative container mx-auto px-4">
@@ -63,7 +63,7 @@ export function Footer() {
                         <ul className="space-y-2">
                             <li>Email: info@bonvastours.com</li>
                             <li>Phone: +233 26 1671 686</li>
-                            <li>Location KNUST, Ayigya Ecoscent Street</li>
+                            <li>Location KNUST, Ayigya Ecocent Street</li>
                         </ul>
                     </div>
                 </div>

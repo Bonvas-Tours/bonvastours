@@ -32,7 +32,7 @@ export function DestinationSearch({
     const [open, setOpen] = React.useState(false)
 
     return (
-        <div className={cn("grid gap-2 text-neutral-400", className)}>
+        <div className={cn("grid gap-2 text-neutral-500", className)}>
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
                     <Button
@@ -41,7 +41,7 @@ export function DestinationSearch({
                         aria-expanded={open}
                         className={cn(
                             "w-full justify-start text-left font-normal h-12",
-                            destination ? "text-neutral-800" : "text-neutral-400"
+                            destination ? "text-neutral-800" : "text-neutral-500"
                         )}
                     >
                         <MapPin className="h-4 w-4" />

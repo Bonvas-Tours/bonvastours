@@ -7,7 +7,7 @@ interface TourCardProps {
 export default function TourPackages({ tours }: TourCardProps) {
     return (
         <>
-            <div className="space-y-4 mb-12">
+            <div className="space-y-4 mb-8">
                 <h2 className="text-4xl font-bold">Upcoming Tour Packages</h2>
             </div>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -21,7 +21,7 @@ export default function TourPackages({ tours }: TourCardProps) {
                             location={tour?.location}
                             startDate={tour?.startDate}
                             endDate={tour?.endDate}
-                            imageUrls={tour?.gallery.slice(0, 4)}
+                            imageUrl={tour?.imageUrl}
 
                         />
                     );

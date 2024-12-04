@@ -10,13 +10,7 @@
   },
   "startDate": "2024-12-19",
   "endDate": "2025-01-02",
-  "imageUrls": [
-  "/gallery/zember_ghana/0.jpg",
-  "/gallery/zember_ghana/1.jpg",
-  "/gallery/zember_ghana/2.jpg",
-  "/gallery/zember_ghana/3.jpg",
-  "/gallery/zember_ghana/4.jpg"
-  ],
+  "imageUrl": "/gallery/zember_ghana/0.jpg",
   "price": 4855.00,
   "currency": "USD",
   "rating": 4.9,
@@ -190,12 +184,7 @@
   },
   "startDate": "2025-07-26",
   "endDate": "2025-08-07",
-   "imageUrls": [
-   "/gallery/panafest/1.jpg",
-  "/gallery/panafest/2.jpg",
-  "/gallery/panafest/3.jpg",
-  "/gallery/panafest/4.jpg"
-  ],
+   "imageUrl": "/gallery/panafest/0.jpg",
   "price": 3755.00,
   "currency": "USD",
   "rating": 5.0,

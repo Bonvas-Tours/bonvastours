@@ -24,7 +24,7 @@ export interface TourPackageProps {
   };
   startDate: string;
   endDate: string;
-  imageUrls: string[];
+  imageUrl: string;
 }
 
 export interface TourPackageDetailsProps extends TourPackageProps {

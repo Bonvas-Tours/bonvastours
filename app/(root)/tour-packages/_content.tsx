@@ -66,7 +66,7 @@ export function TourPackagesContent({ initialTours }: TourPackagesContentProps) 
                         location={tour.location}
                         startDate={tour.startDate}
                         endDate={tour.endDate}
-                        imageUrls={tour.gallery.slice(0, 4)}
+                        imageUrl={tour.imageUrl}
                     />
                 ))}
             </div>
