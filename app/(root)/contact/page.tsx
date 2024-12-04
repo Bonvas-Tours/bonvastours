@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { MapPin, Phone, Mail, Facebook, Instagram, Linkedin } from 'lucide-react'
+import { MapPin, Phone, Mail } from 'lucide-react'
 import { submitContactForm } from '../actions/contact'
 import { socialIcons } from '@/content'
 

@@ -1,7 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronLeft } from 'lucide-react'
-import { Button } from "@/components/ui/button"
 import { galleryItems } from "@/content/gallery"
 
 export const metadata = {
