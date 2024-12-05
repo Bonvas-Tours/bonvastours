@@ -131,23 +131,6 @@ export default function AboutPage() {
                     </div>
                 </div>
             </section>
-
-            {/* Subscribe Section */}
-            <section className="bg-primary text-primary-foreground">
-                <div className="container px-4 py-12">
-                    <div className="max-w-xl mx-auto text-center space-y-8">
-                        <h2 className="text-3xl font-bold">Subscribe Now for our Discount Product</h2>
-                        <div className="flex gap-4 max-w-md mx-auto">
-                            <Input
-                                type="email"
-                                placeholder="Enter email for subscription"
-                                className="bg-white dark:bg-gray-800"
-                            />
-                            <Button variant="secondary">Subscribe</Button>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </main>
     )
 }

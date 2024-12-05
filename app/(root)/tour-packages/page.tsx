@@ -5,7 +5,7 @@ import { formatLocation } from '@/lib/utils';
 export default async function TourPackagesPage({
     searchParams,
 }: {
-    searchParams: { [key: string]: string | undefined };
+    searchParams: Record<string, string | undefined>;
 }) {
     const destination = searchParams.destination;
     const startDate = searchParams.startDate ? new Date(searchParams.startDate) : undefined;
