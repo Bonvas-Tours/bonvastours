@@ -40,8 +40,12 @@ export default async function BookingPage({ params, searchParams }: BookingPageP
     const duration = startDate && endDate ? calculateDuration(startDate, endDate) : null
 
     // Calculate total price if not passed
-    const calculatedTotal = total ? total : (adultPrice * (quantities?.adult || 0)) + (couplePrice * (quantities?.couple || 0))
-
+    const calculatedTotal = total
+        ? Number(total)
+        : (Number(adultPrice || 0) * (quantities?.adult || 0)) +
+        (Number(couplePrice || 0) * (quantities?.couple || 0));
+    // Safely format total
+    const formattedTotal = (calculatedTotal || 0).toFixed(2);
     return (
         <section className="section_container">
             <div className="max-w-6xl mx-auto">
@@ -99,18 +103,19 @@ export default async function BookingPage({ params, searchParams }: BookingPageP
                                     <span className="text-muted-foreground">
                                         Adults ({quantities?.adult || 0})
                                     </span>
-                                    <span>${adultPrice}</span>
+                                    <span>${adultPrice?.toFixed(2)}</span>
                                 </div>
                                 <div className="flex justify-between">
                                     <span className="text-muted-foreground">
                                         Couples ({quantities?.couple || 0})
                                     </span>
-                                    <span>${couplePrice}</span>
+                                    <span>${couplePrice?.toFixed(2)}</span>
                                 </div>
                                 <Separator />
                                 <div className="flex justify-between font-semibold">
                                     <span>Total Amount</span>
-                                    <span>${calculatedTotal}</span>
+                                    <span>${formattedTotal}</span>
+
                                 </div>
                             </div>
                         </CardContent>
@@ -121,7 +126,7 @@ export default async function BookingPage({ params, searchParams }: BookingPageP
                             tourSlug={param.slug}
                             title={title}
                             parsedTourOption={parsedTourOptionWithQuantity}
-                            total={total} />
+                            total={calculatedTotal} />
                     </div>
                 </div>
             </div>

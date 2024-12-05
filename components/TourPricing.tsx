@@ -140,7 +140,7 @@ export function TourPricing({ tourOptions, slug }: TourPricingProps) {
             <div className="pt-4 border-t">
                 <div className="flex items-center justify-between mb-4">
                     <span className="text-lg font-medium">Total</span>
-                    <span className="text-lg font-bold">${totalPrice}</span>
+                    <span className="text-lg font-bold">${totalPrice.toFixed(2)}</span>
                 </div>
                 <Button
                     className={`w-full ${totalPrice === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
