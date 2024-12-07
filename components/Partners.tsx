@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image"; // Import the Next.js Image component
 import { partners as defaultPartners } from "@/content";
 
 function Partners() {
@@ -38,10 +39,12 @@ function Partners() {
                                 transition={{ duration: 0.5 }}
                                 className="mx-4"
                             >
-                                <img
+                                <Image
                                     src={partner.src}
                                     alt={partner.alt || "Partner Logo"} // Fallback for alt text
-                                    className="w-full max-w-[150px] md:max-w-[200px]"
+                                    width={200} // Specify width
+                                    height={200} // Specify height
+                                    className="w-full max-w-[150px] md:max-w-[200px]" // Optional additional styles
                                 />
                             </motion.div>
                         ))}
