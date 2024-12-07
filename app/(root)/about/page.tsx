@@ -15,7 +15,7 @@ export default function AboutPage() {
                         <p className="text-gray-500 dark:text-gray-400">
                             <strong>Bonvas Tours Ltd.</strong> is a technology-driven, sustainable tour operating company based in Ghana, Africa. Established in 2018, we are committed to promoting tourism in Africa, bringing travelers closer to the rich heritage, vibrant culture, and breathtaking landscapes of Africa. As a proud subsidiary of Bonvas Group Global, we leverage extensive experience in the tourism, travel, and hospitality industry to provide premier travel services to individuals, groups, and institutions traveling within Ghana, Africa, and beyond.
                             <br />
-                         <br />   Located on Ecocent Road, Ayigya, Kumasi, Bonvas Tours operates with a streamlined structure, supported by six core departments: Administration, Sales & Marketing, Accounts & Finance, Outbound Services, IT & Innovation, and Operations. Each department plays an integral role in delivering seamless, high-quality travel experiences, while our centralized administration ensures efficient coordination and customer satisfaction at every step. Our offices are open Monday through Friday, 9:00 AM to 5:00 PM, with a dedicated 24/7 customer service center for support and inquiries.
+                            <br />   Located on Ecocent Road, Ayigya, Kumasi, Bonvas Tours operates with a streamlined structure, supported by six core departments: Administration, Sales & Marketing, Accounts & Finance, Outbound Services, IT & Innovation, and Operations. Each department plays an integral role in delivering seamless, high-quality travel experiences, while our centralized administration ensures efficient coordination and customer satisfaction at every step. Our offices are open Monday through Friday, 9:00 AM to 5:00 PM, with a dedicated 24/7 customer service center for support and inquiries.
                         </p>
                     </div>
                 </div>
@@ -152,22 +152,6 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Subscribe Section */}
-            <section className="bg-primary text-primary-foreground">
-                <div className="container px-4 py-12">
-                    <div className="max-w-xl mx-auto text-center space-y-8">
-                        <h2 className="text-3xl font-bold">Subscribe Now for our Discount Product</h2>
-                        <div className="flex gap-4 max-w-md mx-auto">
-                            <Input
-                                type="email"
-                                placeholder="Enter email for subscription"
-                                className="bg-white dark:bg-gray-800"
-                            />
-                            <Button variant="secondary">Subscribe</Button>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </main>
     )
 }
