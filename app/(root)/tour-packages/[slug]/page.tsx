@@ -11,8 +11,7 @@ export default async function TourDetailsPage({
 }: {
     params: Promise<{ slug: string }>
 }) {
-
-    const param = await params
+    const param = await params;
     // Use the slug to find the corresponding tour package
     const tour_package = tourPackages.find((tour) => tour.slug === param.slug);
 
@@ -40,8 +39,20 @@ export default async function TourDetailsPage({
                     </div>
                 </div>
 
+                {/* Main content layout */}
                 <div className="lg:grid lg:grid-cols-3 gap-8">
-                    <div className="lg:col-span-2 space-y-8">
+                    {/* Pricing Component */}
+                    <div className="order-1 lg:order-2 lg:col-span-1 mb-6 md:mb-0">
+                        <TourPricing
+                            tourOptions={tour_package.tourOptions}
+                            startDate={tour_package.startDate}
+                            endDate={tour_package.endDate}
+                            slug={tour_package.slug}
+                        />
+                    </div>
+
+                    {/* Main content */}
+                    <div className="order-2 lg:order-1 lg:col-span-2 space-y-8">
                         <TourGallery images={tour_package.gallery} title={tour_package.title} />
                         <div>
                             <h2 className="text-2xl font-semibold mb-4">Package Description</h2>
@@ -108,15 +119,6 @@ export default async function TourDetailsPage({
                                 ></iframe>
                             </div>
                         </div>
-                    </div>
-
-                    <div>
-                        <TourPricing
-                            tourOptions={tour_package.tourOptions}
-                            startDate={tour_package.startDate}
-                            endDate={tour_package.endDate}
-                            slug={tour_package.slug}
-                        />
                     </div>
                 </div>
             </section>

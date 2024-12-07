@@ -26,7 +26,7 @@ function Partners() {
                 <h1 className="text-4xl font-bold mb-8 text-gray-800">Trusted Partners</h1>
                 <div className="flex items-center justify-center overflow-hidden">
                     <AnimatePresence>
-                        {currentPartners?.slice(0, 5).map((partner, index) => ( // Display 3 logos at a time
+                        {currentPartners?.slice(0, 5).map((partner, index) => (
                             <motion.div
                                 key={partner.src || index} // Use index as fallback for unique keys
                                 initial={{ opacity: 0, x: 100 }}
