@@ -250,5 +250,6 @@ export const partners = [
   { src: "/partner/ksb.png", alt: "Kumasi School of Business Logo" },
   { src: "/partner/nccn.png", alt: "National Comprehensive Cancer Network Logo" },
   { src: "/partner/kstu.png", alt: "KsTu logo" },
+  { src: "/partner/pi.png", alt: "Placement International logo" },
 
 ]
