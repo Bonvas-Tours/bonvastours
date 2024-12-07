@@ -239,3 +239,16 @@ export const testimonials = [
     review: "A wonderful experience from start to finish. The attention to detail was impressive."
   }
 ]
+
+export const partners = [
+  { src: "/partner/acs.png", alt: "America Cancer Society Logo" },
+  { src: "/partner/Amadeus.png", alt: "Amedeus Logo" },
+  { src: "/partner/bgg.png", alt: "Bonvas Group Global Logo" },
+  { src: "/partner/gta.png", alt: "Ghana Toursim Authority Logo" },
+  { src: "/partner/iwasa.png", alt: "IWASA Logo" },
+  { src: "/partner/knust.png", alt: "Kwame Nkrumah University of Science and Technology Logo" },
+  { src: "/partner/ksb.png", alt: "Kumasi School of Business Logo" },
+  { src: "/partner/nccn.png", alt: "National Comprehensive Cancer Network Logo" },
+  { src: "/partner/kstu.png", alt: "KsTu logo" },
+
+]
