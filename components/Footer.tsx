@@ -1,4 +1,4 @@
-import { socialIcons } from '@/content'
+import { NAVITEMS, socialIcons } from '@/content'
 import Link from 'next/link'
 
 
@@ -19,10 +19,10 @@ export function Footer() {
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Explore</h3>
                         <ul className="space-y-2">
-                            {['Home', 'Tour Packages', 'IWaSA', 'Swiftnano', 'About Us', 'Gallery', 'Contact'].map((item) => (
-                                <li key={item}>
-                                    <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="hover:underline">
-                                        {item}
+                            {NAVITEMS.map((item) => (
+                                <li key={item.name}>
+                                    <Link href={`${item.href}`} className="hover:underline">
+                                        {item.name}
                                     </Link>
                                 </li>
                             ))}

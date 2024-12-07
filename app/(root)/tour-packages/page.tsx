@@ -2,14 +2,22 @@ import tourPackages from '@/content/tourPackage.json';
 import { TourPackagesContent } from './_content';
 import { formatLocation } from '@/lib/utils';
 
+type SearchParamsProps = {
+    destination?: string;
+    startDate?: string;
+    endDate?: string;
+};
+
 export default async function TourPackagesPage({
     searchParams,
 }: {
-    searchParams: Record<string, string | undefined>;
+    searchParams: Promise<SearchParamsProps>;
 }) {
-    const destination = searchParams.destination;
-    const startDate = searchParams.startDate ? new Date(searchParams.startDate) : undefined;
-    const endDate = searchParams.endDate ? new Date(searchParams.endDate) : undefined;
+
+    const params = await searchParams;
+    const destination = params.destination;
+    const startDate = params.startDate ? new Date(params.startDate) : undefined;
+    const endDate = params.endDate ? new Date(params.endDate) : undefined;
 
     const filteredTours = tourPackages.filter((tour) => {
         if (destination && !formatLocation(tour.location)?.toLowerCase().includes(destination.toLowerCase())) {

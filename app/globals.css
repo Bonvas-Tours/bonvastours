@@ -110,7 +110,7 @@ body {
   }
 
   .section_container {
-    @apply px-6 sm:px-8 py-12 lg:px-10 max-w-7xl mx-auto;
+    @apply px-6 sm:px-8 md:py-12 py-6 lg:px-10 max-w-7xl mx-auto;
   }
 
   .card_grid {

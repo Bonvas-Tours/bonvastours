@@ -3,7 +3,7 @@ import CounterCard from "@/components/CounterCard";
 export default function OurStory() {
 
     return (
-        <section className="w-full py-12 md:pb-24 lg:pb-32">
+        <section className="w-full">
             <div className="container px-4 md:px-6">
                 <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
                     {/* Left Section */}

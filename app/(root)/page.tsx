@@ -9,10 +9,10 @@ import tourPackages from '@/content/tourPackage.json'
 import YouTubeEmbed from "@/components/YouTubeEmbed";
 
 import { Suspense } from "react";
+import Partners from "@/components/Partners";
 
 export default function Home() {
   const homeTourPackages = tourPackages?.slice(0, 3);
-  // console.log(homeTourPackages)
   return (
     <>
       <Hero />
@@ -43,28 +43,7 @@ export default function Home() {
 
 
 
-      {/* <section className="bg-gray-50 py-16 px-4 md:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-8 text-gray-800">Trusted Partners</h1>
-          <div className="flex items-center">
-            <img
-              src="/partner/asu.png"
-              alt="Arizona State University Logo"
-              className="mx-auto w-full max-w-[150px] md:max-w-[200px]"
-            />
-            <img
-              src="/partner/usaid.png"
-              alt="USAID Logo"
-              className="mx-auto w-full max-w-[150px] md:max-w-[200px]"
-            />
-            <img
-              src="/partner/knust.png"
-              alt="Kwame Nkrumah University of Science and Technology Logo"
-              className="mx-auto w-full max-w-[150px] md:max-w-[200px]"
-            />
-          </div>
-        </div>
-      </section> */}
+      <Partners />
     </>
   );
 }
