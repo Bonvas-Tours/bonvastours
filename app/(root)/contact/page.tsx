@@ -33,7 +33,7 @@ export default function GetInTouch() {
                     Get in touch
                 </h2>
 
-                <div className="grid lg:grid-cols-2 md:gap-32 gap-12">
+                <div className="grid gap-12">
                     {/* Contact Information */}
                     <div className="p-12 shadow-xl rounded-lg grid lg:grid-cols-2 border-2 gap-8">
                         <div className='flex flex-col gap-2'>
@@ -83,14 +83,14 @@ export default function GetInTouch() {
                     </div>
 
                     {/* Contact Form */}
-                    <div className="space-y-6">
+                    {/* <div className="space-y-6">
                         <form action={handleSubmit} className="space-y-4">
                             <div className="space-y-2">
                                 <Label htmlFor="name">NAME</Label>
                                 <Input
                                     id="name"
                                     name="name"
-                                    placeholder="Input Name"
+                                    placeholder="e.g Martey Jamel"
                                     required
                                 />
                             </div>
@@ -101,7 +101,7 @@ export default function GetInTouch() {
                                     id="email"
                                     name="email"
                                     type="email"
-                                    placeholder="Input Email"
+                                    placeholder="mjmartey@example.com"
                                     required
                                 />
                             </div>
@@ -131,7 +131,7 @@ export default function GetInTouch() {
                                 {message}
                             </p>
                         )}
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Map */}

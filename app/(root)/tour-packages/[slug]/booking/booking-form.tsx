@@ -174,7 +174,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
                                 <FormItem>
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Jamel Martey" {...field} />
+                                        <Input placeholder="e.g Martey Jamel" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -187,7 +187,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
                                 <FormItem>
                                     <FormLabel>Email</FormLabel>
                                     <FormControl>
-                                        <Input type="email" placeholder="mjmartey@bonvastours.com" {...field} />
+                                        <Input type="email" placeholder="mjmartey@example.com" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -201,19 +201,6 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
                                     <FormLabel>Phone Number</FormLabel>
                                     <FormControl>
                                         <Input type="tel" placeholder="+2234567890" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="address"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Address</FormLabel>
-                                    <FormControl>
-                                        <Textarea placeholder="Enter your full address" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -262,6 +249,19 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
                                                 />
                                             )}
                                         />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="address"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Address</FormLabel>
+                                    <FormControl>
+                                        <Textarea placeholder="Enter your full address" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
