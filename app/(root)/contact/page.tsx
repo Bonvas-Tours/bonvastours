@@ -1,31 +1,8 @@
-'use client'
-
-import { useState } from 'react'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
 import { MapPin, Phone, Mail } from 'lucide-react'
-import { submitContactForm } from '../actions/contact'
 import { socialIcons } from '@/content'
 
 
 export default function GetInTouch() {
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [message, setMessage] = useState('')
-
-    async function handleSubmit(formData: FormData) {
-        setIsSubmitting(true)
-        try {
-            const response = await submitContactForm(formData)
-            setMessage(`Thank you for your message. We will get back to you soon! ${response}`)
-        } catch (error) {
-            setMessage(`Something went wrong. Please try again later. ${error}`)
-        } finally {
-            setIsSubmitting(false)
-        }
-    }
-
     return (
         <section className="section_container">
             <div className="container px-4 md:px-6">
@@ -82,56 +59,6 @@ export default function GetInTouch() {
 
                     </div>
 
-                    {/* Contact Form */}
-                    {/* <div className="space-y-6">
-                        <form action={handleSubmit} className="space-y-4">
-                            <div className="space-y-2">
-                                <Label htmlFor="name">NAME</Label>
-                                <Input
-                                    id="name"
-                                    name="name"
-                                    placeholder="e.g Martey Jamel"
-                                    required
-                                />
-                            </div>
-
-                            <div className="space-y-2">
-                                <Label htmlFor="email">EMAIL</Label>
-                                <Input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    placeholder="mjmartey@example.com"
-                                    required
-                                />
-                            </div>
-
-                            <div className="space-y-2">
-                                <Label htmlFor="message">MESSAGE</Label>
-                                <Textarea
-                                    id="message"
-                                    name="message"
-                                    placeholder="Your message"
-                                    className="min-h-[150px]"
-                                    required
-                                />
-                            </div>
-
-                            <Button
-                                type="submit"
-                                className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-                                disabled={isSubmitting}
-                            >
-                                {isSubmitting ? 'Submitting...' : 'Submit'}
-                            </Button>
-                        </form>
-
-                        {message && (
-                            <p className="text-center text-sm text-muted-foreground">
-                                {message}
-                            </p>
-                        )}
-                    </div> */}
                 </div>
 
                 {/* Map */}
