@@ -1,10 +1,11 @@
 'use client'
 
-import { useTransition } from "react"
+import { useTransition, useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+import { useForm, Controller } from "react-hook-form"
 import * as z from "zod"
+import Select from 'react-select'
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -27,8 +28,14 @@ const formSchema = z.object({
     email: z.string().email("Invalid email address"),
     phone: z.string().min(10, "Phone number must be at least 10 characters"),
     address: z.string().min(4, "Address must be at least 4 characters"),
-    country: z.string().min(2, "Country must be at least 2 characters"),
-    city: z.string().min(2, "City must be at least 2 characters"),
+    country: z.object({
+        value: z.string(),
+        label: z.string(),
+    }),
+    city: z.object({
+        value: z.string(),
+        label: z.string(),
+    }),
     additionalInfo: z.string().optional(),
 })
 
@@ -42,6 +49,11 @@ interface BookingFormProps {
 export function BookingForm({ tourSlug, title, parsedTourOption, total }: BookingFormProps) {
     const router = useRouter()
     const [isPending, startTransition] = useTransition()
+    const [countries, setCountries] = useState<{ value: string; label: string }[]>([])
+    const [selectedCountry, setSelectedCountry] = useState<{ value: string; label: string } | null>(null)
+    const [cities, setCities] = useState<{ value: string; label: string }[]>([])
+    const [isLoadingCountries, setIsLoadingCountries] = useState(false)
+    const [isLoadingCities, setIsLoadingCities] = useState(false)
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -50,17 +62,91 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
             email: "",
             phone: "",
             address: "",
-            country: "",
-            city: "",
+            country: { value: "", label: "" },
+            city: { value: "", label: "" },
             additionalInfo: "",
         },
     })
 
+    const { watch, setValue } = form
+
+    const fetchCountries = async () => {
+        setIsLoadingCountries(true);
+        try {
+            const response = await fetch('https://restcountries.com/v3.1/all');
+            if (!response.ok) {
+                throw new Error('Failed to fetch countries');
+            }
+            const data = await response.json();
+            const formattedCountries = data
+                .map((country: any) => ({
+                    value: country.cca2,
+                    label: country.name.common,
+                }))
+                .sort((a: any, b: any) => a.label.localeCompare(b.label));
+            setCountries(formattedCountries);
+        } catch (error) {
+            console.error('Error fetching countries:', error);
+            toast.error('Failed to load countries. Please try again.');
+            setCountries([]);
+        } finally {
+            setIsLoadingCountries(false);
+        }
+    };
+
+    const fetchCities = async () => {
+        if (!selectedCountry?.value) {
+            setCities([]);
+            return;
+        }
+
+        setIsLoadingCities(true);
+        try {
+            const response = await fetch(`/api/cities?country=${selectedCountry.value}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch cities');
+            }
+            const data = await response.json();
+            if (data.geonames?.length) {
+                const formattedCities = data.geonames.map((city: any) => ({
+                    value: city.geonameId.toString(),
+                    label: city.name,
+                }));
+                setCities(formattedCities);
+            } else {
+                setCities([]);
+                toast.error('No cities found for the selected country.');
+            }
+        } catch (error) {
+            console.error('Error fetching cities:', error);
+            toast.error('Failed to load cities. Please try again.');
+            setCities([]);
+        } finally {
+            setIsLoadingCities(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchCountries();
+    }, []);
+
+    useEffect(() => {
+        fetchCities();
+    }, [selectedCountry]);
+
+    useEffect(() => {
+        // Reset city when country changes
+        setValue('city', { value: "", label: "" });
+    }, [selectedCountry, setValue]);
+
     async function onSubmit(values: z.infer<typeof formSchema>) {
         startTransition(async () => {
             try {
-                // Pass the form values, title, parsedTourOption, and total to submitBooking
-                await submitBooking(values, title, parsedTourOption, total)
+                await submitBooking({
+                    ...values,
+                    country: values.country.label,
+                    city: values.city.label,
+                }, title, parsedTourOption, total)
                 toast.success("Booking submitted successfully!")
                 router.push(`/tour-packages/${tourSlug}/booking/success`)
             } catch (error) {
@@ -68,6 +154,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
             }
         })
     }
+
 
     return (
         <Card className="border-none shadow-none">
@@ -84,7 +171,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
                                 <FormItem>
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="John Doe" {...field} />
+                                        <Input placeholder="Jamel Martey" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -97,7 +184,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
                                 <FormItem>
                                     <FormLabel>Email</FormLabel>
                                     <FormControl>
-                                        <Input type="email" placeholder="john@example.com" {...field} />
+                                        <Input type="email" placeholder="mjmartey@bonvastours.com" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -110,7 +197,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
                                 <FormItem>
                                     <FormLabel>Phone Number</FormLabel>
                                     <FormControl>
-                                        <Input type="tel" placeholder="+1234567890" {...field} />
+                                        <Input type="tel" placeholder="+2234567890" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -136,7 +223,16 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
                                 <FormItem>
                                     <FormLabel>Country</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Country of residence" {...field} />
+                                        <Select
+                                            {...field}
+                                            options={countries}
+                                            isLoading={isLoadingCountries}
+                                            placeholder="Select your country"
+                                            onChange={(option) => {
+                                                field.onChange(option);
+                                                setSelectedCountry(option);
+                                            }}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -149,7 +245,20 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
                                 <FormItem>
                                     <FormLabel>City</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="City of residence" {...field} />
+                                        <Controller
+                                            name="city"
+                                            control={form.control}
+                                            render={({ field }) => (
+                                                <Select
+                                                    {...field}
+                                                    options={cities}
+                                                    isLoading={isLoadingCities}
+                                                    placeholder="Select your city"
+                                                    isDisabled={!selectedCountry?.value}
+                                                    onChange={(option) => field.onChange(option)}
+                                                />
+                                            )}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

@@ -17,7 +17,7 @@ export default function BookingSuccessPage() {
                     <CardTitle className="text-2xl">Booking Confirmed!</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <p className="text-muted-foreground">
+                    <p className="text-neutral-600">
                         Thank you for booking with Bonvas Tours. A travel coordinator will reach out to you shortly to facilitate your booking.
                     </p>
                 </CardContent>

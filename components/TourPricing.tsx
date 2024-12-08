@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Calendar } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { calculateDuration, capitalizeTitle } from '@/lib/utils'
+import { calculateDuration, capitalizeTitle, formatDate, formatPrice } from '@/lib/utils'
 
 interface TourOption {
     prices: {
@@ -23,40 +23,33 @@ interface TourPricingProps {
     endDate: string;
 }
 
-const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-    })
-}
+
 
 export function TourPricing({ tourOptions, slug }: TourPricingProps) {
-    const [selectedOption, setSelectedOption] = useState<TourOption>(tourOptions[0])
+    const [selectedOption, setSelectedOption] = useState<TourOption>(tourOptions[0]);
     const [quantities, setQuantities] = useState({
         adult: 0,
         couple: 0,
-    })
+    });
 
-    const [startDate, setStartDate] = useState(selectedOption.startDate)
-    const [endDate, setEndDate] = useState(selectedOption.endDate)
+    const [startDate, setStartDate] = useState(selectedOption.startDate);
+    const [endDate, setEndDate] = useState(selectedOption.endDate);
 
     const handleQuantityChange = (type: keyof typeof quantities, change: number) => {
         setQuantities((prev) => ({
             ...prev,
             [type]: Math.max(0, prev[type] + change),
-        }))
-    }
+        }));
+    };
 
     const totalPrice = selectedOption.prices.adult * quantities.adult +
-        selectedOption.prices.couple * quantities.couple
-
+        selectedOption.prices.couple * quantities.couple;
 
     // Serialize the selected tourOption and quantities into JSON string
     const serializedOption = JSON.stringify({
         ...selectedOption,
         quantities,
-    })
+    });
 
     return (
         <div className="rounded-lg border p-6 space-y-6">
@@ -112,7 +105,7 @@ export function TourPricing({ tourOptions, slug }: TourPricingProps) {
                             <div className="font-medium capitalize">
                                 {type}
                             </div>
-                            <div className="text-sm text-muted-foreground">${price}</div>
+                            <div className="text-sm text-muted-foreground">{formatPrice(price)}</div>
                         </div>
                         <div className="flex items-center gap-2">
                             <Button
@@ -140,7 +133,7 @@ export function TourPricing({ tourOptions, slug }: TourPricingProps) {
             <div className="pt-4 border-t">
                 <div className="flex items-center justify-between mb-4">
                     <span className="text-lg font-medium">Total</span>
-                    <span className="text-lg font-bold">${totalPrice.toFixed(2)}</span>
+                    <span className="text-lg font-bold">${formatPrice(totalPrice)}</span>
                 </div>
                 <Button
                     className={`w-full ${totalPrice === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
@@ -165,9 +158,7 @@ export function TourPricing({ tourOptions, slug }: TourPricingProps) {
                         </Link>
                     )}
                 </Button>
-
-
             </div>
         </div>
-    )
+    );
 }
