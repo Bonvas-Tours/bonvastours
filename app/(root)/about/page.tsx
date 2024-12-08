@@ -73,7 +73,7 @@ export default function AboutPage() {
                             <CardContent className="p-6 space-y-4">
                                 <h2 className="text-3xl font-bold">Our Vision</h2>
                                 <p className="text-neutral-600">
-                                    To lead Africa's tourism sector by setting the standard for quality, reliability, and innovation, making Bonvas Tours Ltd. a name trusted by travelers and partners alike.
+                                    To lead Africa&aposs tourism sector by setting the standard for quality, reliability, and innovation, making Bonvas Tours Ltd. a name trusted by travelers and partners alike.
                                 </p>
                             </CardContent>
                         </Card>
@@ -146,7 +146,7 @@ export default function AboutPage() {
                             Born in the heart of Ghana, Bonvas Tours Ltd. started with a vision to bridge the gap between West African cultures and the world. From catering to domestic travelers to becoming a trusted name in international travel, our journey has been one of growth and passion.
                         </p>
                         <p>
-                            Our story is one of resilience and innovation. We've grown from humble beginnings to become a key player in the West African travel market, earning trust through our commitment to excellence and leveraging cutting-edge technology as a proud member of Amadeus.
+                            Our story is one of resilience and innovation. We&aposve grown from humble beginnings to become a key player in the West African travel market, earning trust through our commitment to excellence and leveraging cutting-edge technology as a proud member of Amadeus.
                         </p>
                         <p>
                             Our strength lies in our people—passionate team members dedicated to creating seamless and unforgettable journeys. We foster a work environment that mirrors the warmth and hospitality we extend to our clients.
