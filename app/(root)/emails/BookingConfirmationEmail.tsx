@@ -13,7 +13,7 @@ import {
 import * as React from 'react';
 
 interface BookingConfirmationEmailProps {
-    name: string;
+    name?: string;
     email: string;
     phone: string;
     address: string;
@@ -31,7 +31,6 @@ interface BookingConfirmationEmailProps {
 }
 
 export const BookingConfirmationEmail = ({
-    name,
     email,
     phone,
     address,
@@ -58,7 +57,7 @@ export const BookingConfirmationEmail = ({
                     />
                     <Heading style={h1}>Booking Confirmation</Heading>
                     <Text style={text}>
-                        Thank you for booking your tour with Bonvas Tours. We're excited to have you join us for the {tourTitle} experience!
+                        Thank you for booking your tour with Bonvas Tours. We&apos;re excited to have you join us for the {tourTitle} experience!
                     </Text>
                     <Section style={section}>
                         <Heading style={h2}>Tour Details</Heading>
@@ -92,7 +91,7 @@ export const BookingConfirmationEmail = ({
                         </Text>
                     </Section>
                     <Text style={text}>
-                        If you have any questions or need to make changes to your booking, please don't hesitate to contact us at info@bonvastours.com or call us at +233 55 120 1245.
+                        If you have any questions or need to make changes to your booking, please don&apos;t hesitate to contact us at info@bonvastours.com or call us at +233 55 120 1245.
                     </Text>
                     <Text style={text}>We look forward to providing you with an unforgettable tour experience!</Text>
                     <Hr style={hr} />

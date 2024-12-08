@@ -78,3 +78,16 @@ export interface GalleryItem {
     category: "tour" | "event"
     gallery: string[]
 }
+
+
+export interface City {
+    geonameId: number;
+    name: string;
+}
+
+export interface Country {
+    cca2: string;
+    name: {
+        common: string;
+    };
+}

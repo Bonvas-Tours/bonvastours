@@ -1,6 +1,6 @@
 'use client'
 
-import { useTransition, useState, useEffect } from "react"
+import { useTransition, useState, useEffect, useCallback } from "react"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm, Controller } from "react-hook-form"
@@ -21,7 +21,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { submitBooking } from "./actions"
 import { toast } from "sonner"
-import { TourOptionWithQuantityProp } from "@/type"
+import { City, Country, TourOptionWithQuantityProp } from "@/type"
 
 const formSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
@@ -68,7 +68,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
         },
     })
 
-    const { watch, setValue } = form
+    const { setValue } = form
 
     const fetchCountries = async () => {
         setIsLoadingCountries(true);
@@ -79,11 +79,13 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
             }
             const data = await response.json();
             const formattedCountries = data
-                .map((country: any) => ({
+                .map((country: Country) => ({
                     value: country.cca2,
                     label: country.name.common,
                 }))
-                .sort((a: any, b: any) => a.label.localeCompare(b.label));
+                .sort((a: { value: string; label: string }, b: { value: string; label: string }) =>
+                    a.label.localeCompare(b.label)
+                );
             setCountries(formattedCountries);
         } catch (error) {
             console.error('Error fetching countries:', error);
@@ -94,7 +96,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
         }
     };
 
-    const fetchCities = async () => {
+    const fetchCities = useCallback(async () => {
         if (!selectedCountry?.value) {
             setCities([]);
             return;
@@ -108,7 +110,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
             }
             const data = await response.json();
             if (data.geonames?.length) {
-                const formattedCities = data.geonames.map((city: any) => ({
+                const formattedCities = data.geonames.map((city: City) => ({
                     value: city.geonameId.toString(),
                     label: city.name,
                 }));
@@ -124,7 +126,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
         } finally {
             setIsLoadingCities(false);
         }
-    };
+    }, [selectedCountry]);
 
     useEffect(() => {
         fetchCountries();
@@ -132,7 +134,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
 
     useEffect(() => {
         fetchCities();
-    }, [selectedCountry]);
+    }, [fetchCities]);
 
     useEffect(() => {
         // Reset city when country changes
@@ -154,6 +156,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
             }
         })
     }
+
 
 
     return (
@@ -264,6 +267,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
                                 </FormItem>
                             )}
                         />
+
                         <FormField
                             control={form.control}
                             name="additionalInfo"
