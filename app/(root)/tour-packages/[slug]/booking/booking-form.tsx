@@ -244,7 +244,7 @@ export function BookingForm({ tourSlug, title, parsedTourOption, total }: Bookin
                         <FormField
                             control={form.control}
                             name="city"
-                            render={({ field }) => (
+                            render={() => (
                                 <FormItem>
                                     <FormLabel>City</FormLabel>
                                     <FormControl>
