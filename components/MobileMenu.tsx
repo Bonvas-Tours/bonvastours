@@ -13,7 +13,7 @@ function NavbarClient() {
     return (
         <>
             {/* Mobile version */}
-            <div className="md:hidden">
+            <div className="lg:hidden">
                 <button
                     className="text-neutral-500 hover:text-primary cursor-pointer focus:outline-none"
                     onClick={() => setNavToggle(!navToggle)}

@@ -16,7 +16,7 @@ import { SLIDES } from '@/content'
 
 export default function HeroSlider() {
     return (
-        <div className="relative h-[630px] w-full md:rounded-xl overflow-hidden">
+        <div className="relative h-full w-full md:rounded-xl overflow-hidden">
             <Swiper
                 modules={[Pagination, Navigation, Autoplay, EffectFade]}
                 effect="fade"

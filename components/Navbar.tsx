@@ -14,7 +14,7 @@ function Navbar() {
                     <div className="flex-shrink-0">
                         <Logo />
                     </div>
-                    <div className="hidden md:block">
+                    <div className="hidden lg:block">
                         <div className="ml-10 flex items-baseline space-x-4">
                             {NAVITEMS.map((item) => (
                                 <Link
@@ -27,7 +27,7 @@ function Navbar() {
                             ))}
                         </div>
                     </div>
-                    <div className="hidden md:block">
+                    <div className="hidden lg:block">
                         <SocialLinks />
                     </div>
 

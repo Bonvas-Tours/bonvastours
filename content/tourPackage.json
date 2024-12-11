@@ -544,8 +544,8 @@
       "city": "",
       "region": "West Africa"
     },
-    "startDate": "2024-05-01",
-    "endDate": "2024-05-14",
+    "startDate": "2025-05-01",
+    "endDate": "2025-05-14",
     "imageUrl": "/gallery/ghvibe_immersed/1.jpg",
     "price": 7300.00,
     "currency": "USD",
@@ -636,8 +636,8 @@
     ],
     "tourOptions": [
       {
-        "startDate": "2024-05-01",
-        "endDate": "2024-05-14",
+        "startDate": "2025-05-01",
+        "endDate": "2025-05-14",
         "prices": {
           "adult": 7300.00,
           "couple": 14000.00
