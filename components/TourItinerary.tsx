@@ -9,6 +9,7 @@ import {
 
 interface TourItineraryProps {
     itinerary: Array<{
+        id: number | string
         day: string
         title: string
         description: string
@@ -18,8 +19,8 @@ interface TourItineraryProps {
 export function TourItinerary({ itinerary }: TourItineraryProps) {
     return (
         <Accordion type="single" collapsible className="w-full flex flex-col gap-4">
-            {itinerary.map(({ day, title, description }) => (
-                <AccordionItem key={day} value={`day-0${day}`}>
+            {itinerary.map(({ id, day, title, description }) => (
+                <AccordionItem key={id + day} value={`day-0${day}`}>
                     <AccordionTrigger className="flex items-center justify-between rounded-lg border-none p-4 hover:no-underline">
                         <div className="flex items-center gap-4">
                             <div className="flex items-center justify-center rounded-full bg-black py-2 px-6 text-white">

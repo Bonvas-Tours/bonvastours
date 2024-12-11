@@ -1,5 +1,5 @@
 [
-    {
+{
   "id": "46heru348734dhvdv",
   "slug": "zember-ghana",
   "title": "Zember Ghana",
@@ -9,7 +9,7 @@
     "region": "West Africa"
   },
   "startDate": "2024-12-19",
-  "endDate": "2025-01-02",
+  "endDate": "2025-01-01",
   "imageUrl": "/gallery/zember_ghana/0.jpg",
   "price": 4855.00,
   "currency": "USD",
@@ -27,7 +27,7 @@
     },
     {
       "category": "Transportation",
-      "items": ["Domestic flights", "airport transfers", "airport transfers"]
+      "items": ["Domestic flights", "Airport transfers"]
     },
     {
       "category": "Attractions & Activities",
@@ -39,7 +39,7 @@
     },
     {
       "category": "Festive Surprises",
-      "items": [": Celebrate Christmas Eve or New Year’s Eve with an optional gala dinner"]
+      "items": ["Celebrate Christmas Eve or New Year’s Eve with an optional gala dinner"]
     },
     {
       "category": "Souvenir",
@@ -47,6 +47,7 @@
     }
   ],
   "exclusions": [],
+   "addOns": [],
   "itinerary": [
     {
       "id": 1,
@@ -145,7 +146,7 @@
  "tourOptions": [
     {
       "startDate": "2024-12-19",
-      "endDate": "2025-01-02",
+      "endDate": "2025-01-01",
       "prices": {
         "adult": 3755,
         "couple": 7200
@@ -153,7 +154,7 @@
     },
     {
       "startDate": "2024-12-19",
-      "endDate": "2024-12-29",
+      "endDate": "2024-12-28",
       "prices": {
         "adult": 3150,
         "couple": 6000
@@ -162,7 +163,7 @@
     {
       "duration": "7-Day Package",
       "startDate": "2024-12-19",
-      "endDate": "2024-12-26",
+      "endDate": "2024-12-25",
       "prices": {
         "adult": 2335,
         "couple": 4500
@@ -172,7 +173,6 @@
   "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.0445987576704!2d-0.20869362501480795!3d5.560408494420052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf90a183da9e7f%3A0xfa4a9a480ceea783!2sNational%20Museum%20of%20Ghana!5e0!3m2!1sen!2sgh!4v1733047321016!5m2!1sen!2sgh",
   "status": "active"
 },
-
 {
   "id": "56juyt2394039jhfg",
   "slug": "panafest-journey-through-ghana",
@@ -183,7 +183,7 @@
     "region": "West Africa"
   },
   "startDate": "2025-07-26",
-  "endDate": "2025-08-07",
+  "endDate": "2025-08-06",
    "imageUrl": "/gallery/panafest/0.jpg",
   "price": 3755.00,
   "currency": "USD",
@@ -221,6 +221,7 @@
     }
   ],
   "exclusions": [],
+   "addOns": [],
   "itinerary": [
     {
       "id": 1,
@@ -301,6 +302,349 @@
   ],
   "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.0445987576704!2d-0.20869362501480795!3d5.560408494420052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf90a183da9e7f%3A0xfa4a9a480ceea783!2sNational%20Museum%20of%20Ghana!5e0!3m2!1sen!2sgh!4v1733047321016!5m2!1sen!2sgh",
   "status": "active"
-}
+},
+{
+    "id": "78mnop9012345qrst",
+    "slug": "ghvibe-initiation",
+    "title": "GHVibe-Initiation: Gateway to Ghana's Soul",
+    "location": {
+      "country": "Ghana",
+      "city": "",
+      "region": "West Africa"
+    },
+    "startDate": "2024-03-01",
+    "endDate": "2024-03-07",
+    "imageUrl": "/gallery/ghvibe_initiation/1.jpg",
+    "price": 2335.00,
+    "currency": "USD",
+    "rating": 4.9,
+    "reviews": 80,
+    "description": "Unlock the heartbeat of Ghana with GHVibe-Initiation, a 7-day tailored journey that offers an unparalleled introduction to the vibrant traditions, iconic landmarks, and cultural dynamism of the Gold Coast. This experience combines history, relaxation, adventure, and nightlife into one unforgettable initiation into Ghana's rich heritage.\n\n### Why Choose GHVibe-Initiation?\n\n- **Cultural Enrichment:** Explore the captivating stories of Ghana's independence, visit ancient castles, and walk in the footsteps of history.\n- **Natural Escapes:** Bask in the serene beauty of Aburi Gardens, experience the thrill of Kakum's canopy walk, and discover rainforest ecosystems.\n- **Nightlife Like No Other:** Immerse yourself in Accra's pulsating nightlife scene with curated rooftop dining, cultural performances, and electrifying beats.\n- **Luxury at Its Peak:** Stay in top-rated accommodations, enjoy private transport, and benefit from personalized attention throughout your stay.\n- **Flexibility and Customization:** Tailor your itinerary to suit your preferences with optional add-ons like helicopter tours, cocoa farm visits, or wildlife safaris.",
+    "inclusions": [
+      {
+        "category": "Visa Assistance",
+        "items": ["Stress-free support for visa-on-arrival"]
+      },
+      {
+        "category": "Accommodation",
+        "items": ["Luxury stays at renowned hotels, ensuring maximum comfort and relaxation"]
+      },
+      {
+        "category": "Transportation",
+        "items": ["Private airport transfers, in-country travel, and guided transport to all attractions"]
+      },
+      {
+        "category": "Guided Experiences",
+        "items": ["Knowledgeable local guides bring Ghana’s stories to life"]
+      },
+      {
+        "category": "Culinary Delights",
+        "items": ["Daily breakfast, curated dining options, and exclusive rooftop dinner experiences"]
+      },
+      {
+        "category": "Exclusive Souvenir",
+        "items": ["A Bonvas Tours keepsake to remember your journey"]
+      }
+    ],
+    "exclusions": [
+      "Optional activities not listed in the itinerary"
+    ],
+    "addOns": [
+      "Helicopter tour over Accra",
+      "Learn to cook Ghanaian favorites in a private class",
+      "Explore a traditional cocoa farm and sample handmade chocolate.",
+      "A day trip to Mole National Park for an unforgettable safar"
 
+    ],
+    "itinerary": [
+      {
+        "id": 1,
+        "day": "Day 1",
+        "title": "Akwaaba – A Grand Welcome",
+        "description": "Arrival at Accra’s Kotoka International Airport, greeted with traditional hospitality Private transfer to a luxury hotel and a welcome dinner overlooking Accra’s skyline. Introduction to Ghanaian nightlife with a curated rooftop bar or exclusive nightclub experience."
+      },
+      {
+        "id": 2,
+        "day": "Day 2",
+        "title": " Historic Ghana",
+        "description": "Tour Black Star Square, a monumental symbol of Ghana’s independence. Discover the legacy of Kwame Nkrumah at his memorial park and museum. Explore Jamestown’s historic lighthouse forts, and vibrant street art."
+      },
+      {
+        "id": 3,
+        "day": "Day 3",
+        "title": "Central Region Exploration",
+        "description": " Delve into Ghana’s colonial history at Cape Coast and Elmina Castles. Experience the exhilarating Kakum canopy walkway, surrounded by lush rainforests. Return to Accra after a day of historical and natural immersion."
+      },
+      {
+        "id": 4,
+        "day": "Day 4",
+        "title": "Leisure Day",
+        "description": "A free day to relax or independently explore Accra’s hidden gems with the help of your guide."
+      },
+      {
+        "id": 5,
+        "day": "Day 5",
+        "title": "Magical Aburi",
+        "description": "Escape to the serene Aburi Botanical Gardens, renowned for their lush greenery and stunning views of the Aburi Mountains. Enjoy a tranquil day reconnecting with nature and discovering the area’s cultural significance"
+      },
+      {
+        "id": 6,
+        "day": "Day 6",
+        "title": "Shopping Spree & Farewell Dinner",
+        "description": "Discover local craftsmanship at Accra’s vibrant markets and exclusive art galleries.Wrap up your experience with a farewell dinner and pre-departure celebration"
+      },
+      {
+        "id": 7,
+        "day": "Day 7",
+        "title": "Departure",
+        "description": "Private transfer to the airport, leaving you with lasting memories of your GHVibe-Initiation"
+      }
+    ],
+    "gallery": [
+      "/gallery/ghvibe_initiation/1.jpg",
+      "/gallery/ghvibe_initiation/2.jpg",
+      "/gallery/ghvibe_initiation/3.jpg"
+    ],
+    "tourOptions": [
+      {
+        "startDate": "2024-03-01",
+        "endDate": "2024-03-07",
+        "prices": {
+          "adult": 5500,
+          "couple": 10000
+        }
+      }
+    ],
+    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.9352397452844!2d-0.20869362501480795!3d5.560408494420052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9084b2b7a773%3A0xbed14ed8650e2dd3!2sKwame%20Nkrumah%20Memorial%20Park!5e0!3m2!1sen!2sgh!4v1623456789012!5m2!1sen!2sgh",
+    "status": "active"
+},
+{
+    "id": "66kpot5678901lmno",
+    "slug": "outside-the-radar",
+    "title": "Outside the Radar",
+    "location": {
+      "country": "Ghana",
+      "city": "",
+      "region": "West Africa"
+    },
+    "startDate": "2025-06-01",
+    "endDate": "2025-06-14",
+    "imageUrl": "/gallery/outside_the_radar/1.jpg",
+    "price": 7500.00,
+    "currency": "USD",
+    "rating": 4.8,
+    "reviews": 50,
+    "description": "# Outside the Radar: A Wild Adventure Through Ghana\n\nStep off the beaten path and into the wild heart of Ghana with **Outside the Radar**, a 14- or 10-day adventure tailored for thrill-seekers and nature lovers. This package is a call to awaken your explorer's spirit, diving into hidden villages, untamed forests, and breathtaking terrains. Every step pulses with raw beauty, and every moment ignites your senses.\n\n---\n\n## Why Choose Outside the Radar?\n\n- **Uncharted Exploration:** Discover Ghana's hidden gems, from the serene Volta River to the rugged savannahs of Mole.\n- **Adventure in Every Corner:** Trek, kayak, zipline, and surf through diverse landscapes, immersing yourself in authentic Ghanaian culture and nature.\n- **Eco-Luxury Comfort:** Stay in handpicked boutique eco-lodges that combine comfort with stunning natural surroundings.\n- **Cultural Immersion:** Connect with local communities, learn ancient traditions, and participate in ceremonies that resonate with Ghana's soul.\n- **Customizable Options:** Tailor your itinerary to include unique activities like cocoa farm visits, ATV adventures, or even surfing lessons.\n\n---\n\n## Package Highlights\n\n### Volta Region\n- **Kayak the tranquil Volta River**, exploring secret coves and vibrant fishing villages.\n- **Hike the Volta Hills**, enjoying panoramic views and cooling off in waterfall pools.\n\n### Northern Ghana\n- **Embark on an exhilarating safari in Mole National Park**, spotting elephants, antelopes, and monkeys.\n- **Conquer rugged savannah trails on an ATV**, while learning from park rangers about local ecosystems.\n\n### Eastern Region\n- **Climb the towering Kwahu Mountains** for unmatched vistas and exhilarating zipline rides through lush rainforests.\n- **Unwind with water sports or a serene boat ride on Lake Volta**, one of Ghana’s most scenic spots.\n\n### Western Region\n- **Explore the mystical stilt village of Nzulezu** and the surrounding forest by boat.\n- **Surf the waves of the Atlantic** on pristine western beaches or enjoy a hike through the diverse forests of the region.",
+
+    "inclusions": [
+      {
+        "category": "Accommodation",
+        "items": ["Boutique eco-lodges, waterfront resorts, and tented camps"]
+      },
+      {
+        "category": "Transportation",
+        "items": ["Private transfers, in-country travel, and biking equipment for exploration"]
+      },
+      {
+        "category": "Guided Tours",
+        "items": ["Expert local guides passionate about Ghana’s rich history and natural beauty"]
+      },
+      {
+        "category": "Safety Gears",
+        "items": ["Comprehensive equipment for adventurous activities"]
+      },
+      {
+        "category": "Keepsake Souvenir",
+        "items": ["A special Bonvas Tours memento"]
+      }
+    ],
+    "exclusions": [],
+     "addOns": ["Explore Accra or Volta from above.", "Day trip to Mole National Park", "Learn drumming, weaving, or cooking traditional Ghanaian dishes."],
+    "itinerary": [
+      {
+        "id": 1,
+        "day": "Day 1",
+        "title": "Arrival in Accra",
+        "description": "Warm welcome and transfer to your hotel. Leisure time and safety briefing with your guide"
+      },
+      {
+        "id": 2,
+        "day": "Day 2-4",
+        "title": "Eastern Region – Adventure Awaits",
+        "description": "Conquer the Kwahu Mountains and zipline through rainforests. Relax by the serene Lake Volta with optional water sports"
+      },
+      {
+        "id": 3,
+        "day": "Day 5-7",
+        "title": "Volta Region – Nature’s Bliss",
+        "description": "Visit Wli Waterfalls and dip in the cool pools. Experience Tafi Atome Monkey Sanctuary and hike the Volta Hills."
+      },
+      {
+        "id": 4,
+        "day": "Day 8-9",
+        "title": "Northern Ghana – Wildlife & Savannah Thrills",
+        "description": "Safari in Mole National Park and ATV adventures in the savannah. Relish authentic Northern cuisine under starry skies."
+      },
+      {
+        "id": 5,
+        "day": "Day 10-12",
+        "title": " Ashanti Region – Cultural Legacy",
+        "description": "Explore ancient caves, cycle through villages, and enjoy a drumming workshop. Relax by Lake Bosomtwe and connect with Ashanti traditions"
+      },
+      {
+        "id": 6,
+        "day": "Day 12-13",
+        "title": "Western Region – Coastal Escapes",
+        "description": "Visit Nzulezu’s stilt village and enjoy lush forest adventures. Relax on pristine beaches or try surfing for an adrenaline rush."
+      },
+      {
+        "id": 7,
+        "day": "Day 14",
+        "title": "Accra – Shopping & Departure",
+        "description": "Wrap up your adventure with a private shopping spree for unique souvenirs. Farewell, lunch and transfer to Kotoka International Airport."
+      }
+    ],
+    "gallery": [
+      "/gallery/outside_the_radar/1.jpg",
+      "/gallery/outside_the_radar/2.jpg",
+      "/gallery/outside_the_radar/3.jpg",
+      "/gallery/outside_the_radar/4.jpg",
+      "/gallery/outside_the_radar/5.jpg",
+      "/gallery/outside_the_radar/6.jpg",
+      "/gallery/outside_the_radar/7.jpg",
+      "/gallery/outside_the_radar/8.jpg"
+    ],
+    "tourOptions": [
+      {
+        "startDate": "2025-06-01",
+        "endDate": "2025-06-14",
+        "prices": {
+          "adult": 7500.00,
+          "couple": 1400.00
+        }
+      },
+      {
+        "startDate": "2025-06-01",
+        "endDate": "2025-06-10",
+        "prices": {
+          "adult": 5500.00,
+          "couple": 1000.00
+        }
+      }
+    ],
+    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15891.144130295516!2d-0.2246871671386719!3d5.636020799999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9d5f4b8a4e6d%3A0x6f7a0a8a0ad59e17!2sLabadi%20Beach!5e0!3m2!1sen!2sgh!4v1623456789012!5m2!1sen!2sgh",
+    "status": "active"
+},
+{
+    "id": "90uvwx3456789yzab",
+    "slug": "ghvibe-immersed",
+    "title": "GHVibe-Immersed: Dive Deep into Ghana's Diversity",
+    "location": {
+      "country": "Ghana",
+      "city": "",
+      "region": "West Africa"
+    },
+    "startDate": "2024-05-01",
+    "endDate": "2024-05-14",
+    "imageUrl": "/gallery/ghvibe_immersed/1.jpg",
+    "price": 7300.00,
+    "currency": "USD",
+    "rating": 4.8,
+    "reviews": 95,
+  "description": "Uncover the heart and soul of Ghana with GHVibe-Immersed, a curated 14-day journey through the nation's most vibrant regions. This immersive experience weaves together Ghana's cultural richness, breathtaking landscapes, and warm hospitality. From the historic streets of Accra to the serene beauty of the Volta Region and the vibrant traditions of the Ashanti Kingdom, every moment is crafted to leave a lasting impression.\n\n### **Why Choose GHVibe-Immersed?**\n\n- **Diverse Destinations:** Explore five iconic regions, each offering a unique cultural and natural tapestry.\n- **Cultural Immersion:** Engage with locals, participate in traditional drumming and crafts, and savor authentic Ghanaian cuisine.\n- **Adventure Meets Comfort:** Traverse canopy walkways, sail on tranquil lakes, and relax in luxurious accommodations.\n- **Tailored to You:** With customizable options, you can shape your journey to match your interests and travel style.\n\n### Package Highlights\n\n- **Greater Accra:** Walk through Ghana’s independence history, explore bustling markets, and enjoy Accra’s energetic nightlife.\n- **Volta Region:** Discover the serene Volta River, the awe-inspiring Wli Waterfalls, and the captivating Tafi Atome Monkey Sanctuary.\n- **Central Region:** Delve into Ghana’s colonial past at Cape Coast and Elmina Castles, and feel the thrill of Kakum National Park’s canopy walkway.\n- **Ashanti Region:** Immerse yourself in the regal traditions of the Ashanti Kingdom, visit the iconic Kejetia Market, and participate in cultural workshops.\n- **Western Region:** Bask in the sun on pristine beaches, visit Takoradi’s vibrant cityscape, and cruise to the unique stilt village of Nzulezu.",
+    "inclusions": [
+      {
+        "category": "Visa Assistance",
+        "items": [" Seamless visa-on-arrival facilitation."]
+      },
+      {
+        "category": "Accommodation",
+        "items": ["Luxury stays at top-rated hotels, including waterfront resorts in the Volta and Western regions"]
+      },
+      {
+        "category": "Transportation",
+        "items": ["Private airport transfers and comfortable in-country travel arrangements"]
+      },
+      {
+        "category": "Guided Tours",
+        "items": ["Led by expert local guides to ensure an enriching and seamless experience"]
+      },
+      {
+        "category": "Culinary Experiences",
+        "items": ["Daily breakfast and exclusive dinners featuring Ghanaian delicacies"]
+      },
+      {
+        "category": "Special Souvenir",
+        "items": ["A personalized keepsake from Bonvas Tours"]
+      }
+    ],
+    "itinerary": [
+      {
+        "id": 1,
+        "day": "Day 1-3",
+        "title": "Greater Accra – Where History Meets Modernity",
+        "description": "Begin your journey with a warm welcome and explore Black Star Square, Kwame Nkrumah Memorial Park, and Jamestown’s vibrant streets. Indulge in trendy rooftop dining and immerse yourself in Accra’s pulsating nightlife."
+      },
+      {
+        "id": 2,
+        "day": "Day 4-5",
+        "title": "Volta Region – Nature’s Haven",
+        "description": "Cruise along the serene Volta River and explore the Akosombo Dam. Visit Wli Waterfalls and Tafi Atome Monkey Sanctuary for a mix of adventure and natural beauty"
+      },
+      {
+        "id": 3,
+        "day": "Day 6-7",
+        "title": " Ashanti Region – The Golden Kingdom",
+        "description": "Uncover the rich culture of the Ashanti Kingdom in Kumasi with visits to the Manhyia Palace and Kejetia Market. Participate in drumming and dance workshops, connecting with the soul of Ashanti traditions."
+      },
+      {
+        "id": 4,
+        "day": "Day 8-10",
+        "title": "Central Region – Colonial Reflections",
+        "description": "Step back in time at Cape Coast and Elmina Castles, tracing the legacy of Ghana’s colonial past. Traverse the Kakum canopy walkway and soak in the beauty of the Aburi Gardens."
+      },
+      {
+        "id": 5,
+        "day": "Day 11-12",
+        "title": "Western Region – Coastal Bliss",
+        "description": "Unwind on Takoradi’s stunning beaches and enjoy a boat ride to the stilt village of Nzulezu. Discover Takoradi’s lively city atmosphere and savor freshly prepared seafood"
+      },
+      {
+        "id": 6,
+        "day": "Day 13",
+        "title": "Shopping Spree in Accra",
+        "description": "Visit Accra’s exclusive boutiques and art galleries for unique souvenirs and locally crafted treasures."
+      },
+       {
+        "id": 7,
+        "day": "Day 14",
+        "title": "Farewell & Departure",
+        "description": "Enjoy a special farewell ceremony before your private transfer to the airport, carrying memories to last a lifetime."
+      }
+    ],
+    "exclusions": [],
+     "addOns": [],
+    "gallery": [
+      "/gallery/ghvibe_immersed/1.jpg",
+      "/gallery/ghvibe_immersed/2.jpg",
+      "/gallery/ghvibe_immersed/3.jpg",
+      "/gallery/ghvibe_immersed/4.jpg",
+      "/gallery/ghvibe_immersed/5.jpg",
+      "/gallery/ghvibe_immersed/6.jpg",
+      "/gallery/ghvibe_immersed/7.jpg",
+      "/gallery/ghvibe_immersed/8.jpg"
+    ],
+    "tourOptions": [
+      {
+        "startDate": "2024-05-01",
+        "endDate": "2024-05-14",
+        "prices": {
+          "adult": 7300.00,
+          "couple": 14000.00
+        }
+      }
+    ],
+    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.9352397452844!2d-0.20869362501480795!3d5.560408494420052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9084b2b7a773%3A0xbed14ed8650e2dd3!2sKwame%20Nkrumah%20Memorial%20Park!5e0!3m2!1sen!2sgh!4v1623456789012!5m2!1sen!2sgh",
+    "status": "active"
+}
 ]

@@ -84,7 +84,7 @@ export default async function TourDetailsPage({
                                 </div>
                                 {tour_package.exclusions && tour_package.exclusions.length > 0 && (
                                     <div>
-                                        <h3 className="font-medium mb-4">What&apos;s not included:</h3>
+                                        <h3 className="font-medium mb-4 text-xl">What&apos;s not included:</h3>
                                         <ul className="space-y-2">
                                             {tour_package.exclusions.map((item, index) => (
                                                 <li key={index} className="flex items-center gap-2">

@@ -17,8 +17,7 @@ export function TourGallery({ images, title }: TourGalleryProps) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
     const mainImage = images[1]
-    const thumbnails = images.slice(3)
-
+    const thumbnails = images.slice(0, 3)
     // Handle image navigation
     const handlePrevious = () => {
         setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))

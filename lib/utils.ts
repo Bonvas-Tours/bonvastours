@@ -33,7 +33,7 @@ export function calculateDuration(startDate: string, endDate: string): number {
     const durationInMs = end.getTime() - start.getTime();
     const durationInDays = Math.ceil(durationInMs / (1000 * 60 * 60 * 24));
 
-    return durationInDays;
+    return durationInDays + 1;
 }
 
 export function formatDate(dateString: string): string {

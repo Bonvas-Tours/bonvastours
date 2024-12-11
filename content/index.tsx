@@ -217,7 +217,7 @@ export const testimonials = [
   {
     id: 3,
     name: "Esther Mensah",
-    role: "Lecture at KNUST",
+    role: "Lecturer at KNUST",
     rating: 5,
     image: "/testimonial/3.jpg",
     review: "Bonvas Tours provided an exceptional experience. Every detail was taken care of, making our trip truly memorable."
@@ -228,15 +228,15 @@ export const testimonials = [
     role: "Lecturer at UCC",
     rating: 5,
     image: "/testimonial/4.jpg",
-    review: "We strive to provide the best service to our clients, and their satisfaction is our top priority."
+    review: "A wonderful experience from start to finish. The attention to detail was impressive."
   },
   {
     id: 5,
-    name: "Lydia Amobil",
+    name: "Lydia Anobil",
     role: "Head of IWASA",
     rating: 5,
     image: "/testimonial/5.jpg",
-    review: "A wonderful experience from start to finish. The attention to detail was impressive."
+    review: "We strive to provide the best service to our clients, and their satisfaction is our top priority."
   }
 ]
 
