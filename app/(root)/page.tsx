@@ -41,8 +41,6 @@ export default function Home() {
         <YouTubeEmbed videoId="m4lQfYDVx-Q?si=KOMuBercD2s_Ro9Y" />
       </section>
 
-
-
       <Partners />
     </>
   );

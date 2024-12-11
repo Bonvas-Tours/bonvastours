@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { partners } from '@/content'
 import Image from 'next/image'
 
-
 function Partners() {
     const [currentPartners, setCurrentPartners] = useState(partners)
 
@@ -24,26 +23,23 @@ function Partners() {
         <section className="bg-gray-50 py-16 px-4 md:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto text-center">
                 <h1 className="text-4xl font-bold mb-8 text-gray-800">Trusted Partners</h1>
-                <div className="flex items-center justify-center overflow-hidden">
+                <div className="relative flex items-center justify-center overflow-hidden h-[100px]">
                     <AnimatePresence>
-                        {currentPartners?.slice(0, 5).map((partner, index) => (
+                        {currentPartners?.slice(0, 3).map((partner, index) => (
                             <motion.div
-                                key={partner.src || index} // Use index as fallback for unique keys
-                                initial={{ opacity: 0, x: 100 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -100 }}
-                                transition={{ duration: 0.5 }}
-                                className="mx-2 flex-shrink-0 w-1/3 md:w-1/5"
+                                key={partner.src || index}
+                                className="w-1/3 md:w-1/5 will-change-transform"
                             >
                                 <Image
                                     src={partner.src}
-                                    alt={partner.alt || "Partner Logo"} // Fallback for alt text
-                                    width={100} // Adjust width
-                                    height={100} // Adjust height
-                                    className="mx-auto max-w-[80px] md:max-w-[120px]" // Ensure it's responsive
+                                    alt={partner.alt || "Partner Logo"}
+                                    width={100}
+                                    height={100}
+                                    className="mx-auto object-contain max-h-[80px] md:max-h-[120px]"
                                 />
                             </motion.div>
                         ))}
+
                     </AnimatePresence>
                 </div>
             </div>
@@ -52,4 +48,3 @@ function Partners() {
 }
 
 export default Partners
-
