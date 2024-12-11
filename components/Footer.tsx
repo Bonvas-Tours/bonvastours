@@ -33,7 +33,7 @@ export function Footer() {
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Legal</h3>
                         <ul className="space-y-2">
-                            {['Terms & Conditions', 'Privacy Policy', 'Cookie Policy', 'Intellectual Property Rights'].map((item) => (
+                            {['Terms & Conditions', 'Privacy Policy'].map((item) => (
                                 <li key={item}>
                                     <Link href={`/${item.toLowerCase().replace(' & ', '-').replace(' ', '-')}`} className="hover:underline">
                                         {item}
