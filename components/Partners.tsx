@@ -22,7 +22,7 @@ function Partners() {
     return (
         <section className="bg-gray-50 py-16 px-4 md:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto text-center">
-                <h1 className="text-4xl font-bold mb-8 text-gray-800">Trusted Partners</h1>
+                <h1 className="text-2xl font-semibold mb-8 text-gray-800">Trusted Partners and Clients</h1>
                 <div className="relative flex items-center justify-center overflow-hidden h-[100px]">
                     <AnimatePresence>
                         {currentPartners?.slice(0, 3).map((partner, index) => (

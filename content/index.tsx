@@ -242,7 +242,7 @@ export const testimonials = [
 
 export const partners = [
   { src: "/partner/acs.png", alt: "America Cancer Society Logo" },
-  { src: "/partner/Amadeus.png", alt: "Amedeus Logo" },
+  { src: "/partner/amadeus.png", alt: "Amedeus Logo" },
   { src: "/partner/bgg.png", alt: "Bonvas Group Global Logo" },
   { src: "/partner/gta.png", alt: "Ghana Toursim Authority Logo" },
   { src: "/partner/iwasa.png", alt: "IWASA Logo" },
