@@ -346,6 +346,7 @@
         "items": ["A Bonvas Tours keepsake to remember your journey"]
       }
     ],
+    "exclusions": [],
     "addOns": [
       "Helicopter tour over Accra",
       "Learn to cook Ghanaian favorites in a private class",
@@ -458,6 +459,8 @@
         "items": ["A personalized keepsake from Bonvas Tours"]
       }
     ],
+    "exclusions": [],
+    
     "itinerary": [
       {
         "id": 1,
@@ -502,7 +505,7 @@
         "description": "Enjoy a special farewell ceremony before your private transfer to the airport, carrying memories to last a lifetime."
       }
     ],
-    "exclusions": [],
+    
      "addOns": [],
     "gallery": [
       "/gallery/ghvibe_immersed/1.jpg",
@@ -682,7 +685,7 @@
         "items": ["A personalized gift to remember your journey"]
       }
     ],
-
+    "exclusions":[],
     "itinerary": [
       {
         "id": 1,
@@ -769,7 +772,7 @@
         "items": ["A special keepsake to remember your royal journey"]
       }
     ],
-
+    "exclusions":[],
     "itinerary": [
       {
         "id": 1,
@@ -889,6 +892,7 @@
         "items": ["A special Bonvas Tours memento."]
       }
     ],
+    "exclusions":[],
   
     "itinerary": [
       {

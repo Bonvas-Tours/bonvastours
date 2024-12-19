@@ -39,7 +39,7 @@ export interface TourPackageDetailsProps extends TourPackageProps {
     items: string[];
   }>;
   exclusions: string[];
-  addOns: string[];
+  addOns?: string[];
   itinerary: Array<{
     id: number | string;
     day: string | number; 
