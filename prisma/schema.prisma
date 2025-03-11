@@ -1,0 +1,247 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Employee {
+  id             String    @id @default(uuid())
+  firstName      String
+  lastName       String
+  profilePicture String?
+  dob            String
+  gender         String
+  email          String    @unique
+  country        String
+  city           String
+  region         String
+  address        String
+  phoneNumber    String
+  role           String
+  department     String
+  dateOfHire     String
+  blocked        Boolean
+  password       String
+  sessions       Session[]
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  sessionToken String   @unique
+  employeeId   String
+  expires      DateTime
+  requires2FA  Boolean
+  employee     Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+}
+
+model Review {
+  id            String      @id @default(uuid())
+  tourPackage   TourPackage @relation(fields: [tourPackageId], references: [id])
+  tourPackageId String
+  booking       Booking     @relation(fields: [bookingId], references: [id])
+  bookingId     String
+  tourist       Tourist     @relation(fields: [touristId], references: [id])
+  touristId     String
+  rating        Int
+  comment       String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model TourPackage {
+  id                    String                 @id @default(uuid())
+  name                  String
+  description           String
+  category              String
+  type                  String
+  slug                  String                 @unique
+  currency              String
+  cover                 String
+  minimumPax            Int
+  maximumPax            Int
+  status                String
+  dailyPrice            Decimal
+  rating                Float
+  averageReviews        Int
+  expiryDate            DateTime
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  locations             Location[]
+  tourMap               Coordinate[]
+  tourPackageInclusions TourPackageInclusion[]
+  tourPackageExclusions TourPackageExclusion[]
+  itineraryList         Itinerary[]
+  tourPackageOptions    TourPackageOption[]
+  bookings              Booking[]
+  reviews               Review[]
+  gallery               Image[]
+  departures            TourDeparture[]
+  PageView              PageView[]
+}
+
+model TourPackageOption {
+  id            String      @id @default(uuid())
+  name          String
+  price         Float
+  tourPackage   TourPackage @relation(fields: [tourPackageId], references: [id])
+  tourPackageId String
+  Booking       Booking[]
+}
+
+model PageView {
+  id            Int         @id @default(autoincrement())
+  path          String
+  viewedAt      String
+  ipAddress     String
+  userAgent     String
+  referrer      String
+  tourPackageId String
+  tourPackage   TourPackage @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
+}
+
+model Image {
+  id            Int          @id @default(autoincrement())
+  alt           String
+  src           String
+  blurhash      String?
+  isMain        Boolean
+  tourPackageId String?
+  tourPackage   TourPackage? @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
+}
+
+model Location {
+  id            Int          @id @default(autoincrement())
+  region        String
+  country       String
+  city          String
+  tourPackageId String?
+  tourPackage   TourPackage? @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+model Coordinate {
+  id            Int          @id @default(autoincrement())
+  longitude     String
+  latitude      String
+  tourPackageId String?
+  tourPackage   TourPackage? @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+model TourDeparture {
+  id             String      @id @default(uuid())
+  tourPackageId  String
+  startDate      DateTime
+  endDate        DateTime
+  departurePoint String
+  duration       Int
+  availableSlots Int
+  status         String
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  tourPackage    TourPackage @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
+}
+
+model TourPackageInclusion {
+  id            Int         @id @default(autoincrement())
+  name          String
+  tourPackageId String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  tourPackage   TourPackage @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
+}
+
+model TourPackageExclusion {
+  id            Int         @id @default(autoincrement())
+  tourPackageId String
+  item          String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  tourPackage   TourPackage @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
+}
+
+model Itinerary {
+  id            Int         @id @default(autoincrement())
+  day           String
+  title         String
+  description   String
+  tourPackageId String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  tourPackage   TourPackage @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
+}
+
+model Tourist {
+  id                 String           @id @default(uuid())
+  firstname          String
+  lastname           String           @unique
+  primaryNumber      String
+  secondaryNumber    String?
+  country            String
+  city               String
+  address            String
+  dob                String
+  specialRequirement String?
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+  bookings           BookingTourist[]
+  Review             Review[]
+}
+
+model Booking {
+  id                String             @id @default(uuid())
+  tnr               String             @unique
+  tourPackageId     String
+  selectedOptionId  String?
+  numberOfAdults    Int
+  numberOfChildren  Int
+  numberOfCouples   Int
+  totalPrice        Decimal
+  isInstallment     Boolean
+  installmentNumber Int?
+  amountPaid        Decimal
+  status            String
+  dueDate           DateTime?
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  payments          Payment[]
+  bookingTourists   BookingTourist[]
+  tourPackage       TourPackage        @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
+  selectedOption    TourPackageOption? @relation(fields: [selectedOptionId], references: [id], onDelete: Cascade)
+  Review            Review[]
+}
+
+model BookingTourist {
+  bookingId String
+  touristId String
+  booking   Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  tourist   Tourist @relation(fields: [touristId], references: [id], onDelete: Cascade)
+
+  @@id([bookingId, touristId])
+}
+
+model Payment {
+  id                String   @id @default(uuid())
+  bookingId         String
+  amount            Decimal
+  installmentNumber Int
+  status            String
+  transactionId     String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  booking           Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+}
