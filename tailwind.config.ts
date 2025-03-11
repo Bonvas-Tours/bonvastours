@@ -41,6 +41,7 @@ const config: Config = {
     			},
     			white: {
     				'100': '#F7F7F7',
+    				'200': '#A3A3A3',
     				DEFAULT: '#FFFFFF'
     			},
     			background: 'hsl(var(--background))',
@@ -74,13 +75,25 @@ const config: Config = {
     				'3': 'hsl(var(--chart-3))',
     				'4': 'hsl(var(--chart-4))',
     				'5': 'hsl(var(--chart-5))'
+    			},
+    			sidebar: {
+    				DEFAULT: '#000000',
+    				foreground: 'hsl(var(--sidebar-foreground))',
+    				primary: 'hsl(var(--sidebar-primary))',
+    				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+    				accent: 'hsl(var(--sidebar-accent))',
+    				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+    				border: 'hsl(var(--sidebar-border))',
+    				ring: 'hsl(var(--sidebar-ring))'
     			}
-			},
-			background: {
-				footerPattern: 'url("/slide1.jpg")',
-			},
+    		},
+    		background: {
+    			footerPattern: 'url("/slide1.jpg")'
+    		},
     		fontFamily: {
-    			inter: ['var(--font-inter)']
+    			inter: [
+    				'var(--font-inter)'
+    			]
     		},
     		borderRadius: {
     			lg: 'var(--radius)',

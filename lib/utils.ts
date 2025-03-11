@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { Location } from "./api";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -78,3 +79,9 @@ export const formatPrice = (price: number) => {
 };
 
 
+export function formatLocation2(location?: Location): string {
+    if (!location) return "Location not available";
+
+    const { region, country, city } = location;
+    return [region, country, city].filter(Boolean).join(", ");
+}
