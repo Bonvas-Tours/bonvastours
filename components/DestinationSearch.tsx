@@ -44,7 +44,7 @@ export function DestinationSearch({
                             destination ? "text-neutral-800" : "text-neutral-500"
                         )}
                     >
-                        <MapPin className="h-4 w-4" />
+                        <MapPin className="h-4 w-4 text-gray-400" />
                         {destination || "Where is your next destination?"}
                     </Button>
                 </PopoverTrigger>
@@ -63,7 +63,7 @@ export function DestinationSearch({
                                             setOpen(false)
                                         }}
                                     >
-                                        <MapPin className="mr-2 h-4 w-4" />
+                                        <MapPin className="mr-2 h-4 w-4 text-gray-400" />
                                         {destination}
                                     </CommandItem>
                                 ))}

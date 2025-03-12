@@ -78,7 +78,7 @@ model TourPackage {
   expiryDate            DateTime
   createdAt             DateTime               @default(now())
   updatedAt             DateTime               @updatedAt
-  locations             Location[]
+  locations             Location
   tourMap               Coordinate[]
   tourPackageInclusions TourPackageInclusion[]
   tourPackageExclusions TourPackageExclusion[]

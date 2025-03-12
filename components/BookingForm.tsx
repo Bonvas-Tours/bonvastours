@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { User } from "lucide-react"
+import { CalendarCheck2, User } from "lucide-react"
 import BookingSelectionModal from "./BookingSelectionModal"
 import { findBooking } from "@/app/(root)/actions/booking-action"
 
@@ -57,18 +57,25 @@ export default function BookingForm() {
         <>
             <form action={handleSubmit} className="flex flex-col gap-4 w-full">
                 <div className="flex flex-col gap-4 rounded-lg bg-white p-4 md:flex-row md:items-center md:gap-2 w-full">
-                    <div className="flex-1">
-                        <Input name="bookingCode" placeholder="eg. TNR3HD" className="h-12 bg-white" disabled={isLoading} />
+                    <div className=" relative flex-1">
+                        <CalendarCheck2 className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                        <Input
+                            name="bookingCode"
+                            placeholder="eg. TNR3HD"
+                            className="h-12 bg-white  pl-10"
+                            disabled={isLoading}
+                        />
+                        
                         {errors.bookingCode && <p className="text-red-500 text-sm mt-1">{errors.bookingCode[0]}</p>}
                     </div>
                     <div className="relative flex-1">
+                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                         <Input
                             name="lastName"
                             placeholder="eg. Martey Jamel"
                             className="h-12 bg-white pl-10"
                             disabled={isLoading}
                         />
-                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                         {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName[0]}</p>}
                     </div>
                     <Button

@@ -7,19 +7,9 @@ import BookingForm from './BookingForm'
 import { cn } from '@/lib/utils'
 
 type TabType = "book" | "manage"
+
 export default function SearchBar() {
     const [activeTab, setActiveTab] = useState<TabType>("manage")
-
-    const router = useRouter()
-
-    function handleSearch(destination: string, dateRange?: { from?: Date; to?: Date }) {
-        const searchParams = new URLSearchParams()
-        if (destination) searchParams.append('destination', destination)
-        if (dateRange?.from) searchParams.append('startDate', dateRange.from.toISOString())
-        if (dateRange?.to) searchParams.append('endDate', dateRange.to.toISOString())
-
-        router.push(`/tour-packages?${searchParams.toString()}`)
-    }
 
     return (
         <div className="w-full max-w-6xl mx-auto">
@@ -48,7 +38,7 @@ export default function SearchBar() {
             </div>
 
             <div className="mx-auto w-full max-w-6xl px-4 bg-white ">
-                {activeTab === "book" ? <SearchForm onSubmit={handleSearch} /> : <BookingForm />}
+                {activeTab === "book" ? <SearchForm /> : <BookingForm />}
             </div>
         </div>
     )
