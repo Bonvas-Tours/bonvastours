@@ -78,7 +78,8 @@ model TourPackage {
   expiryDate            DateTime
   createdAt             DateTime               @default(now())
   updatedAt             DateTime               @updatedAt
-  locations             Location[]
+  locationId            Int?
+  location              Location?              @relation(fields: [locationId], references: [id])
   tourMap               Coordinate[]
   tourPackageInclusions TourPackageInclusion[]
   tourPackageExclusions TourPackageExclusion[]
@@ -93,10 +94,16 @@ model TourPackage {
 
 model TourPackageOption {
   id            String      @id @default(uuid())
-  name          String
-  price         Float
-  tourPackage   TourPackage @relation(fields: [tourPackageId], references: [id])
   tourPackageId String
+  durationDays  Int
+  startDate     DateTime
+  endDate       DateTime
+  adultPrice    Float
+  couplePrice   Float
+  childrenPrice Float
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  TourPackage   TourPackage @relation(fields: [tourPackageId], references: [id])
   Booking       Booking[]
 }
 
@@ -122,14 +129,13 @@ model Image {
 }
 
 model Location {
-  id            Int          @id @default(autoincrement())
-  region        String
-  country       String
-  city          String
-  tourPackageId String?
-  tourPackage   TourPackage? @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
+  id          Int           @id @default(autoincrement())
+  region      String
+  country     String
+  city        String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  TourPackage TourPackage[]
 }
 
 model Coordinate {
