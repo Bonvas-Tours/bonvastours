@@ -1,3 +1,5 @@
+import { Location, TourPackage, TourPackageOption } from "@prisma/client"
+
 export interface Testimonial {
   id: number
   name: string
@@ -14,50 +16,14 @@ export interface TourFiltersProps {
   search?: string
 }
 
-export interface TourPackageProps {
-  slug: string;
-  title: string;
-  location: {
-    country: string;
-    city?: string; // Optional since it can be empty
-    region: string;
-  };
+export interface TourPackageProps extends TourPackage {
+  location: Location;
   startDate: string;
   endDate: string;
-  imageUrl: string;
+  tourPackageOptions: TourPackageOption[];
 }
 
-export interface TourPackageDetailsProps extends TourPackageProps {
-  id: string;
-  price: number;
-  currency: string;
-  rating: number;
-  reviews: number;
-  description: string;
-  inclusions: Array<{
-    category: string;
-    items: string[];
-  }>;
-  exclusions: string[];
-  addOns?: string[];
-  itinerary: Array<{
-    id: number | string;
-    day: string | number; 
-    title: string;
-    description: string;
-  }>;
-  gallery: string[];
-  tourOptions: Array<{
-    startDate?: string;
-    endDate?: string;
-    prices: {
-      adult: number;
-      couple: number;
-    };
-  }>;
-  mapUrl: string; 
-  status: string;
-}
+export interface TourPackageDetailsProps extends TourPackageProps {}
 
 export interface TourOptionWithQuantityProp {
   startDate: string; 

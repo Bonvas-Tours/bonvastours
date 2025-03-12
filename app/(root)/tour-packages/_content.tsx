@@ -18,33 +18,14 @@ export function TourPackagesContent({ initialTours }: TourPackagesContentProps) 
     const [filters, setFilters] = useState<TourFiltersType>({})
     const [visibleTours, setVisibleTours] = useState(TOURS_PER_PAGE)
 
-    // console.log(initialTours);
-    // Filter tours based on search and filters
-    const filteredTours = initialTours.filter((tour) => {
-        if (filters.search && !tour.title.toLowerCase().includes(filters.search.toLowerCase())) {
-            return false
-        }
-        if (filters.destination && !formatLocation(tour.location)?.toLowerCase().includes(filters.destination.toLowerCase())) {
-            return false
-        }
-        if (filters.month) {
-            const tourMonth = new Date(tour.startDate).toLocaleString('default', { month: 'long' }).toLowerCase()
-            console.log(tourMonth)
-            if (tourMonth !== filters.month.toLowerCase()) {
-                return false
-            }
-        }
-        return true
-    })
-
-    const displayedTours = filteredTours.slice(0, visibleTours)
-    const hasMore = visibleTours < filteredTours.length
+    const displayedTours = initialTours.slice(0, visibleTours)
+    const hasMore = visibleTours < initialTours.length
 
     return (
         <div className="container pb-12 pt-4">
             <div className="mb-4">
                 <p className="text-muted-foreground">
-                    {filteredTours.length} results found
+                    {initialTours.length} results found
                 </p>
             </div>
             <div className="mb-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
@@ -62,11 +43,11 @@ export function TourPackagesContent({ initialTours }: TourPackagesContentProps) 
                     <TourCard
                         key={tour.id}
                         slug={tour.slug}
-                        title={tour.title}
+                        name={tour.name}
                         location={tour.location}
-                        startDate={tour.startDate}
-                        endDate={tour.endDate}
-                        imageUrl={tour.imageUrl}
+                        startDate={new Date(tour.tourPackageOptions[0].startDate).toLocaleDateString()}
+                        endDate={new Date(tour.tourPackageOptions[0].endDate).toLocaleDateString()}
+                        cover={tour.cover}
                     />
                 ))}
             </div>
