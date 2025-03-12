@@ -3,14 +3,15 @@ import { getBookingById } from "@/lib/api";
 import { format } from "date-fns";
 import puppeteer from "puppeteer-core";
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
-  const bookingId = params.id;
-
-  if (!bookingId) {
-    return NextResponse.json({ error: "Booking ID is required" }, { status: 400 });
-  }
-
+export async function GET(request: NextRequest) {
   try {
+    // Extract ID from URL pathname
+    const bookingId = request.nextUrl.pathname.split("/").pop();
+
+    if (!bookingId) {
+      return NextResponse.json({ error: "Booking ID is required" }, { status: 400 });
+    }
+
     const booking = await getBookingById(bookingId);
 
     if (!booking) {
@@ -100,12 +101,12 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
 
     // Launch Puppeteer
     const browser = await puppeteer.launch({
-      headless: "new", // Use new headless mode for better performance
+      headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
       executablePath:
         process.env.NODE_ENV === "production"
-          ? "/usr/bin/chromium" // Ensure this path is correct for your deployment environment
-          : undefined, // Use default local Chromium for development
+          ? "/usr/bin/chromium"
+          : undefined,
     });
 
     const page = await browser.newPage();

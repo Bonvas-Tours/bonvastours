@@ -43,10 +43,13 @@ export function DownloadInvoiceButton({ bookingId }: DownloadInvoiceButtonProps)
                 description: "Your invoice has been successfully generated and downloaded.",
             })
         } catch (error) {
-            console.error("Error downloading invoice:", error)
+            console.error("Error downloading invoice:", error);
+
+            const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
+
             toast({
                 title: "Error",
-                description: `Failed to download invoice: ${error.message}`,
+                description: `Failed to download invoice: ${errorMessage}`,
                 variant: "destructive",
             })
         } finally {

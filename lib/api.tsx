@@ -483,7 +483,7 @@ export async function getBookingById(id: string): Promise<Booking | null> {
     if (!booking) return null
 
     // Enrich the booking with related data
-    const tourPackage = mockTourPackages.find((tp) => tp.id === booking.tourPackageId)
+    const tourPackage = mockTourPackages.find((tp) => tp.id === booking.tourPackageId) || { id: "" };
     const selectedOption = mockTourPackageOptions.find((tpo) => tpo.id === booking.selectedOptionId)
     const tourists = mockTourists.filter((t) => [0, 1, 2].includes(Number.parseInt(t.id.replace("t", ""))))
     const location = mockLocations.find((loc) => loc.tourPackageId === booking.tourPackageId) || undefined;

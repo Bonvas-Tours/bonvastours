@@ -16,7 +16,7 @@ export default function SearchBar() {
     }
 
     return (
-        <div className="mx-auto w-full max-w-6xl px-4">
+        <div>
             <SearchForm onSubmit={handleSearch} />
         </div>
     )

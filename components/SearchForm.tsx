@@ -21,7 +21,7 @@ export function SearchForm({ onSubmit }: SearchFormProps) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 rounded-lg bg-white p-4 md:flex-row md:items-center md:gap-2 w-full">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 bg-white p-4 md:flex-row md:items-center md:gap-2 w-full">
             <div className="flex-1">
                 <DestinationSearch
                     destination={destination}
