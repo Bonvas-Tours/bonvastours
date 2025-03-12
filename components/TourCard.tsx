@@ -7,20 +7,20 @@ import { calculateDuration, formatLocation } from "@/lib/utils";
 
 export function TourCard({
     slug,
-    title,
+    name,
     location,
     startDate,
     endDate,
-    imageUrl,
-}: TourPackageProps) {
+    cover,
+}: Partial<TourPackageProps>) {
     return (
         <Card className="overflow-hidden group p-4 !shadow-none">
             <Link href={`/tour-packages/${slug}`}>
                 <div className="relative h-64 overflow-hidden rounded-lg">
-                    {imageUrl ? (
+                    {cover ? (
                         <Image
-                            src={imageUrl}
-                            alt={title}
+                            src={cover}
+                            alt={name!}
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             className="object-cover w-full h-full"
@@ -32,13 +32,13 @@ export function TourCard({
                     )}
                 </div>
                 <CardHeader>
-                    <h3 className="text-2xl font-bold">{title}</h3>
+                    <h3 className="text-2xl font-bold">{name}</h3>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2 text-gray-600">
                             <Globe className="w-4 h-4" />
-                            <span>{formatLocation(location)}</span>
+                            <span>{formatLocation(location!)}</span>
                         </div>
                     </div>
                     <hr />
@@ -49,7 +49,7 @@ export function TourCard({
                         </div>
                         <div className="flex items-center gap-2 text-gray-600">
                             <Clock className="w-4 h-4" />
-                            <span>{`${calculateDuration(startDate, endDate)} day${calculateDuration(startDate, endDate) > 1 ? "s" : ""
+                            <span>{`${calculateDuration(startDate!, endDate!)} day${calculateDuration(startDate!, endDate!) > 1 ? "s" : ""
                                 }`}</span>
                         </div>
                     </div>
