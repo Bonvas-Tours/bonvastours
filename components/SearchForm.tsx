@@ -6,18 +6,25 @@ import { DateRangePicker } from "@/components/DateRangePicker"
 import { DestinationSearch } from "@/components/DestinationSearch"
 import { Button } from "@/components/ui/button"
 import { Search } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
-interface SearchFormProps {
-    onSubmit: (destination: string, dateRange: DateRange | undefined) => void
-}
-
-export function SearchForm({ onSubmit }: SearchFormProps) {
+export function SearchForm() {
     const [destination, setDestination] = React.useState("")
     const [date, setDate] = React.useState<DateRange>()
+    const router = useRouter()
+
+    const handleSearch = (destination: string, dateRange?: DateRange) => {
+        const searchParams = new URLSearchParams()
+        if (destination) searchParams.append('destination', destination)
+        if (dateRange?.from) searchParams.append('startDate', dateRange.from.toISOString())
+        if (dateRange?.to) searchParams.append('endDate', dateRange.to.toISOString())
+
+        router.push(`/tour-packages?${searchParams.toString()}`)
+    }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        onSubmit(destination, date)
+        handleSearch(destination, date)
     }
 
     return (
@@ -45,4 +52,3 @@ export function SearchForm({ onSubmit }: SearchFormProps) {
         </form>
     )
 }
-
