@@ -21,3 +21,22 @@ export const getTourPackages = async (
 
   return fmttedPackages as unknown as TourPackageProps[];
 };
+
+export const getDestinations = async () => {
+  const locations = await Prisma.location.findMany();
+
+  const uniqueLocations = new Set();
+
+  const fmttedLocations = locations
+    .map(({ country, city }) => {
+      const combination = `${country}-${city}`;
+      if (!uniqueLocations.has(combination)) {
+        uniqueLocations.add(combination);
+        return { country, city, label: `${country}, ${city}` };
+      }
+      return { country: "", city: "", label: "" }; // Avoid 'null' values
+    })
+    .filter(({ label }) => label != "");
+
+  return fmttedLocations;
+};

@@ -17,12 +17,15 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
-import { DESTINATIONS } from "@/content"
+import { getDestinations } from "@/app/(root)/actions/packages"
 
 interface DestinationSearchProps extends React.HTMLAttributes<HTMLDivElement> {
     destination: string
     onDestinationChange: (value: string) => void
 }
+
+type Destinations = Awaited<ReturnType<typeof getDestinations>> | null;
+
 
 export function DestinationSearch({
     destination,
@@ -30,6 +33,16 @@ export function DestinationSearch({
     className,
 }: DestinationSearchProps) {
     const [open, setOpen] = React.useState(false)
+    const [destinations, setDestinations] = React.useState<Destinations>();
+
+    React.useEffect(() => {
+      (async () => {
+        const currentDestinations = await getDestinations();
+        setDestinations(currentDestinations);
+      })();
+    }, []);
+
+    if (!destinations) return "Loading..."
 
     return (
         <div className={cn("grid gap-2 text-neutral-500", className)}>
@@ -54,17 +67,17 @@ export function DestinationSearch({
                         <CommandList>
                             <CommandEmpty>No destination found.</CommandEmpty>
                             <CommandGroup>
-                                {DESTINATIONS.map((destination) => (
+                                {destinations.map(({label}) => (
                                     <CommandItem
-                                        key={destination}
-                                        value={destination}
+                                        key={label}
+                                        value={label}
                                         onSelect={(value) => {
                                             onDestinationChange(value)
                                             setOpen(false)
                                         }}
                                     >
                                         <MapPin className="mr-2 h-4 w-4 text-gray-400" />
-                                        {destination}
+                                        {label}
                                     </CommandItem>
                                 ))}
                             </CommandGroup>
