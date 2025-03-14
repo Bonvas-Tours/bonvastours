@@ -20,7 +20,7 @@ export function formatLocation(location: { country: string; city?: string; regio
   
     // Check if region is not empty or undefined
     if (region.trim()) {
-        return city ? `${country}, ${city}, ${region}` : `${country}, ${region}`;
+        return city ? `${region}, ${country}, ${city}` : `${region}, ${city}`;
     }
     // Fallback if region is empty
     return city ? `${country}, ${city}` : country;
