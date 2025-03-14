@@ -1,6 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { SearchForm } from './SearchForm'
 import { useState } from 'react'
 import BookingForm from './BookingForm'
@@ -9,7 +8,7 @@ import { cn } from '@/lib/utils'
 type TabType = "book" | "manage"
 
 export default function SearchBar() {
-    const [activeTab, setActiveTab] = useState<TabType>("manage")
+    const [activeTab, setActiveTab] = useState<TabType>("book")
 
     return (
         <div className="w-full max-w-6xl mx-auto">

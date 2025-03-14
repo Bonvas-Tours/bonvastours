@@ -7,14 +7,16 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { CalendarCheck2, User } from "lucide-react"
 import BookingSelectionModal from "./BookingSelectionModal"
-import { findBooking } from "@/app/(root)/actions/booking-action"
+import { findBooking } from "@/app/(client_dashboard)/actions/manage-booking"
+
+
 
 export default function BookingForm() {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
     const [errors, setErrors] = useState<Record<string, string[]>>({})
     const [showModal, setShowModal] = useState(false)
-    const [bookings, setBookings] = useState<any[]>([])
+    const [tourists, setTourists] = useState<any[]>([])
     const [errorMessage, setErrorMessage] = useState("")
 
     async function handleSubmit(formData: FormData) {
@@ -24,6 +26,7 @@ export default function BookingForm() {
 
         try {
             const result = await findBooking(formData)
+            console.log(result)
 
             if (!result.success) {
                 if (result.errors) {
@@ -35,11 +38,11 @@ export default function BookingForm() {
             }
 
             if (result.hasDuplicates) {
-                setBookings(result.bookings)
+                setTourists(result.tourists) // Ensure `result.booking` contains an array of bookings
                 setShowModal(true)
             } else {
                 // Navigate to booking details page with the single booking
-                router.push(`/booking/${result.bookings[0].id}`)
+                router.push(`/client/dashboard`)
             }
         } catch (error) {
             setErrorMessage("An unexpected error occurred")
@@ -48,9 +51,9 @@ export default function BookingForm() {
         }
     }
 
-    function handleSelectBooking(bookingId: number) {
+    function handleSelectTourist(bookingId: number) {
         setShowModal(false)
-        router.push(`/booking/${bookingId}`)
+        router.push(`/client/dashboard`)
     }
 
     return (
@@ -60,13 +63,13 @@ export default function BookingForm() {
                     <div className=" relative flex-1">
                         <CalendarCheck2 className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                         <Input
-                            name="bookingCode"
+                            name="tnr"
                             placeholder="eg. TNR3HD"
-                            className="h-12 bg-white  pl-10"
+                            className="h-12 bg-white pl-10"
                             disabled={isLoading}
                         />
-                        
-                        {errors.bookingCode && <p className="text-red-500 text-sm mt-1">{errors.bookingCode[0]}</p>}
+
+                        {errors.tnr && <p className="text-red-500 text-sm mt-1">{errors.tnr[0]}</p>}
                     </div>
                     <div className="relative flex-1">
                         <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -89,16 +92,14 @@ export default function BookingForm() {
 
                 {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
 
-            
             </form>
 
             <BookingSelectionModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
-                bookings={bookings}
-                onSelect={handleSelectBooking}
+                tourists={tourists}
+                onSelect={handleSelectTourist}
             />
         </>
     )
 }
-

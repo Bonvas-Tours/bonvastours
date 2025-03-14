@@ -1,6 +1,6 @@
 import { getTourPackages } from '../actions/packages';
 import { TourPackagesContent } from './_content';
-import { formatLocation } from '@/lib/utils';
+
 
 type SearchParamsProps = {
     destination?: string;

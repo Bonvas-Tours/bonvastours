@@ -1,6 +1,5 @@
 import React from 'react'
 import HeroSlider from './HeroSlider'
-import SearchBar from './SearchBar'
 import BookingTabs from './BookingTabs'
 
 function Hero() {

@@ -21,7 +21,7 @@ export interface TourPackageProps extends TourPackage {
   startDate: string;
   endDate: string;
   tourPackageOptions: TourPackageOption[];
-}
+}  
 
 export interface TourPackageDetailsProps extends TourPackageProps {}
 

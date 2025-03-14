@@ -10,7 +10,7 @@ import Link from "next/link"
 export default async function Dashboard() {
     const completedBookings = await getCompletedBookings() 
     const activeBooking = await getActiveBooking()
-    console.log(completedBookings, activeBooking)
+    // console.log(completedBookings, activeBooking)
  
     return (
         <>

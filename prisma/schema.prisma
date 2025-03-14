@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -32,9 +26,9 @@ model Employee {
   dateOfHire     String
   blocked        Boolean
   password       String
-  sessions       Session[]
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
+  sessions       Session[]
 }
 
 model Session {
@@ -48,16 +42,16 @@ model Session {
 
 model Review {
   id            String      @id @default(uuid())
-  tourPackage   TourPackage @relation(fields: [tourPackageId], references: [id])
   tourPackageId String
-  booking       Booking     @relation(fields: [bookingId], references: [id])
-  bookingId     String
-  tourist       Tourist     @relation(fields: [touristId], references: [id])
   touristId     String
   rating        Int
   comment       String?
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
+  tnr           String
+  Booking       Booking     @relation(fields: [tnr], references: [tnr], onDelete: Cascade, onUpdate: NoAction)
+  tourPackage   TourPackage @relation(fields: [tourPackageId], references: [id])
+  tourist       Tourist     @relation(fields: [touristId], references: [id])
 }
 
 model TourPackage {
@@ -72,39 +66,39 @@ model TourPackage {
   minimumPax            Int
   maximumPax            Int
   status                String
-  dailyPrice            Decimal
+  dailyPrice            Float
   rating                Float
   averageReviews        Int
   expiryDate            DateTime
   createdAt             DateTime               @default(now())
   updatedAt             DateTime               @updatedAt
   locationId            Int?
-  location              Location?              @relation(fields: [locationId], references: [id])
-  tourMap               Coordinate[]
-  tourPackageInclusions TourPackageInclusion[]
-  tourPackageExclusions TourPackageExclusion[]
-  itineraryList         Itinerary[]
-  tourPackageOptions    TourPackageOption[]
   bookings              Booking[]
-  reviews               Review[]
+  tourMap               Coordinate[]
   gallery               Image[]
-  departures            TourDeparture[]
+  itineraryList         Itinerary[]
   PageView              PageView[]
+  reviews               Review[]
+  departures            TourDeparture[]
+  location              Location?              @relation(fields: [locationId], references: [id])
+  tourPackageExclusions TourPackageExclusion[]
+  tourPackageInclusions TourPackageInclusion[]
+  tourPackageOptions    TourPackageOption[]
 }
 
 model TourPackageOption {
   id            String      @id @default(uuid())
   tourPackageId String
-  durationDays  Int
-  startDate     DateTime
-  endDate       DateTime
   adultPrice    Float
-  couplePrice   Float
   childrenPrice Float
+  couplePrice   Float
   createdAt     DateTime    @default(now())
+  durationDays  Int
+  endDate       DateTime
+  startDate     DateTime
   updatedAt     DateTime    @updatedAt
-  TourPackage   TourPackage @relation(fields: [tourPackageId], references: [id])
   Booking       Booking[]
+  TourPackage   TourPackage @relation(fields: [tourPackageId], references: [id])
 }
 
 model PageView {
@@ -143,9 +137,9 @@ model Coordinate {
   longitude     String
   latitude      String
   tourPackageId String?
-  tourPackage   TourPackage? @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
+  tourPackage   TourPackage? @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
 }
 
 model TourDeparture {
@@ -194,7 +188,7 @@ model Itinerary {
 model Tourist {
   id                 String           @id @default(uuid())
   firstname          String
-  lastname           String           @unique
+  lastname           String           
   primaryNumber      String
   secondaryNumber    String?
   country            String
@@ -209,45 +203,44 @@ model Tourist {
 }
 
 model Booking {
-  id                String             @id @default(uuid())
-  tnr               String             @unique
+  tnr               String             @id @unique
   tourPackageId     String
   selectedOptionId  String?
   numberOfAdults    Int
   numberOfChildren  Int
   numberOfCouples   Int
-  totalPrice        Decimal
+  totalPrice        Float
   isInstallment     Boolean
   installmentNumber Int?
-  amountPaid        Decimal
+  amountPaid        Float
   status            String
   dueDate           DateTime?
   createdAt         DateTime           @default(now())
   updatedAt         DateTime           @updatedAt
-  payments          Payment[]
-  bookingTourists   BookingTourist[]
-  tourPackage       TourPackage        @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
   selectedOption    TourPackageOption? @relation(fields: [selectedOptionId], references: [id], onDelete: Cascade)
+  tourPackage       TourPackage        @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
+  bookingTourists   BookingTourist[]
+  payments           Payment[]
   Review            Review[]
 }
 
 model BookingTourist {
-  bookingId String
   touristId String
-  booking   Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  tnr       String
+  booking   Booking @relation(fields: [tnr], references: [tnr], onDelete: Cascade, onUpdate: NoAction)
   tourist   Tourist @relation(fields: [touristId], references: [id], onDelete: Cascade)
 
-  @@id([bookingId, touristId])
+  @@id([tnr, touristId])
 }
 
 model Payment {
   id                String   @id @default(uuid())
-  bookingId         String
-  amount            Decimal
+  amount            Float
   installmentNumber Int
   status            String
   transactionId     String
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
-  booking           Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  tnr               String
+  booking           Booking  @relation(fields: [tnr], references: [tnr], onDelete: Cascade, onUpdate: NoAction)
 }
