@@ -28,7 +28,7 @@ export async function findBooking(formData: FormData) {
 
   try {
     const booking = await Prisma.booking.findUnique({
-      where: { tnr },
+      where: { tnr: tnr.toUpperCase() },
       include: {
         payments: true,
         tourPackage: {
