@@ -1,5 +1,6 @@
 'use client'
 
+import { getDestinations } from "@/app/(root)/actions/packages"
 import {
     Select,
     SelectContent,
@@ -8,13 +9,25 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { DESTINATIONS, MONTHS } from "@/content"
+import { useEffect, useState } from "react"
 
 interface TourFiltersProps {
     onFilterMonth: (month: string) => void
     onFilterDestination: (destination: string) => void
 }
 
+type Destinations = Awaited<ReturnType<typeof getDestinations>> | null;
+
 export function TourFilters({ onFilterMonth, onFilterDestination }: TourFiltersProps) {
+
+    const [destinations, setDestinations] = useState<Destinations>();
+
+    useEffect(() => {
+      (async () => {
+        const currentDestinations = await getDestinations();
+        setDestinations(currentDestinations);
+      })();
+    }, []);
 
     return (
         <div className="flex gap-4">
@@ -36,9 +49,9 @@ export function TourFilters({ onFilterMonth, onFilterDestination }: TourFiltersP
                     <SelectValue placeholder="Filter by Destination" />
                 </SelectTrigger>
                 <SelectContent>
-                    {DESTINATIONS.map((destination) => (
-                        <SelectItem key={destination} value={destination.toLowerCase()}>
-                            {destination}
+                    {!destinations ? "Loading...": destinations.map(({label}) => (
+                        <SelectItem key={label} value={label}>
+                            {label}
                         </SelectItem>
                     ))}
                 </SelectContent>

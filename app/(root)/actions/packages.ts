@@ -1,18 +1,82 @@
 "use server";
 
+import { MONTHS } from "@/content";
 import { Prisma } from "@/lib/prisma";
 import { TourPackageProps } from "@/type";
+import { Prisma as PrismaClient } from "@prisma/client";
 
-export const getTourPackages = async (
-  limit: number | undefined = undefined,
-) => {
-  const packages = await Prisma.tourPackage.findMany({
+interface TourPackageFilter {
+  limit?: number | undefined;
+  searchOptions?: {
+    destination?: string | undefined;
+    month?: string | undefined;
+    startDate?: Date | undefined;
+    endDate?: Date | undefined;
+  };
+}
+
+const defaultFilter: TourPackageFilter = {
+  limit: undefined,
+};
+
+export const getTourPackages = async ({
+  limit,
+  searchOptions,
+}: TourPackageFilter = defaultFilter) => {
+  const options: PrismaClient.TourPackageFindManyArgs = {
     take: limit,
+    where: {},
     include: {
       location: true,
       tourPackageOptions: true,
     },
-  });
+  };
+
+  if (searchOptions) {
+    let { destination, month, startDate, endDate } = searchOptions;
+
+    if (destination) {
+      const [country, city] = destination.split(",");
+
+      options.where!.location = { country: country.trim(), city: city.trim() };
+    }
+
+    if (month) {
+      const monthIndex = MONTHS.findIndex(
+        (m) => m.toLowerCase() == month?.toLowerCase(),
+      );
+
+      if (monthIndex) {
+        const year = new Date().getFullYear();
+
+        startDate = new Date(`${year}-${month}-01`);
+        endDate = new Date(year, monthIndex + 1, 0);
+      }
+    }
+
+    options.where!.tourPackageOptions = {
+      some: {},
+    };
+
+    if (startDate && endDate) {
+      options.where!.tourPackageOptions.some! = {
+        startDate: { gte: startDate },
+        endDate: { lte: endDate },
+      };
+    } else {
+      if (startDate) {
+        options.where!.tourPackageOptions.some!.startDate = {
+          equals: startDate,
+        };
+      }
+
+      if (endDate) {
+        options.where!.tourPackageOptions.some!.endDate = { equals: endDate };
+      }
+    }
+  }
+
+  const packages = await Prisma.tourPackage.findMany(options);
 
   const fmttedPackages = packages.map((pkg) => ({
     ...pkg,
