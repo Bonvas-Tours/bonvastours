@@ -188,7 +188,8 @@ model Itinerary {
 model Tourist {
   id                 String           @id @default(uuid())
   firstname          String
-  lastname           String           
+  lastname           String
+  email              String?          @unique
   primaryNumber      String
   secondaryNumber    String?
   country            String
@@ -220,7 +221,7 @@ model Booking {
   selectedOption    TourPackageOption? @relation(fields: [selectedOptionId], references: [id], onDelete: Cascade)
   tourPackage       TourPackage        @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
   bookingTourists   BookingTourist[]
-  payments           Payment[]
+  payments          Payment[]
   Review            Review[]
 }
 

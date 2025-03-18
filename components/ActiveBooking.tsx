@@ -1,32 +1,40 @@
-import Link from "next/link"
-import Image from "next/image"
-import { format } from "date-fns"
-import { Calendar, Clock, Download, Eye } from "lucide-react"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { BookingModifySheet } from "@/components/BookingModifySheet"
-import { PaymentSheet } from "@/components/PaymentSheet"
-import { Booking } from "@/lib/api"
-import { Button } from "./ui/button"
-import { formatLocation2 } from "@/lib/utils"
-import { DownloadInvoiceButton } from "./DownloadInvoiceButton"
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { format } from "date-fns";
+import { Calendar, Clock, Eye } from "lucide-react";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { BookingModifySheet } from "@/components/BookingModifySheet";
+import { PaymentSheet } from "@/components/PaymentSheet";
+import { Button } from "./ui/button";
+import { formatLocation2 } from "@/lib/utils";
+import { DownloadInvoiceButton } from "./DownloadInvoiceButton";
+import { Booking, Payment, TourPackage, TourPackageOption, Tourist, Location } from "@prisma/client";
 
 type ActiveBookingProps = {
-  booking: Booking
-}
+    booking: Booking & {
+        payments?: Payment[];
+        tourPackage?: TourPackage & { location: Location };
+        selectedOption?: TourPackageOption;
+        bookingTourists?: { tourist: Tourist }[];
+    };
+};
 
+export function ActiveBooking({ booking }: ActiveBookingProps) {
+    const tourPackage = booking?.tourPackage;
+    const amountRemaining = booking?.totalPrice - (booking?.amountPaid || 0);
 
-export async function ActiveBooking({ booking }: ActiveBookingProps) {
- 
-
-    const tourPackage = booking.tourPackage
-    const amountRemaining = booking.totalPrice - booking.amountPaid
+    if (!booking || !tourPackage) {
+        return <div>No active booking found.</div>;
+    }
 
     return (
         <div className="space-y-4">
             <div className="flex items-center justify-between">
                 <h2 className="text-lg font-medium">Active Booking</h2>
                 <Button variant="outline" size="sm" asChild>
-                    <Link href={`/client/booking-detail/${booking.id}`}>
+                    <Link href={`/client/booking-detail/${booking.tnr}`}>
                         <Eye className="h-4 w-4 mr-2" />
                         View Details
                     </Link>
@@ -38,15 +46,15 @@ export async function ActiveBooking({ booking }: ActiveBookingProps) {
                     <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                         <div className="flex flex-col md:flex-row gap-4">
                             <Image
-                                src={tourPackage?.cover || "/placeholder.svg"}
-                                alt={tourPackage?.name || "Tour Package"}
+                                src={tourPackage.cover || "/placeholder.svg"}
+                                alt={tourPackage.name || "Tour Package"}
                                 width={200}
                                 height={120}
                                 className="rounded-md object-cover w-full md:w-[200px] h-[120px]"
                             />
                             <div>
-                                <CardTitle>{tourPackage?.name}</CardTitle>
-                                <CardDescription className="mt-1">  {formatLocation2(tourPackage?.location)}</CardDescription>
+                                <CardTitle>{tourPackage.name}</CardTitle>
+                                <CardDescription className="mt-1">{formatLocation2(tourPackage?.location)}</CardDescription>
 
                                 <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-muted-foreground">
                                     <div className="flex items-center gap-1">
@@ -58,29 +66,32 @@ export async function ActiveBooking({ booking }: ActiveBookingProps) {
                                     </div>
                                     <div className="flex items-center gap-1">
                                         <Clock className="h-4 w-4" />
-                                        <span>Duration: {booking.selectedOption?.durationDays } days</span>
+                                        <span>Duration: {booking.selectedOption?.durationDays} days</span>
                                     </div>
                                 </div>
 
                                 <div className="mt-2 flex items-center gap-2">
-                                    <span className={`text-xs px-2 py-1 rounded-full ${booking.status === "Reserved"
-                                            ? "bg-yellow-100 text-yellow-800"
-                                            : booking.status === "Completed"
-                                                ? "bg-blue-100 text-blue-800"
-                                                : booking.status === "Approved"
-                                                    ? "bg-green-100 text-green-800"
-                                                    : "bg-red-100 text-red-800"
-                                        }`}>{booking.status}</span>
-                                    <span className="text-sm">Amount Paid:</span> <span className="text-sm text-green-600 font-bold">${booking.amountPaid.toLocaleString()}</span>
+                                    <span
+                                        className={`text-xs px-2 py-1 rounded-full ${booking.status === "Reserved"
+                                                ? "bg-yellow-100 text-yellow-800"
+                                                : booking.status === "Completed"
+                                                    ? "bg-blue-100 text-blue-800"
+                                                    : booking.status === "Approved"
+                                                        ? "bg-green-100 text-green-800"
+                                                        : "bg-red-100 text-red-800"
+                                            }`}
+                                    >
+                                        {booking.status}
+                                    </span>
+                                    <span className="text-sm">Amount Paid:</span>{" "}
+                                    <span className="text-sm text-green-600 font-bold">${booking.amountPaid.toLocaleString()}</span>
                                 </div>
                             </div>
                         </div>
 
                         <div className="text-right">
                             <div className="text-xl font-bold text-primary">${booking.totalPrice.toLocaleString()}</div>
-                            {booking?.tourPackage?.category === "Private" && (
-                                <BookingModifySheet booking={booking} />
-                            )}
+                            {tourPackage.category === "Private" && <BookingModifySheet booking={booking} />}
                         </div>
                     </div>
                 </CardHeader>
@@ -117,7 +128,8 @@ export async function ActiveBooking({ booking }: ActiveBookingProps) {
                             <div>
                                 <div className="text-sm text-muted-foreground">End Date:</div>
                                 <div>
-                                    {booking.selectedOption?.endDate && format(new Date(booking.selectedOption.endDate), "MMM dd, yyyy")}
+                                    {booking.selectedOption?.endDate &&
+                                        format(new Date(booking.selectedOption.endDate), "MMM dd, yyyy")}
                                 </div>
                             </div>
                             <div>
@@ -154,7 +166,7 @@ export async function ActiveBooking({ booking }: ActiveBookingProps) {
                                         <td className="py-3">${payment.amount.toLocaleString()}</td>
                                         <td className="py-3">{payment.installmentNumber || 1}</td>
                                         <td className="py-3 text-right">
-                                            <DownloadInvoiceButton bookingId={booking.id} />
+                                            <DownloadInvoiceButton bookingId={booking.tnr} />
                                         </td>
                                     </tr>
                                 ))}
@@ -164,8 +176,5 @@ export async function ActiveBooking({ booking }: ActiveBookingProps) {
                 </CardFooter>
             </Card>
         </div>
-    )
+    );
 }
-
-
-

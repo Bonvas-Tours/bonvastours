@@ -6,7 +6,7 @@ interface BookingDetailHeaderProps {
   bookingId: string
 }
 
-export function BookingDetailHeader({ bookingId }: BookingDetailHeaderProps) {
+export function BookingDetailHeader() {
   return (
     <div className="flex items-center gap-2">
       <Button variant="outline" size="icon" className="h-8 w-8" asChild>

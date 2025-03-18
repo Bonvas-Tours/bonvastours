@@ -1,25 +1,27 @@
-import Image from "next/image"
-import Link from "next/link"
-import { format } from "date-fns"
-import { Calendar, Clock } from "lucide-react"
+import Image from "next/image";
+import Link from "next/link";
+import { format } from "date-fns";
+import { Calendar, Clock } from "lucide-react";
 
-import { getBookingById } from "@/lib/api"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { formatLocation2 } from "@/lib/utils"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { formatLocation2 } from "@/lib/utils";
+import { Booking, TourPackage, TourPackageOption, Tourist } from "@prisma/client";
 
 interface BookingDetailInfoProps {
-  bookingId: string
+  booking: Booking & {
+    tourPackage?: TourPackage & { location: Location };
+    selectedOption?: TourPackageOption;
+    tourists?: Tourist[];
+  };
 }
 
-export async function BookingDetailInfo({ bookingId }: BookingDetailInfoProps) {
-  const booking = await getBookingById(bookingId)
-console.log(booking)
+export function BookingDetailInfo({ booking }: BookingDetailInfoProps) {
   if (!booking) {
-    return null
+    return null;
   }
 
-  const tourPackage = booking.tourPackage
+  const tourPackage = booking.tourPackage;
 
   return (
     <div className="space-y-4">
@@ -109,12 +111,13 @@ console.log(booking)
               <div>
                 <div className="text-sm text-muted-foreground">Trip End Date</div>
                 <div>
-                  {booking.selectedOption?.endDate && format(new Date(booking.selectedOption.endDate), "MMM dd, yyyy")}
+                  {booking.selectedOption?.endDate &&
+                    format(new Date(booking.selectedOption.endDate), "MMM dd, yyyy")}
                 </div>
               </div>
               <div>
                 <div className="text-sm text-muted-foreground">Departure Point</div>
-                <div>{booking.departurePoint}</div>
+                <div>{booking?.departurePoint}</div>
               </div>
             </div>
 
@@ -122,7 +125,7 @@ console.log(booking)
               <div>
                 <div className="text-sm text-muted-foreground">Contact Person</div>
                 <div>
-                  {booking.tourists?.[0].firstname} {booking.tourists?.[0].lastname}
+                  {booking.tourists?.[0]?.firstname} {booking.tourists?.[0]?.lastname}
                 </div>
               </div>
               <div>
@@ -187,8 +190,6 @@ console.log(booking)
           </div>
         </CardContent>
       </Card>
-
     </div>
-  )
+  );
 }
-

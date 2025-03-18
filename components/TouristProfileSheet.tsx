@@ -1,26 +1,18 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Phone, Mail } from "lucide-react"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Phone, Mail } from "lucide-react";
+import { Tourist } from "@prisma/client";
 
 interface TouristProfileSheetProps {
-    tourist: {
-        firstname: string
-        lastname: string
-        primaryNumber: string
-        email?: string
-        country: string
-        city: string
-        address: string
-        specialRequirement?: string
-    }
+    tourist: Tourist
 }
 
 export function TouristProfileSheet({ tourist }: TouristProfileSheetProps) {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
 
     return (
         <Sheet open={open} onOpenChange={setOpen}>
@@ -34,6 +26,7 @@ export function TouristProfileSheet({ tourist }: TouristProfileSheetProps) {
                     <SheetTitle>Tourist Profile</SheetTitle>
                 </SheetHeader>
 
+                {/* Tourist Contact Information */}
                 <Card className="!shadow-none mt-6">
                     <CardHeader className="pb-2">
                         <CardTitle className="text-lg">
@@ -58,6 +51,7 @@ export function TouristProfileSheet({ tourist }: TouristProfileSheetProps) {
                     </CardContent>
                 </Card>
 
+                {/* Tourist Personal Information */}
                 <Card className="!shadow-none mt-4">
                     <CardHeader className="pb-2">
                         <CardTitle className="text-lg">Personal Information</CardTitle>
@@ -85,5 +79,5 @@ export function TouristProfileSheet({ tourist }: TouristProfileSheetProps) {
                 </Card>
             </SheetContent>
         </Sheet>
-    )
+    );
 }

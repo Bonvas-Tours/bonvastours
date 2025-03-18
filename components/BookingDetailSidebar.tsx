@@ -1,25 +1,32 @@
-import { getBookingById } from "@/lib/api"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Phone, Mail } from "lucide-react"
-import { TouristProfileSheet } from "./TouristProfileSheet"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Phone, Mail } from "lucide-react";
+import { TouristProfileSheet } from "./TouristProfileSheet";
+import { Booking, Tourist } from "@prisma/client";
 
 interface BookingDetailSidebarProps {
-  bookingId: string
+  booking: Booking & {
+    bookingTourists?: { tourist: Tourist }[];
+  };
+  primaryTourist: Tourist; // The primary tourist (logged-in user)
 }
 
-export async function BookingDetailSidebar({ bookingId }: BookingDetailSidebarProps) {
-  const booking = await getBookingById(bookingId)
-
-  if (!booking || !booking.tourists || booking.tourists.length === 0) {
-    return null
+export function BookingDetailSidebar({ booking, primaryTourist }: BookingDetailSidebarProps) {
+  console.log(primaryTourist)
+  // Ensure booking and tourists exist
+  if (!booking || !booking.bookingTourists || booking.bookingTourists.length === 0) {
+    return null;
   }
 
-  const primaryTourist = booking.tourists[0]
-  const otherTourists = booking.tourists.slice(1)
+  // Extract tourists from bookingTourists
+  const tourists = booking.bookingTourists.map((bt) => bt.tourist);
+
+  // Filter out the primary tourist from the list of other tourists
+  const otherTourists = tourists.filter((tourist) => tourist.id !== primaryTourist.id);
 
   return (
     <div className="space-y-4">
+      {/* Primary Tourist Card */}
       <Card className="!shadow-none">
         <CardHeader className="pb-2">
           <CardTitle className="text-lg">
@@ -33,17 +40,18 @@ export async function BookingDetailSidebar({ bookingId }: BookingDetailSidebarPr
             </div>
             <span>{primaryTourist.primaryNumber}</span>
           </div>
-          {primaryTourist.email && (
+          {primaryTourist?.email && (
             <div className="flex items-center gap-2 text-sm">
               <div className="h-5 w-5 rounded-full bg-muted flex items-center justify-center">
                 <Mail className="h-3 w-3 text-muted-foreground" />
               </div>
-              <span>{primaryTourist.email}</span>
+              <span>{primaryTourist?.email}</span>
             </div>
           )}
         </CardContent>
       </Card>
 
+      {/* Personal Information Card */}
       <Card className="!shadow-none">
         <CardHeader className="pb-2">
           <CardTitle className="text-lg">Personal Information</CardTitle>
@@ -70,6 +78,7 @@ export async function BookingDetailSidebar({ bookingId }: BookingDetailSidebarPr
         </CardContent>
       </Card>
 
+      {/* Other Tourists */}
       {otherTourists.map((tourist) => (
         <Card key={tourist.id} className="!shadow-none">
           <CardHeader className="pb-2">
@@ -83,6 +92,5 @@ export async function BookingDetailSidebar({ bookingId }: BookingDetailSidebarPr
         </Card>
       ))}
     </div>
-  )
+  );
 }
-

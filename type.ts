@@ -1,4 +1,4 @@
-import { Location, TourPackage, TourPackageOption } from "@prisma/client"
+import { Booking, Location, Payment, Tourist, TourPackage, TourPackageOption } from "@prisma/client"
 
 export interface Testimonial {
   id: number
@@ -57,4 +57,23 @@ export interface Country {
     name: {
         common: string;
     };
+}
+
+
+export interface FindBookingResponse {
+  success: boolean;
+  errors?: Record<string, string[]>;
+  message?: string;
+  hasDuplicates?: boolean;
+  booking: (Booking & {
+        payments?: Payment[];
+        tourPackage?: {
+          location: Location;
+        };
+        selectedOption?: TourPackageOption;
+        bookingTourists?: {
+          tourist: Tourist;
+        }[];
+    }) | null;
+  tourists?: Tourist[];
 }

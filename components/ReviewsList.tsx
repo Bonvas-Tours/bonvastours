@@ -23,7 +23,7 @@ export async function ReviewsList() {
           <CardHeader className="pb-2">
             <div className="flex justify-between items-start">
               <div>
-                <CardTitle>{review.tourPackage?.title}</CardTitle>
+                <CardTitle>{review.tourPackage?.name}</CardTitle>
                 <div className="flex items-center gap-1 mt-1">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <Star

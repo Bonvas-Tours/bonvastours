@@ -5,6 +5,7 @@ import "./../../globals.css"
 import { SidebarProvider } from "@/components/ui/sidebar"
 import { SidebarNav } from "@/components/SidebarNav"
 import { ThemeProvider } from "@/components/themeProvider"
+import { Toaster } from "sonner"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -19,7 +20,7 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-                <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
                 <SidebarProvider>
                     <div className="flex min-h-screen w-full">
                         <SidebarNav />
@@ -28,7 +29,7 @@ export default function RootLayout({
                         <main className="flex-1 bg-muted/40">{children}</main>
                     </div>
                 </div>
-                </SidebarProvider>
-                </ThemeProvider>
+            </SidebarProvider>
+        </ThemeProvider>
     )
 }

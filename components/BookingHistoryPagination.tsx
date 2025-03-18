@@ -1,12 +1,17 @@
-"use client"
+// components/BookingHistoryPagination.tsx
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { ChevronRight } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
 
-export function BookingHistoryPagination() {
+interface BookingHistoryPaginationProps {
+  totalItems: number;
+}
+
+export function BookingHistoryPagination({ totalItems }: BookingHistoryPaginationProps) {
   return (
     <div className="flex items-center justify-between mt-4">
-      <div className="text-sm text-muted-foreground">Showing 1-3 of 10</div>
+      <div className="text-sm text-muted-foreground">Showing 1-12 of {totalItems}</div>
       <div className="flex gap-1">
         <Button variant="outline" size="sm" className="h-8 w-8 p-0 bg-orange-500 text-white">
           1
@@ -28,6 +33,5 @@ export function BookingHistoryPagination() {
         </Button>
       </div>
     </div>
-  )
+  );
 }
-

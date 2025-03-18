@@ -42,8 +42,6 @@ export function DestinationSearch({
       })();
     }, []);
 
-    if (!destinations) return "Loading..."
-
     return (
         <div className={cn("grid gap-2 text-neutral-500", className)}>
             <Popover open={open} onOpenChange={setOpen}>
@@ -58,7 +56,7 @@ export function DestinationSearch({
                         )}
                     >
                         <MapPin className="h-4 w-4 text-gray-400" />
-                        {destination || "Where is your next destination?"}
+                        {destinations ? (destination || "Where is your next destination?") : ("Loading...")}
                     </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-[400px] p-0">
@@ -67,7 +65,7 @@ export function DestinationSearch({
                         <CommandList>
                             <CommandEmpty>No destination found.</CommandEmpty>
                             <CommandGroup>
-                                {destinations.map(({label}) => (
+                                {destinations?.map(({label}) => (
                                     <CommandItem
                                         key={label}
                                         value={label}

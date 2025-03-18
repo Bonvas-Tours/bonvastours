@@ -1,18 +1,18 @@
-import { format } from "date-fns"
-import { Download } from "lucide-react"
-import { getBookingById } from "@/lib/api"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { format } from "date-fns";
+import { Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Booking, Payment } from "@prisma/client";
 
 interface BookingDetailPaymentsProps {
-  bookingId: string
+  booking: Booking & {
+    payments?: Payment[];
+  };
 }
 
-export async function BookingDetailPayments({ bookingId }: BookingDetailPaymentsProps) {
-  const booking = await getBookingById(bookingId)
-
+export function BookingDetailPayments({ booking }: BookingDetailPaymentsProps) {
   if (!booking || !booking.payments || booking.payments.length === 0) {
-    return null
+    return null;
   }
 
   return (
@@ -40,7 +40,7 @@ export async function BookingDetailPayments({ bookingId }: BookingDetailPayments
                   <td className="px-4 py-2">${payment.amount.toLocaleString()}</td>
                   <td className="px-4 py-2">{payment.installmentNumber || 1}</td>
                   <td className="px-4 py-2 text-right">
-                    <form action={`/api/invoices/${booking.id}`} method="GET">
+                    <form action={`/api/invoices/${booking.tnr}`} method="GET">
                       <Button variant="ghost" size="sm" className="h-8 px-2" type="submit">
                         <Download className="h-4 w-4 mr-1" />
                         <span>Invoice</span>
@@ -54,6 +54,5 @@ export async function BookingDetailPayments({ bookingId }: BookingDetailPayments
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
-

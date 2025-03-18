@@ -83,7 +83,7 @@ export default function RootLayout({
 
       <body className={inter.variable}>
         {children}
-        <Toaster />
+        <Toaster position="top-right" richColors />
         <SpeedInsights />
       </body>
     </html>
