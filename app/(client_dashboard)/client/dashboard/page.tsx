@@ -14,7 +14,7 @@ export default async function Dashboard() {
 
     console.log(booking, selectedTourist);
 
-    if (!booking || !selectedTourist) {
+    if (!booking && !selectedTourist) {
         return <div>Unauthorized access</div>;
     }
 
