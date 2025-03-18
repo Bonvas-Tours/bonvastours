@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { TourCard } from "@/components/TourCard"
 import { TourSearch } from "@/components/TourSearch"
 import { TourFilters } from "@/components/TourFilters"
 import { Button } from "@/components/ui/button"
 import type { TourFiltersProps as TourFiltersType, TourPackageDetailsProps } from "@/type"
 import { formatLocation } from "@/lib/utils"
+import { useParams, useRouter, useSearchParams } from "next/navigation"
 
 const TOURS_PER_PAGE = 6
 
@@ -16,10 +17,46 @@ interface TourPackagesContentProps {
 
 export function TourPackagesContent({ initialTours }: TourPackagesContentProps) {
     const [filters, setFilters] = useState<TourFiltersType>({})
+    const [searchQuery, setSearchQuery] = useState("")
     const [visibleTours, setVisibleTours] = useState(TOURS_PER_PAGE)
 
-    const displayedTours = initialTours.slice(0, visibleTours)
+    const router  = useRouter()
+    const params  = useSearchParams()
+
+    const [displayedTours, setDisplayedTours]= useState(initialTours)
     const hasMore = visibleTours < initialTours.length
+
+    const handleDestinationFilter = (destination: string) => {
+      const newParams = new URLSearchParams(params);
+
+      newParams.set("destination", destination);
+
+      router.push(`/tour-packages?${newParams.toString()}`);
+    };
+
+    const handleMonthFilter = (month: string) => {
+      const newParams = new URLSearchParams(params);
+
+      newParams.set("month", month);
+      newParams.delete("startDate");
+      newParams.delete("endDate");
+
+      router.push(`/tour-packages?${newParams.toString()}`);
+    };
+
+
+        useEffect(() => {
+        let filteredTours = initialTours
+
+        if (searchQuery) {
+            const searchTerm = searchQuery.toLowerCase()
+            filteredTours = filteredTours.filter(tour =>
+                tour.name.toLowerCase().includes(searchTerm)
+            )
+        }
+
+        setDisplayedTours(filteredTours)
+    }, [searchQuery, initialTours])
 
     return (
         <div className="container pb-12 pt-4">
@@ -30,11 +67,11 @@ export function TourPackagesContent({ initialTours }: TourPackagesContentProps) 
             </div>
             <div className="mb-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
                 <TourFilters
-                    onFilterMonth={(month) => setFilters((prev) => ({ ...prev, month }))}
-                    onFilterDestination={(destination) => setFilters((prev) => ({ ...prev, destination }))}
+                    onFilterMonth={handleMonthFilter}
+                    onFilterDestination={handleDestinationFilter}
                 />
                 <TourSearch
-                    onSearch={(search) => setFilters((prev) => ({ ...prev, search }))}
+                     onSearch={(search) => setSearchQuery(search)}
                 />
             </div>
 

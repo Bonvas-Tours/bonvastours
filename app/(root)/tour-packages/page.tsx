@@ -4,6 +4,7 @@ import { TourPackagesContent } from './_content';
 
 type SearchParamsProps = {
     destination?: string;
+    month?: string;
     startDate?: string;
     endDate?: string;
 };
@@ -16,11 +17,13 @@ export default async function TourPackagesPage({
 
     const params = await searchParams;
     const destination = params.destination;
+    const month = params.month;
     const startDate = params.startDate ? new Date(params.startDate) : undefined;
     const endDate = params.endDate ? new Date(params.endDate) : undefined;
 
-
-    const tourPackages = await getTourPackages()
+    const tourPackages = await getTourPackages({
+      searchOptions: { destination, month, startDate, endDate },
+    });
 
     return (
         <main className="min-h-screen bg-background">
