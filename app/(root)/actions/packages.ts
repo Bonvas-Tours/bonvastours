@@ -36,9 +36,22 @@ export const getTourPackages = async ({
     let { destination, month, startDate, endDate } = searchOptions;
 
     if (destination) {
-      const [country, city] = destination.split(",");
+      let [country, city] = destination.split(",");
 
-      options.where!.location = { country: country.trim(), city: city.trim() };
+      country = country.trim();
+
+      if (city) {
+        city = city.trim();
+      }
+
+      if (country && city) {
+        options.where!.location = {
+          country,
+          city,
+        };
+      } else {
+        options.where!.location = { country };
+      }
     }
 
     if (month) {
@@ -96,7 +109,16 @@ export const getDestinations = async () => {
       const combination = `${country}-${city}`;
       if (!uniqueLocations.has(combination)) {
         uniqueLocations.add(combination);
-        return { country, city, label: `${country}, ${city}` };
+
+        let label: string;
+
+        if (country && city) {
+          label = `${country}, ${city}`;
+        } else {
+          label = `${country}`;
+        }
+
+        return { country, city, label };
       }
       return { country: "", city: "", label: "" }; // Avoid 'null' values
     })
