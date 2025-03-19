@@ -25,7 +25,7 @@ export const getTourPackages = async ({
 }: TourPackageFilter = defaultFilter) => {
   const options: PrismaClient.TourPackageFindManyArgs = {
     take: limit,
-    where: {},
+    where: { status: "Published" },
     include: {
       location: true,
       tourPackageOptions: true,
