@@ -72,7 +72,7 @@ export function BookingHistoryList({ bookings }: BookingHistoryListProps) {
                   </td>
                   <td className="px-4 py-3">
                     <Button variant="ghost" size="sm" className="h-8 w-8 p-0" asChild>
-                      <Link href={`/booking-detail/${booking.tnr}`}>
+                      <Link href={`/client/booking-detail/${booking.tnr}`}>
                         <Eye className="h-4 w-4" />
                       </Link>
                     </Button>

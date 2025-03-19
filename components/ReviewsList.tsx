@@ -3,9 +3,24 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Star } from "lucide-react"
 import { format } from "date-fns"
+import { ReviewSheet } from "./ReviewSheet"
 
-export async function ReviewsList() {
-  const reviews = await getReviews()
+interface Review {
+  id: string;
+  rating: number;
+  comment: string;
+  createdAt: string;
+  tourPackage?: {
+    name: string;
+  };
+}
+
+interface ReviewsListProps {
+  reviews: Review[];
+}
+
+export function ReviewsList({ reviews }: ReviewsListProps) {
+ 
 
   if (reviews.length === 0) {
     return (
@@ -19,7 +34,7 @@ export async function ReviewsList() {
   return (
     <div className="grid gap-4">
       {reviews.map((review) => (
-        <Card key={review.id}>
+        <Card key={review.id} className="shadow-none">
           <CardHeader className="pb-2">
             <div className="flex justify-between items-start">
               <div>
@@ -42,9 +57,7 @@ export async function ReviewsList() {
             <p className="text-sm">{review.comment}</p>
           </CardContent>
           <CardFooter className="flex justify-end">
-            <Button variant="outline" size="sm">
-              Edit
-            </Button>
+            <ReviewSheet reviewId={review.id} initialRating={review.rating} initialComment={review.comment} />
           </CardFooter>
         </Card>
       ))}

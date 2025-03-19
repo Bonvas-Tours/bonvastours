@@ -11,8 +11,6 @@ import { toast } from "sonner";
 import { setSelectedTouristSession } from "@/app/(client_dashboard)/actions/set-selected-tourist-session";
 
 
-
-
 export default function BookingForm() {
     const router = useRouter();
     const [errors, setErrors] = useState<Record<string, string[]>>({});

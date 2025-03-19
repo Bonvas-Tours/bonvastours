@@ -91,7 +91,7 @@ export function ActiveBooking({ booking }: ActiveBookingProps) {
 
                         <div className="text-right">
                             <div className="text-xl font-bold text-primary">${booking.totalPrice.toLocaleString()}</div>
-                            {tourPackage.category === "Private" && <BookingModifySheet booking={booking} />}
+                            {/* {tourPackage.category === "Private" && <BookingModifySheet booking={booking} />} */}
                         </div>
                     </div>
                 </CardHeader>

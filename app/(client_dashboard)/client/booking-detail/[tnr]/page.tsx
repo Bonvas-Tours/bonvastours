@@ -1,4 +1,4 @@
-// app/client/booking-detail/[tnr]/page.tsx
+
 import { notFound } from "next/navigation";
 import { getSession } from "@/lib/session";
 import { BookingDetailHeader } from "@/components/BookingDetailHeader";
