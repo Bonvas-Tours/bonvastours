@@ -18,13 +18,14 @@ import {
 } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
 import { getDestinations } from "@/app/(root)/actions/packages"
+import { useAtom } from "jotai"
+import { packageDestinationsAtom } from "@/app/state"
 
 interface DestinationSearchProps extends React.HTMLAttributes<HTMLDivElement> {
     destination: string
     onDestinationChange: (value: string) => void
 }
 
-type Destinations = Awaited<ReturnType<typeof getDestinations>> | null;
 
 
 export function DestinationSearch({
@@ -33,12 +34,14 @@ export function DestinationSearch({
     className,
 }: DestinationSearchProps) {
     const [open, setOpen] = React.useState(false)
-    const [destinations, setDestinations] = React.useState<Destinations>();
+    const [destinations, setDestinations] = useAtom(packageDestinationsAtom)
 
     React.useEffect(() => {
       (async () => {
-        const currentDestinations = await getDestinations();
-        setDestinations(currentDestinations);
+        if (!destinations) {
+          const currentDestinations = await getDestinations();
+          setDestinations(currentDestinations);
+        }
       })();
     }, []);
 

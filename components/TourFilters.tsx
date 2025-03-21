@@ -1,6 +1,7 @@
 'use client'
 
 import { getDestinations } from "@/app/(root)/actions/packages"
+import { packageDestinationsAtom } from "@/app/state"
 import {
     Select,
     SelectContent,
@@ -9,6 +10,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { DESTINATIONS, MONTHS } from "@/content"
+import { useAtom } from "jotai"
 import { useEffect, useState } from "react"
 
 interface TourFiltersProps {
@@ -20,12 +22,14 @@ type Destinations = Awaited<ReturnType<typeof getDestinations>> | null;
 
 export function TourFilters({ onFilterMonth, onFilterDestination }: TourFiltersProps) {
 
-    const [destinations, setDestinations] = useState<Destinations>();
+    const [destinations, setDestinations] = useAtom(packageDestinationsAtom)
 
     useEffect(() => {
       (async () => {
-        const currentDestinations = await getDestinations();
-        setDestinations(currentDestinations);
+        if (!destinations) {
+          const currentDestinations = await getDestinations();
+          setDestinations(currentDestinations);
+        }
       })();
     }, []);
 
