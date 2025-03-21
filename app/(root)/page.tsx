@@ -12,7 +12,9 @@ import Partners from "@/components/Partners";
 import { getTourPackages } from "./actions/packages";
 
 export default async function Home() {
-  const packages = await getTourPackages(3)
+
+  const packages = await getTourPackages({ limit: 3 });
+  
   return (
     <>
       <Hero />
@@ -29,7 +31,6 @@ export default async function Home() {
           <TourPackages tours={packages} />
         </Suspense>
       </section>
-
 
       {/* <section className="section_container">
         <UpcomingEvents />
