@@ -4,7 +4,7 @@ import './globals.css'
 import { Toaster } from 'sonner';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Metadata } from 'next';
-import NextTopLoader from 'nextjs-toploader';
+import TopLoader from '@/components/TopLoader';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -83,7 +83,7 @@ export default function RootLayout({
     <html lang="en">
 
       <body className={inter.variable}>
-         <NextTopLoader />
+        <TopLoader />
         {children}
         <Toaster position="top-right" richColors />
         <SpeedInsights />

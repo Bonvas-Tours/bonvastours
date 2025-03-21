@@ -4,7 +4,6 @@ import OurStory from "@/components/OurStory";
 import { Services } from "@/components/Services";
 import TestimonialsSection from "@/components/Testimonial";
 import TourPackages from "@/components/TourPackages";
-import tourPackages from '@/content/tourPackage.json'
 
 import YouTubeEmbed from "@/components/YouTubeEmbed";
 
