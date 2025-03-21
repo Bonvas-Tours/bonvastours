@@ -8,21 +8,21 @@ import { ReviewSheet } from "./ReviewSheet"
 interface Review {
   id: string;
   rating: number;
-  comment: string;
-  createdAt: string;
+  comment: string; 
+  createdAt: string | Date; 
   tourPackage?: {
     name: string;
   };
 }
 
 interface ReviewsListProps {
-  reviews: Review[];
+  reviews: Review[] | null;
 }
 
 export function ReviewsList({ reviews }: ReviewsListProps) {
  
 
-  if (reviews.length === 0) {
+  if (reviews?.length === 0) {
     return (
       <div className="bg-white rounded-md border p-6 text-center">
         <h2 className="text-lg font-medium mb-2">No Reviews Yet</h2>
@@ -33,7 +33,7 @@ export function ReviewsList({ reviews }: ReviewsListProps) {
 
   return (
     <div className="grid gap-4">
-      {reviews.map((review) => (
+      {reviews?.map((review) => (
         <Card key={review.id} className="shadow-none">
           <CardHeader className="pb-2">
             <div className="flex justify-between items-start">

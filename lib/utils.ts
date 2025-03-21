@@ -79,7 +79,7 @@ export const formatPrice = (price: number) => {
 };
 
 
-export function formatLocation2(location?: Location): string {
+export function formatLocation2(location?: OptionalLocation): string {
     if (!location) return "Location not available";
 
     const { region, country, city } = location;

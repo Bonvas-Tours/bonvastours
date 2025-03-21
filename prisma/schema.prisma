@@ -189,7 +189,6 @@ model Tourist {
   id                 String           @id @default(uuid())
   firstname          String
   lastname           String
-  email              String?          @unique
   primaryNumber      String
   secondaryNumber    String?
   country            String
@@ -199,30 +198,45 @@ model Tourist {
   specialRequirement String?
   createdAt          DateTime         @default(now())
   updatedAt          DateTime         @updatedAt
+  email              String?          @unique
   bookings           BookingTourist[]
   Review             Review[]
 }
 
 model Booking {
-  tnr               String             @id @unique
-  tourPackageId     String
-  selectedOptionId  String?
-  numberOfAdults    Int
-  numberOfChildren  Int
-  numberOfCouples   Int
-  totalPrice        Float
-  isInstallment     Boolean
-  installmentNumber Int?
-  amountPaid        Float
-  status            String
-  dueDate           DateTime?
-  createdAt         DateTime           @default(now())
-  updatedAt         DateTime           @updatedAt
-  selectedOption    TourPackageOption? @relation(fields: [selectedOptionId], references: [id], onDelete: Cascade)
-  tourPackage       TourPackage        @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
-  bookingTourists   BookingTourist[]
-  payments          Payment[]
-  Review            Review[]
+  tnr              String             @id @unique
+  tourPackageId    String
+  selectedOptionId String?
+  numberOfAdults   Int
+  numberOfChildren Int
+  numberOfCouples  Int
+  totalPrice       Float
+  isInstallment    Boolean
+  amountPaid       Float
+  status           String
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  selectedOption   TourPackageOption? @relation(fields: [selectedOptionId], references: [id], onDelete: Cascade)
+  tourPackage      TourPackage        @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
+  bookingTourists  BookingTourist[]
+  installmentPlan  InstallmentPlan?
+  payments         Payment[]
+  Review           Review[]
+}
+
+model InstallmentPlan {
+  id                  String   @id @default(uuid())
+  tnr                 String   @unique
+  startDate           DateTime
+  endDate             DateTime
+  totalInstallments   Int
+  nextInstallmentNumber Int
+  nextPaymentDueDate  DateTime
+  dueDates            Json     // Array of due dates for all installments
+  expectedPayments    Json     
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  booking             Booking  @relation(fields: [tnr], references: [tnr], onDelete: Cascade, onUpdate: NoAction)
 }
 
 model BookingTourist {

@@ -21,7 +21,7 @@ export default function SearchBar() {
                     )}
                     onClick={() => setActiveTab("book")}
                 >
-                    Book a Tour Package
+                    Book a Tour 
                 </button>
                 <button
                     className={cn(

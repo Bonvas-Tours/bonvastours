@@ -1,4 +1,3 @@
-"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -11,8 +10,9 @@ import { Button } from "./ui/button";
 import { formatLocation2 } from "@/lib/utils";
 import { DownloadInvoiceButton } from "./DownloadInvoiceButton";
 import { Booking, Payment, TourPackage, TourPackageOption, Tourist, Location } from "@prisma/client";
+import { InstallmentPlan } from "./InstallmentPlan";
 
-type ActiveBookingProps = {
+interface BookingProps { 
     booking: Booking & {
         payments?: Payment[];
         tourPackage?: TourPackage & { location: Location };
@@ -21,9 +21,8 @@ type ActiveBookingProps = {
     };
 };
 
-export function ActiveBooking({ booking }: ActiveBookingProps) {
+export function ActiveBooking({ booking }: BookingProps) {
     const tourPackage = booking?.tourPackage;
-    const amountRemaining = booking?.totalPrice - (booking?.amountPaid || 0);
 
     if (!booking || !tourPackage) {
         return <div>No active booking found.</div>;
@@ -89,21 +88,24 @@ export function ActiveBooking({ booking }: ActiveBookingProps) {
                             </div>
                         </div>
 
-                        <div className="text-right">
+                        {/* <div className="text-right">
                             <div className="text-xl font-bold text-primary">${booking.totalPrice.toLocaleString()}</div>
-                            {/* {tourPackage.category === "Private" && <BookingModifySheet booking={booking} />} */}
-                        </div>
+                            {tourPackage.category === "Private" && <BookingModifySheet booking={booking} />}
+                        </div> */}
                     </div>
                 </CardHeader>
 
                 <CardContent>
                     {booking.status === "Reserved" && (
-                        <div className="bg-yellow-50 border border-yellow-200 rounded-md p-3 flex items-center gap-2 text-sm text-yellow-800">
-                            <div className="h-5 w-5 rounded-full bg-yellow-200 flex items-center justify-center">
-                                <span className="text-yellow-800">!</span>
+                        <>
+                            <div className="bg-yellow-50 border border-yellow-200 rounded-md p-3 flex items-center gap-2 text-sm text-yellow-800">
+                                <div className="h-5 w-5 rounded-full bg-yellow-200 flex items-center justify-center">
+                                    <span className="text-yellow-800">!</span>
+                                </div>
+                                <span>Your booking has been reserved till full payment is made.</span>
                             </div>
-                            <span>Your booking has been reserved till full payment is made.</span>
-                        </div>
+                            <InstallmentPlan booking={booking} />
+                        </>
                     )}
 
                     {booking.status === "Approved" && (
@@ -115,34 +117,6 @@ export function ActiveBooking({ booking }: ActiveBookingProps) {
                         </div>
                     )}
 
-                    <div className="mt-6">
-                        <h3 className="text-lg font-medium mb-4">Installment Plan</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div>
-                                <div className="text-sm text-muted-foreground">Start Date:</div>
-                                <div>
-                                    {booking.selectedOption?.startDate &&
-                                        format(new Date(booking.selectedOption.startDate), "MMM dd, yyyy")}
-                                </div>
-                            </div>
-                            <div>
-                                <div className="text-sm text-muted-foreground">End Date:</div>
-                                <div>
-                                    {booking.selectedOption?.endDate &&
-                                        format(new Date(booking.selectedOption.endDate), "MMM dd, yyyy")}
-                                </div>
-                            </div>
-                            <div>
-                                <div className="text-sm text-muted-foreground">Next Payment:</div>
-                                <div>{booking.dueDate && format(new Date(booking.dueDate), "MMM dd, yyyy")}</div>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-wrap gap-3 mt-4">
-                            <PaymentSheet booking={booking} />
-                            <Button variant="outline">Pay remaining balance (${amountRemaining.toLocaleString()})</Button>
-                        </div>
-                    </div>
                 </CardContent>
 
                 <CardFooter className="flex-col items-start border-t pt-6">
@@ -154,7 +128,7 @@ export function ActiveBooking({ booking }: ActiveBookingProps) {
                                     <th className="py-3 text-left font-medium text-muted-foreground">Transaction ID</th>
                                     <th className="py-3 text-left font-medium text-muted-foreground">Date</th>
                                     <th className="py-3 text-left font-medium text-muted-foreground">Amount</th>
-                                    <th className="py-3 text-left font-medium text-muted-foreground">Installment</th>
+                                    {booking.isInstallment && <th className="py-3 text-left font-medium text-muted-foreground">Installment No.</th>} 
                                     <th className="py-3 text-right font-medium text-muted-foreground">Action</th>
                                 </tr>
                             </thead>
@@ -164,7 +138,7 @@ export function ActiveBooking({ booking }: ActiveBookingProps) {
                                         <td className="py-3">{payment.transactionId}</td>
                                         <td className="py-3">{format(new Date(payment.createdAt), "MMM dd, yyyy")}</td>
                                         <td className="py-3">${payment.amount.toLocaleString()}</td>
-                                        <td className="py-3">{payment.installmentNumber || 1}</td>
+                                        {payment.installmentNumber > 0 && <td className="py-3">{payment.installmentNumber}</td>}
                                         <td className="py-3 text-right">
                                             <DownloadInvoiceButton bookingId={booking.tnr} />
                                         </td>

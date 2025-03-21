@@ -65,6 +65,7 @@ export async function findBooking(formData: FormData) {
       };
     }
 
+    console.log("Booking:", booking)
     // Store booking and tourists in cookies
     await setSession("booking", booking); 
 

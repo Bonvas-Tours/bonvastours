@@ -1,8 +1,10 @@
 import { getSession } from "@/lib/session";
-import { Suspense } from "react";
+
 import { ActiveBooking } from "@/components/ActiveBooking";
 import { Skeleton } from "@/components/ui/skeleton";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { CompletedBookings } from "@/components/CompletedBookings";
+import { Suspense } from "react";
 
 export default async function Dashboard() {
     const session = await getSession();
@@ -11,8 +13,6 @@ export default async function Dashboard() {
 
     console.log("Booking Data:", booking);
     console.log("Selected Tourist Data:", selectedTourist); 
-
-    console.log(booking, selectedTourist);
 
     if (!booking && !selectedTourist) {
         return <div>Unauthorized access</div>;
@@ -33,9 +33,12 @@ export default async function Dashboard() {
             <div className="p-4 md:p-6 space-y-6">
                 <div className="space-y-6">
                     <Suspense fallback={<BookingSkeleton />}>
-                        <ActiveBooking booking={booking} />
+                        {booking?.status === "Approved" || booking?.status === "Reserved" && <ActiveBooking booking={booking} />}
+                        {booking?.status === "Completed" && <CompletedBookings booking={booking} />}
                     </Suspense>
                 </div>
+
+
             </div>
         </>
     );

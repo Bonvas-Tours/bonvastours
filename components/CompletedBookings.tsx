@@ -5,15 +5,18 @@ import { Booking } from "@/lib/api"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ReviewSheet } from "@/components/ReviewSheet"
+import { Payment, Tourist, TourPackage, TourPackageOption } from "@prisma/client"
 
-type CompletedBookingsProps = {
-  bookings: Booking[]
-}
+interface BookingProps {
+    booking: Booking & {
+        payments?: Payment[];
+        tourPackage?: TourPackage & { location: Location };
+        selectedOption?: TourPackageOption;
+        bookingTourists?: { tourist: Tourist }[];
+    };
+};
 
-export function CompletedBookings({ bookings }: CompletedBookingsProps) {
-  if (!bookings || bookings.length === 0) {
-    return null
-  }
+export function CompletedBookings({ booking }: BookingProps) {
 
   return (
     <div className="space-y-4">
@@ -25,15 +28,12 @@ export function CompletedBookings({ bookings }: CompletedBookingsProps) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {bookings.map((booking) => {
-          const tourPackage = booking.tourPackage
 
-          return (
             <Card key={booking.id}>
               <CardHeader className="pb-2">
                 <div className="flex items-start justify-between">
                   <div>
-                    <CardTitle className="text-base">{tourPackage?.name}</CardTitle>
+                <CardTitle className="text-base">{booking?.tourPackage?.name}</CardTitle>
                     <div className="flex items-center gap-4 mt-1 text-sm text-muted-foreground">
                       <div className="flex items-center gap-1">
                         <Calendar className="h-4 w-4" />
@@ -48,7 +48,7 @@ export function CompletedBookings({ bookings }: CompletedBookingsProps) {
                       </div>
                     </div>
                   </div>
-                  <span className={`text-xs px-2 py-1 rounded-full bg-green-100 ${booking.status === "Reserved"
+                  <span className={`text-xs px-2 py-1 rounded-full ${booking.status === "Reserved"
                       ? "bg-yellow-100 text-yellow-800"
                       : booking.status === "Completed"
                         ? "bg-blue-100 text-blue-800"
@@ -65,17 +65,16 @@ export function CompletedBookings({ bookings }: CompletedBookingsProps) {
               <CardContent>
                 <div className="flex items-center justify-between">
                   <Button variant="outline" size="sm" asChild>
-                    <Link href={`/client/booking-detail/${booking.id}`}>
+                    <Link href={`/client/booking-detail/${booking.tnr}`}>
                       <Eye className="h-4 w-4 mr-2" />
                       View Details
                     </Link>
                   </Button>
-                  <ReviewSheet bookingId={booking.id} />
+                  {/* <ReviewSheet /> */}
                 </div>
               </CardContent>
             </Card>
-          )
-        })}
+
       </div>
     </div>
   )

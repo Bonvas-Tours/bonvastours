@@ -22,14 +22,12 @@ export default async function Reviews() {
 
     const result = await getReviewsByTouristId(selectedTourist.id);
 
-    if (!result.success) {
-        return null
-    }
-
+    const reviews = result.reviews || []; 
+    
     return (
         <div className="p-4 md:p-6 space-y-6">
             <h1 className="text-2xl font-semibold">Reviews</h1>
-            <ReviewsList reviews={result.reviews} />
+            <ReviewsList reviews={reviews} />
         </div>
     );
 }

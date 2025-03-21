@@ -89,7 +89,7 @@ export default function BookingForm() {
                         <CalendarCheck2 className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                         <Input
                             name="tnr"
-                            placeholder="eg. TNR3HD"
+                            placeholder="TNR (eg AH13HD)"
                             className="h-12 bg-white pl-10"
                             disabled={isLoading} // Disable input while loading
                         />
@@ -99,7 +99,7 @@ export default function BookingForm() {
                         <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                         <Input
                             name="lastName"
-                            placeholder="eg. Naya"
+                            placeholder="lastname (eg. Martey)"
                             className="h-12 bg-white pl-10"
                             disabled={isLoading} // Disable input while loading
                         />
