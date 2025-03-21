@@ -21,6 +21,7 @@ export interface TourPackageProps extends TourPackage {
   startDate: string;
   endDate: string;
   tourPackageOptions: TourPackageOption[];
+  isSold: boolean
 }  
 
 export interface TourPackageDetailsProps extends TourPackageProps {}

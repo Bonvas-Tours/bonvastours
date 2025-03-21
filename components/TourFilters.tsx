@@ -18,8 +18,6 @@ interface TourFiltersProps {
     onFilterDestination: (destination: string) => void
 }
 
-type Destinations = Awaited<ReturnType<typeof getDestinations>> | null;
-
 export function TourFilters({ onFilterMonth, onFilterDestination }: TourFiltersProps) {
 
     const [destinations, setDestinations] = useAtom(packageDestinationsAtom)

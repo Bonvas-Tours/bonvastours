@@ -85,6 +85,7 @@ export function TourPackagesContent({ initialTours }: TourPackagesContentProps) 
                         startDate={new Date(tour.tourPackageOptions[0].startDate).toLocaleDateString()}
                         endDate={new Date(tour.tourPackageOptions[0].endDate).toLocaleDateString()}
                         cover={tour.cover}
+                        isSold={tour.isSold}
                     />
                 ))}
             </div>

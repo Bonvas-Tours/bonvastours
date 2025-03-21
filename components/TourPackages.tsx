@@ -25,6 +25,7 @@ export default function TourPackages({ tours }: TourCardProps) {
                           tour.tourPackageOptions[0].endDate,
                         ).toLocaleDateString()}
                         cover={tour.cover}
+                        isSold={tour.isSold}
                       />
                     );
                 })}

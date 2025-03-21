@@ -2,6 +2,7 @@
 
 import { MONTHS } from "@/content";
 import { Prisma } from "@/lib/prisma";
+import { calculateSoldOutStatus } from "@/lib/utils";
 import { TourPackageProps } from "@/type";
 import { Prisma as PrismaClient } from "@prisma/client";
 
@@ -89,14 +90,15 @@ export const getTourPackages = async ({
     }
   }
 
-  const packages = await Prisma.tourPackage.findMany(options);
+  const packages = await Prisma.tourPackage.findMany(options) as unknown as TourPackageProps[];
 
   const fmttedPackages = packages.map((pkg) => ({
     ...pkg,
     dailyPrice: parseFloat(pkg.dailyPrice.toString()),
+    isSold:  calculateSoldOutStatus(pkg.tourPackageOptions, pkg.type),
   }));
 
-  return fmttedPackages as unknown as TourPackageProps[];
+  return fmttedPackages 
 };
 
 export const getDestinations = async () => {

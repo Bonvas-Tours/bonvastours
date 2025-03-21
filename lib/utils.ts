@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import { Location } from "./api";
+import { TourPackage, TourPackageOption } from "@prisma/client";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -85,3 +86,32 @@ export function formatLocation2(location?: OptionalLocation): string {
     const { region, country, city } = location;
     return [region, country, city].filter(Boolean).join(", ");
 }
+
+
+export const calculateSoldOutStatus = (options: TourPackageOption[], type: TourPackage["type"]) => {
+  let soldOut = false;
+
+  const today = new Date();
+
+  for (const { startDate, endDate } of options) {
+    if (!(today.getTime() < startDate.getTime())) {
+      soldOut = true;
+      break;
+    }
+
+    const oneWeekBefore = new Date(startDate);
+    oneWeekBefore.setDate(startDate.getDate() - 7);
+    const twoWeeksBefore = new Date(startDate);
+    twoWeeksBefore.setDate(startDate.getDate() - 14);
+
+    if (
+      (type === "local" && today.getTime() >= oneWeekBefore.getTime()) ||
+      (type === "international" && today.getTime() >= twoWeeksBefore.getTime())
+    ) {
+      soldOut = true;
+      break;
+    }
+  }
+
+  return soldOut;
+};
