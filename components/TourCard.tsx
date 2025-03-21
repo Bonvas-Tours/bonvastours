@@ -12,6 +12,7 @@ export function TourCard({
     startDate,
     endDate,
     cover,
+    isSold,
 }: Partial<TourPackageProps>) {
     return (
         <Card className="overflow-hidden group p-4 !shadow-none">
@@ -28,6 +29,11 @@ export function TourCard({
                     ) : (
                         <div className="flex items-center justify-center w-full h-full bg-gray-200">
                             <span className="text-gray-500">No Image Available</span>
+                        </div>
+                    )}
+                       {isSold && (
+                        <div className="absolute top-2 left-2 bg-red-600 text-white px-3 py-1 text-sm font-semibold rounded-md">
+                            Sold Out
                         </div>
                     )}
                 </div>
